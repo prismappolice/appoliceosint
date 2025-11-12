@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prismappolice.com</title>
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+</head>
+
+<body data-page="osinttools">
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  <a href="home.html" class="nav-link">🏠 Home</a>
+  <a href="contact.html" class="nav-link">📞 Contact Us</a>
+  <a href="github.html" class="nav-link">🐙 GitHub</a>
+  <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+  <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+  <span class="search-icon" id="searchBtn"
+    style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+    role="button" aria-label="Search">🔍</span>
+    </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link active">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+    <li id="tool-financial-fraud-tools"><a id="tool-link-financial-fraud-tools" href="financialfraudosint.html" class="nav-link">💰 Financial Fraud Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main>
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1>OPEN SOURCE INTELLIGENCE (OSINT) TOOLS</h1>
+      </div>
+
+      <div class="container-content">
+
+  <h2 id="bucket-search">1. BUCKET SEARCH</h2>
+        <p><strong>USES:</strong> Bucket Search tools help law enforcement discover exposed cloud storage (like AWS S3) to identify leaked sensitive data and misconfigured assets.</p>
+        <ol>
+          <li id="tool-osint-sh"><a id="tool-link-osint-sh" href="https://osint.sh/buckets" target="_blank" rel="noopener">Osint.Sh</a></li>
+        </ol>
+
+  <h2 id="web-osint">2. WEB OSINT</h2>
+        <p><strong>USES:</strong> Web OSINT tools help law enforcement collect and analyze data from websites, forums, and blogs to uncover threats, suspects, and criminal activity online.</p>
+        <ol>
+          <li id="tool-web-check-xyz"><a id="tool-link-web-check-xyz" href="https://web-check.xyz" target="_blank" rel="noopener">Web.Check.Xyz</a></li>
+        </ol>
+
+  <h2 id="crawling-scraping">3. CRAWLING-SCRAPING</h2>
+        <p><strong>USES:</strong> Crawling &amp; Scraping tools help law enforcement extract and analyze public web data for cybercrime detection and threat monitoring.</p>
+        <ol>
+          <li id="tool-scrapegraphai"><a id="tool-link-scrapegraphai" href="https://scrapegraphai.com" target="_blank" rel="noopener">Scrapegraphai</a></li>
+        </ol>
+
+  <h2 id="email-intelligence">4. EMAIL INTELLIGENCE</h2>
+        <p><strong>USES:</strong> Email Intelligence tools help law enforcement trace email origins, analyze headers, and detect phishing or fraud to support cybercrime investigations.</p>
+        <ol>
+          <li id="tool-tracefind-info"><a id="tool-link-tracefind-info" href="https://tracefind.info" target="_blank" rel="noopener">Tracefind.Info</a></li>
+        </ol>
+
+  <h2 id="general-osint">5. GENERAL OSINT</h2>
+        <p><strong>USES:</strong> General OSINT tools help law enforcement gather and analyze publicly available information from the internet to support investigations and threat assessments.</p>
+        <ol>
+          <li id="tool-gitsearchai"><a id="tool-link-gitsearchai" href="https://www.gitsearchai.com" target="_blank" rel="noopener">Gitsearch.ai</a></li>
+          <li id="tool-cyber-url-scanner"><a id="tool-link-cyber-url-scanner" href="https://cyscan.io" target="_blank" rel="noopener">Cyber.Url.Scanner</a></li>
+          <li id="tool-website-informer"><a id="tool-link-website-informer" href="https://website.informer.com" target="_blank" rel="noopener">Website.Informer</a></li>
+          <li id="tool-osint-portal"><a id="tool-link-osint-portal" href="https://osintportal.com" target="_blank" rel="noopener">Osint.Portal</a></li>
+          <li id="tool-deepfind-me"><a id="tool-link-deepfind-me" href="https://www.deepfind.me" target="_blank" rel="noopener">Deepfind.Me</a></li>
+        </ol>
+
+  <h2 id="best-osint-tools">6. BEST OSINT TOOLS</h2>
+        <p><strong>USES:</strong> Comprehensive OSINT tools for law enforcement and cyber intelligence investigations to gather and analyze publicly available information.</p>
+        <ol>
+          <li id="tool-talkwalker"><a id="tool-link-talkwalker" href="https://www.talkwalker.com/blog/best-osint-tools" target="_blank" rel="noopener">Talkwalker</a></li>
+          <li id="tool-maltego-com"><a id="tool-link-maltego-com" href="https://www.maltego.com" target="_blank" rel="noopener">Maltego.Com</a></li>
+          <li id="tool-shodan-io"><a id="tool-link-shodan-io" href="https://shodan.io" target="_blank" rel="noopener">Shodan.Io</a></li>
+          <li id="tool-securitytrails"><a id="tool-link-securitytrails" href="https://securitytrails.com" target="_blank" rel="noopener">Securitytrails</a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+  <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-osint">Loading...</div>
+  <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-osint">Loading...</div>
+  <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-osint">Loading...</div>
+  <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-osint">Loading...</div>
+  <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 18px; font-size: 1.1em; opacity: 1; color: #fff;">
+    🔄 Auto-refreshes every 30 seconds
+  </div>
+</div>
+
+<footer>
+  <address>
+    Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&amp;M), Guntur District, AP-522 503.<br>
+    Contact: +91-8523817999.<br>
+    Email:
+    <a href="mailto:prism2025@appolice.gov.in">prism2025@appolice.gov.in</a> |
+    <a href="mailto:support@appoliceosint.com">support@appoliceosint.com</a>
+  </address>
+  <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+</footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof autoRefreshVisitorStats === 'function') {
+      autoRefreshVisitorStats('osint');
+    }
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+  });
+</script>
+</body>
+</html>

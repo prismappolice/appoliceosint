@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blockchain Tools - PRISM OSINT</title>
+  <meta name="description" content="Professional Blockchain Investigation Tools for cryptocurrency tracking and on-chain analysis">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+</head>
+<body data-page="blockchain-tools">
+
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn"
+         aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  <a href="home.html" class="nav-link">🏠 Home</a>
+  <a href="contact.html" class="nav-link">📞 Contact Us</a>
+  <a href="github.html" class="nav-link">🐙 GitHub</a>
+  <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+    <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link active">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+    <li id="tool-financial-fraud-tools"><a id="tool-link-financial-fraud-tools" href="financialfraudosint.html" class="nav-link">💰 Financial Fraud Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main>
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1>BLOCKCHAIN INVESTIGATION TOOLS</h1>
+      </div>
+      <div class="container-content">
+
+  <h2 id="blockchain-explorers-bitcoin-multichain">1. BLOCKCHAIN EXPLORERS - BITCOIN & MULTI-CHAIN</h2>
+        <p><strong>USES:</strong> Track Bitcoin and multi-chain cryptocurrency transactions for forensic investigations.</p>
+        <ol>
+          <li id="tool-bitcoin-explorer"><a id="tool-link-bitcoin-explorer" href="https://www.blockchain.com/explorer" target="_blank" rel="noopener">Blockchain.Com</a></li>
+          <li id="tool-blockchair"><a id="tool-link-blockchair" href="https://blockchair.com" target="_blank" rel="noopener">Blockchair</a></li>
+          <li id="tool-oklink-explorer"><a id="tool-link-oklink-explorer" href="https://oklink.com" target="_blank" rel="noopener">Oklink</a></li>
+          <li id="tool-bitquery-explorer"><a id="tool-link-bitquery-explorer" href="https://explorer.bitquery.io" target="_blank" rel="noopener">Bitquery.Explorer</a></li>
+        </ol>
+
+  <h2 id="ethereum-evm-chain-explorers">2. ETHEREUM & EVM CHAIN EXPLORERS</h2>
+        <p><strong>USES:</strong> Investigate Ethereum and EVM-compatible blockchain transactions and smart contracts.</p>
+        <ol>
+          <li id="tool-etherscan"><a id="tool-link-etherscan" href="https://etherscan.io" target="_blank" rel="noopener">Etherscan</a></li>
+          <li id="tool-bscscan"><a id="tool-link-bscscan" href="https://bscscan.com" target="_blank" rel="noopener">Bscscan</a></li>
+          <li id="tool-polygonscan"><a id="tool-link-polygonscan" href="https://polygonscan.com" target="_blank" rel="noopener">Polygonscan</a></li>
+          <li id="tool-arbiscan"><a id="tool-link-arbiscan" href="https://arbiscan.io" target="_blank" rel="noopener">Arbiscan</a></li>
+          <li id="tool-optimism-explorer"><a id="tool-link-optimism-explorer" href="https://optimistic.etherscan.io" target="_blank" rel="noopener">Optimism.Explorer</a></li>
+          <li id="tool-basescan"><a id="tool-link-basescan" href="https://basescan.org" target="_blank" rel="noopener">Basescan</a></li>
+        </ol>
+
+  <h2 id="alternative-blockchain-explorers">3. ALTERNATIVE BLOCKCHAIN EXPLORERS</h2>
+        <p><strong>USES:</strong> Track transactions on alternative blockchain networks.</p>
+        <ol>
+          <li id="tool-avascan"><a id="tool-link-avascan" href="https://avascan.info" target="_blank" rel="noopener">Avascan</a></li>
+          <li id="tool-tronscan"><a id="tool-link-tronscan" href="https://tronscan.org" target="_blank" rel="noopener">Tronscan</a></li>
+          <li id="tool-solscan"><a id="tool-link-solscan" href="https://solscan.io" target="_blank" rel="noopener">Solscan</a></li>
+          <li id="tool-cardanoscan"><a id="tool-link-cardanoscan" href="https://cardanoscan.io" target="_blank" rel="noopener">Cardanoscan</a></li>
+          <li id="tool-xrpscan"><a id="tool-link-xrpscan" href="https://xrpscan.com" target="_blank" rel="noopener">Xrpscan</a></li>
+          <li id="tool-tonviewer"><a id="tool-link-tonviewer" href="https://tonviewer.com" target="_blank" rel="noopener">Tonviewer</a></li>
+          <li id="tool-mintscan"><a id="tool-link-mintscan" href="https://mintscan.io" target="_blank" rel="noopener">Mintscan</a></li>
+          <li id="tool-near-explorer"><a id="tool-link-near-explorer" href="https://explorer.near.org" target="_blank" rel="noopener">Near.Explorer</a></li>
+        </ol>
+
+  <h2 id="advanced-investigation-platforms">4. ADVANCED INVESTIGATION PLATFORMS</h2>
+        <p><strong>USES:</strong> Professional-grade blockchain investigation tools with AI-powered analysis and entity attribution.</p>
+        <ol>
+          <li id="tool-arkham-intelligence"><a id="tool-link-arkham-intelligence" href="https://platform.arkhamintelligence.com" target="_blank" rel="noopener">Arkham.Intelligence</a></li>
+          <li id="tool-breadcrumbs"><a id="tool-link-breadcrumbs" href="https://www.breadcrumbs.app" target="_blank" rel="noopener">Breadcrumbs</a></li>
+          <li id="tool-metasleuth"><a id="tool-link-metasleuth" href="https://metasleuth.io" target="_blank" rel="noopener">Metasleuth</a></li>
+        </ol>
+
+  <h2 id="monitoring-alert-systems">5. MONITORING & ALERT SYSTEMS</h2>
+        <p><strong>USES:</strong> Real-time monitoring of large cryptocurrency transfers and suspicious activities.</p>
+        <ol>
+          <li id="tool-whale-alert"><a id="tool-link-whale-alert" href="https://whale-alert.io" target="_blank" rel="noopener">Whale.Alert</a></li>
+        </ol>
+
+  <h2 id="decentralized-exchange-dex-tools">6. DECENTRALIZED EXCHANGE (DEX) TOOLS</h2>
+        <p><strong>USES:</strong> Track and analyze decentralized exchange token transactions and trading activities.</p>
+        <ol>
+          <li id="tool-dextool"><a id="tool-link-dextool" href="https://www.dextools.io" target="_blank" rel="noopener" style="font-size:0.9em;">Dextool</a></li>
+        </ol>
+
+  <h2 id="cryptocurrency-tracking">7. CRYPTOCURRENCY TRACKING</h2>
+        <p><strong>USES:</strong> Tools for tracking cryptocurrency transactions used in dark web criminal activities.</p>
+        <ol>
+          <li id="tool-chainalysis"><a id="tool-link-chainalysis" href="https://www.chainalysis.com/" target="_blank" rel="noopener">Chainalysis</a></li>
+          <li id="tool-elliptic"><a id="tool-link-elliptic" href="https://www.elliptic.co/" target="_blank" rel="noopener">Elliptic</a></li>
+          <li id="tool-oxt"><a id="tool-link-oxt" href="https://oxt.me/" target="_blank" rel="noopener">Oxt</a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+  <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-blockchain">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-blockchain">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-blockchain">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-blockchain">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 18px; font-size: 1.1em; opacity: 1; color: #fff;">
+    🔄 Auto-refreshes every 30 seconds
+  </div>
+</div>
+
+<footer>
+  <address>
+    Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+    Contact: +91-8523817999.<br>
+    Email: prism2025@appolice.gov.in | support@appoliceosint.com
+  </address>
+  <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+  </footer>
+  </div>
+  <script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof autoRefreshVisitorStats === 'function') {
+      autoRefreshVisitorStats('blockchain');
+    }
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+  });
+</script>
+</body>
+</html>

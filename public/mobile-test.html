@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Responsiveness Test - PRISM OSINT</title>
+  <link rel="stylesheet" href="navbar.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: center;
+      color: #2a5298;
+      margin-bottom: 10px;
+    }
+    
+    .info {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    
+    .device-selector {
+      text-align: center;
+      margin-bottom: 30px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .device-selector h2 {
+      color: #2a5298;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    
+    .device-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    .device-btn {
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .device-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .device-btn.active {
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+    }
+    
+    .page-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .page-btn {
+      padding: 10px 16px;
+      background: #fff;
+      color: #2a5298;
+      border: 2px solid #2a5298;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .page-btn:hover {
+      background: #2a5298;
+      color: white;
+    }
+    
+    .page-btn.active {
+      background: #2a5298;
+      color: white;
+    }
+    
+    .preview-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .device-frame {
+      background: #333;
+      border-radius: 30px;
+      padding: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    
+    .device-screen {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .device-info {
+      text-align: center;
+      margin-top: 15px;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    
+    iframe {
+      border: none;
+      display: block;
+    }
+    
+    .notch {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 25px;
+      background: #333;
+      border-radius: 0 0 15px 15px;
+      z-index: 10;
+    }
+    
+    .status-bar {
+      background: rgba(0,0,0,0.05);
+      padding: 8px;
+      text-align: center;
+      font-size: 11px;
+      color: #666;
+    }
+    
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+    
+    .controls button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #2a5298;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .controls button:hover {
+      background: #1e3c72;
+    }
+    
+    .rotate-btn {
+      background: #FF9800 !important;
+    }
+    
+    .rotate-btn:hover {
+      background: #F57C00 !important;
+    }
+
+    /* Comprehensive Desktop and Mobile Responsive Media Queries */
+    
+    /* Extra Large Desktop (min-width: 1921px) - 4K and Ultra-wide */
+    @media (min-width: 1921px) {
+      body {
+        padding: 40px;
+        max-width: 2000px;
+        margin: 0 auto;
+      }
+      
+      h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+      }
+      
+      .info {
+        font-size: 18px;
+        margin-bottom: 50px;
+      }
+      
+      .device-selector {
+        padding: 40px;
+        margin-bottom: 50px;
+        border-radius: 20px;
+      }
+      
+      .device-selector h2 {
+        font-size: 24px;
+        margin-bottom: 25px;
+      }
+      
+      .device-btn {
+        padding: 18px 30px;
+        font-size: 16px;
+        border-radius: 12px;
+        min-width: 200px;
+      }
+      
+      .page-btn {
+        padding: 14px 22px;
+        font-size: 15px;
+        border-radius: 10px;
+        min-width: 140px;
+      }
+      
+      .device-frame {
+        padding: 25px;
+        border-radius: 40px;
+      }
+      
+      .device-info {
+        font-size: 18px;
+        margin-top: 25px;
+      }
+      
+      .controls {
+        bottom: 40px;
+        right: 40px;
+        padding: 25px;
+        border-radius: 15px;
+      }
+      
+      .controls button {
+        padding: 15px 25px;
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+    }
+    
+    /* Large Desktop (1601px - 1920px) */
+    @media (min-width: 1601px) and (max-width: 1920px) {
+      body {
+        padding: 35px;
+        max-width: 1800px;
+        margin: 0 auto;
+      }
+      
+      h1 {
+        font-size: 2.6em;
+        margin-bottom: 18px;
+      }
+      
+      .info {
+        font-size: 17px;
+        margin-bottom: 45px;
+      }
+      
+      .device-selector {
+        padding: 35px;
+        margin-bottom: 45px;
+        border-radius: 18px;
+      }
+      
+      .device-selector h2 {
+        font-size: 22px;
+        margin-bottom: 22px;
+      }
+      
+      .device-btn {
+        padding: 16px 26px;
+        font-size: 15px;
+        min-width: 180px;
+      }
+      
+      .page-btn {
+        padding: 13px 20px;
+        font-size: 14px;
+        min-width: 130px;
+      }
+    }
+    
+    /* Standard Desktop (1441px - 1600px) */
+    @media (min-width: 1441px) and (max-width: 1600px) {
+      body {
+        padding: 32px;
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+      
+      h1 {
+        font-size: 2.4em;
+        margin-bottom: 16px;
+      }
+      
+      .info {
+        font-size: 16px;
+        margin-bottom: 42px;
+      }
+      
+      .device-selector {
+        padding: 32px;
+        margin-bottom: 42px;
+        border-radius: 16px;
+      }
+      
+      .device-selector h2 {
+        font-size: 21px;
+        margin-bottom: 20px;
+      }
+      
+      .device-btn {
+        padding: 15px 24px;
+        font-size: 14.5px;
+        min-width: 170px;
+      }
+      
+      .page-btn {
+        padding: 12px 18px;
+        font-size: 13.5px;
+        min-width: 125px;
+      }
+    }
+    
+    /* Medium Desktop (1201px - 1440px) */
+    @media (min-width: 1201px) and (max-width: 1440px) {
+      body {
+        padding: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      
+      h1 {
+        font-size: 2.2em;
+        margin-bottom: 15px;
+      }
+      
+      .info {
+        font-size: 15px;
+        margin-bottom: 40px;
+      }
+      
+      .device-selector {
+        padding: 30px;
+        margin-bottom: 40px;
+        border-radius: 15px;
+      }
+      
+      .device-selector h2 {
+        font-size: 20px;
+        margin-bottom: 18px;
+      }
+      
+      .device-btn {
+        padding: 14px 22px;
+        font-size: 14px;
+        min-width: 160px;
+      }
+      
+      .page-btn {
+        padding: 11px 17px;
+        font-size: 13px;
+        min-width: 120px;
+      }
+    }
+    
+    /* Small Desktop/Large Tablet (993px - 1200px) */
+    @media (min-width: 993px) and (max-width: 1200px) {
+      body {
+        padding: 25px;
+      }
+      
+      h1 {
+        font-size: 2em;
+        margin-bottom: 14px;
+      }
+      
+      .info {
+        font-size: 14.5px;
+        margin-bottom: 35px;
+      }
+      
+      .device-selector {
+        padding: 25px;
+        margin-bottom: 35px;
+        border-radius: 14px;
+      }
+      
+      .device-selector h2 {
+        font-size: 19px;
+        margin-bottom: 17px;
+      }
+      
+      .device-btn {
+        padding: 13px 20px;
+        font-size: 13.5px;
+        min-width: 150px;
+      }
+      
+      .page-btn {
+        padding: 10px 16px;
+        font-size: 12.5px;
+        min-width: 115px;
+      }
+    }
+    
+    /* Tablet/Small Desktop (769px - 992px) */
+    @media (min-width: 769px) and (max-width: 992px) {
+      body {
+        padding: 22px;
+      }
+      
+      h1 {
+        font-size: 1.8em;
+        margin-bottom: 12px;
+      }
+      
+      .info {
+        font-size: 14px;
+        margin-bottom: 32px;
+      }
+      
+      .device-selector {
+        padding: 22px;
+        margin-bottom: 32px;
+        border-radius: 13px;
+      }
+      
+      .device-selector h2 {
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+      
+      .device-btn {
+        padding: 12px 18px;
+        font-size: 13px;
+        flex: 1 1 calc(50% - 5px);
+        min-width: 140px;
+      }
+      
+      .page-btn {
+        padding: 9px 15px;
+        font-size: 12px;
+        flex: 1 1 calc(33.33% - 7px);
+        min-width: 110px;
+      }
+      
+      .preview-container {
+        margin-top: 18px;
+      }
+      
+      .device-frame {
+        padding: 12px;
+        border-radius: 25px;
+      }
+      
+      .controls {
+        bottom: 18px;
+        right: 18px;
+        padding: 15px;
+      }
+      
+      .controls button {
+        padding: 9px 15px;
+        font-size: 13px;
+      }
+    }
+    
+    /* Large Mobile / Small Tablet (max-width: 768px) */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.5em;
+        margin-bottom: 8px;
+      }
+      
+      .info {
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+      
+      .device-selector {
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+      
+      .device-selector h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      
+      .device-buttons {
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+      
+      .device-btn {
+        padding: 10px 16px;
+        font-size: 12px;
+        flex: 1 1 calc(50% - 4px);
+        min-width: 140px;
+      }
+      
+      .page-buttons {
+        gap: 6px;
+      }
+      
+      .page-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+        flex: 1 1 calc(33.33% - 4px);
+        min-width: 100px;
+      }
+      
+      .preview-container {
+        margin-top: 15px;
+      }
+      
+      .device-frame {
+        padding: 10px;
+        border-radius: 20px;
+      }
+      
+      .device-screen {
+        border-radius: 12px;
+      }
+      
+      .device-info {
+        font-size: 12px;
+        margin-top: 10px;
+      }
+      
+      .controls {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px;
+      }
+      
+      .controls button {
+        padding: 8px;
+        font-size: 12px;
+      }
+    }
+    
+    /* Medium Mobile (max-width: 600px) */
+    @media (max-width: 600px) {
+      body {
+        padding: 8px;
+      }
+      
+      h1 {
+        font-size: 1.3em;
+        margin-bottom: 6px;
+      }
+      
+      .device-selector {
+        padding: 12px;
+        margin-bottom: 15px;
+      }
+      
+      .device-selector h2 {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      
+      .device-buttons {
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+      
+      .device-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+        flex: 1 1 calc(50% - 3px);
+        min-width: 120px;
+      }
+      
+      .page-buttons {
+        gap: 4px;
+      }
+      
+      .page-btn {
+        padding: 6px 10px;
+        font-size: 10px;
+        flex: 1 1 calc(50% - 2px);
+        min-width: 80px;
+      }
+      
+      .preview-container {
+        margin-top: 12px;
+      }
+      
+      .device-frame {
+        padding: 8px;
+        border-radius: 15px;
+        max-width: 95vw;
+      }
+      
+      .device-info {
+        font-size: 11px;
+        margin-top: 8px;
+      }
+      
+      .controls {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px;
+      }
+      
+      .controls button {
+        padding: 6px;
+        font-size: 11px;
+        margin-bottom: 8px;
+      }
+      
+      /* Visitor Counter Mobile Fixes */
+      .visitor-stats-section {
+        margin: 8px 2px !important;
+        padding: 8px !important;
+        border-radius: 12px !important;
+      }
+      
+      .visitor-stats-section h3 {
+        font-size: 1.2em !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .visitor-stats-section > div {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+      }
+      
+      .visitor-stats-section > div > div {
+        padding: 12px 8px !important;
+        border-radius: 10px !important;
+      }
+      
+      .visitor-stats-section > div > div > div:first-child {
+        font-size: 1.4em !important;
+        margin-bottom: 4px !important;
+      }
+      
+      .visitor-stats-section > div > div > div:last-child {
+        font-size: 0.85em !important;
+      }
+    }
+    
+    /* Small Mobile (max-width: 480px) */
+    @media (max-width: 480px) {
+      body {
+        padding: 6px;
+      }
+      
+      h1 {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+      }
+      
+      .info {
+        font-size: 11px;
+        margin-bottom: 15px;
+      }
+      
+      .device-selector {
+        padding: 10px;
+        margin-bottom: 12px;
+      }
+      
+      .device-selector h2 {
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+      
+      .device-buttons {
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+      
+      .device-btn {
+        padding: 7px 10px;
+        font-size: 10px;
+        flex: 1 1 100%;
+        min-width: unset;
+      }
+      
+      .page-buttons {
+        gap: 3px;
+      }
+      
+      .page-btn {
+        padding: 5px 8px;
+        font-size: 9px;
+        flex: 1 1 100%;
+        min-width: unset;
+        margin-bottom: 3px;
+      }
+      
+      .preview-container {
+        margin-top: 10px;
+      }
+      
+      .device-frame {
+        padding: 6px;
+        border-radius: 12px;
+        max-width: 98vw;
+      }
+      
+      .device-screen {
+        border-radius: 8px;
+      }
+      
+      .device-info {
+        font-size: 10px;
+        margin-top: 6px;
+      }
+      
+      .controls {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 15px auto 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+      }
+      
+      .controls button {
+        padding: 8px 12px;
+        font-size: 10px;
+        margin-bottom: 0;
+        border-radius: 8px;
+        flex: 1;
+      }
+      
+      /* Enhanced Visitor Counter for Small Mobile */
+      .visitor-stats-section {
+        margin: 6px 1px !important;
+        padding: 6px !important;
+        border-radius: 10px !important;
+      }
+      
+      .visitor-stats-section h3 {
+        font-size: 1em !important;
+        margin-bottom: 10px !important;
+        letter-spacing: 0.5px !important;
+      }
+      
+      .visitor-stats-section > div {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 6px !important;
+      }
+      
+      .visitor-stats-section > div > div {
+        padding: 10px 6px !important;
+        border-radius: 8px !important;
+      }
+      
+      .visitor-stats-section > div > div > div:first-child {
+        font-size: 1.2em !important;
+        margin-bottom: 3px !important;
+        font-weight: 600 !important;
+      }
+      
+      .visitor-stats-section > div > div > div:last-child {
+        font-size: 0.75em !important;
+        line-height: 1.1 !important;
+      }
+      
+      .visitor-stats-section > div:last-child {
+        font-size: 0.8em !important;
+        margin-top: 8px !important;
+      }
+    }
+    
+    /* Extra Small Mobile (max-width: 360px) */
+    @media (max-width: 360px) {
+      body {
+        padding: 4px;
+      }
+      
+      h1 {
+        font-size: 1.1em;
+      }
+      
+      .device-selector {
+        padding: 8px;
+      }
+      
+      .device-selector h2 {
+        font-size: 12px;
+      }
+      
+      .device-btn {
+        padding: 6px 8px;
+        font-size: 9px;
+      }
+      
+      .page-btn {
+        padding: 4px 6px;
+        font-size: 8px;
+      }
+      
+      .device-frame {
+        padding: 4px;
+        border-radius: 10px;
+      }
+      
+      .device-info {
+        font-size: 9px;
+      }
+      
+      .controls button {
+        padding: 6px 10px;
+        font-size: 9px;
+      }
+      
+      /* Ultra-compact Visitor Counter */
+      .visitor-stats-section {
+        margin: 4px 0 !important;
+        padding: 4px !important;
+        border-radius: 8px !important;
+      }
+      
+      .visitor-stats-section h3 {
+        font-size: 0.9em !important;
+        margin-bottom: 8px !important;
+      }
+      
+      .visitor-stats-section > div > div {
+        padding: 8px 4px !important;
+        border-radius: 6px !important;
+      }
+      
+      .visitor-stats-section > div > div > div:first-child {
+        font-size: 1.1em !important;
+      }
+      
+      .visitor-stats-section > div > div > div:last-child {
+        font-size: 0.7em !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+      <a href="home.html" class="nav-link">🏠 Home</a>
+      <a href="contact.html" class="nav-link">📞 Contact Us</a>
+      <a href="github.html" class="nav-link">🐙 GitHub</a>
+      <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+    </div>
+    <div class="nav-right">
+      <div class="search-input-wrapper" style="position:relative">
+        <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+        <span class="search-icon" id="searchBtn"
+              style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+              role="button" aria-label="Search">🔍</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar (hidden by default) -->
+  <aside id="sidebar" class="sidebar" aria-hidden="true">
+    <ul class="sidebar-list">
+      <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+      <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+      <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+      <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+      <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+      <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+      <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link">🌐 Domain Intel Tools</a></li>
+      <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+      <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+      <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+    </ul>
+  </aside>
+  <div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+  <h1>📱 Mobile Responsiveness Test Suite</h1>
+  <p class="info">Test all OSINT platform pages on different mobile device sizes</p>
+  
+  <div class="device-selector">
+    <h2>Select Device Size</h2>
+    <div class="device-buttons">
+      <button class="device-btn active" data-device="iphone-se">iPhone SE (375x667)</button>
+      <button class="device-btn" data-device="iphone-14">iPhone 14 (390x844)</button>
+      <button class="device-btn" data-device="iphone-14-pro-max">iPhone 14 Pro Max (430x932)</button>
+      <button class="device-btn" data-device="galaxy-s20">Galaxy S20 (360x800)</button>
+      <button class="device-btn" data-device="pixel-5">Pixel 5 (393x851)</button>
+      <button class="device-btn" data-device="ipad-mini">iPad Mini (768x1024)</button>
+    </div>
+    
+    <h2 style="margin-top: 20px;">Select Page to Test</h2>
+    <div class="page-buttons">
+      <button class="page-btn active" data-page="home.html">🏠 Home</button>
+      <button class="page-btn" data-page="osinttools.html">🔍 OSINT Tools</button>
+      <button class="page-btn" data-page="aitools.html">🤖 AI Tools</button>
+      <button class="page-btn" data-page="factcheck.html">✅ Fact Check</button>
+      <button class="page-btn" data-page="darkweb-tools.html">🕵️ Dark Web</button>
+      <button class="page-btn" data-page="blockchain-tools.html">⛓️ Blockchain</button>
+      <button class="page-btn" data-page="social-media.html">📱 Social Media</button>
+      <button class="page-btn" data-page="domain-intel.html">🌐 Domain Intel</button>
+      <button class="page-btn" data-page="breach-data.html">🔒 Breach Data</button>
+      <button class="page-btn" data-page="phone-intel.html">📱 Phone Intel</button>
+      <button class="page-btn" data-page="learning.html">📚 Learning</button>
+      <button class="page-btn" data-page="contact.html">📞 Contact</button>
+      <button class="page-btn" data-page="github.html">🐙 GitHub</button>
+    </div>
+  </div>
+  
+  <div class="preview-container">
+    <div class="device-frame" id="deviceFrame">
+      <div class="notch" id="notch"></div>
+      <div class="device-screen" id="deviceScreen">
+        <div class="status-bar">9:41 AM | 📶 📶📶📶 🔋100%</div>
+        <iframe id="previewFrame" src="home.html"></iframe>
+      </div>
+      <div class="device-info" id="deviceInfo"></div>
+    </div>
+  </div>
+  
+  <div class="controls">
+    <button onclick="rotateDevice()" class="rotate-btn">🔄 Rotate</button>
+    <button onclick="scrollToTop()">⬆️ Top</button>
+    <button onclick="reloadFrame()">🔃 Reload</button>
+  </div>
+  
+  <script>
+    const devices = {
+      'iphone-se': { width: 375, height: 667, name: 'iPhone SE', hasNotch: false },
+      'iphone-14': { width: 390, height: 844, name: 'iPhone 14', hasNotch: true },
+      'iphone-14-pro-max': { width: 430, height: 932, name: 'iPhone 14 Pro Max', hasNotch: true },
+      'galaxy-s20': { width: 360, height: 800, name: 'Galaxy S20', hasNotch: false },
+      'pixel-5': { width: 393, height: 851, name: 'Pixel 5', hasNotch: false },
+      'ipad-mini': { width: 768, height: 1024, name: 'iPad Mini', hasNotch: false }
+    };
+    
+    let currentDevice = 'iphone-se';
+  let currentPage = 'home.html';
+    let isRotated = false;
+    
+    // Device button handlers
+    document.querySelectorAll('.device-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.device-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentDevice = this.dataset.device;
+        isRotated = false;
+        updatePreview();
+      });
+    });
+    
+    // Page button handlers
+    document.querySelectorAll('.page-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentPage = this.dataset.page;
+        document.getElementById('previewFrame').src = currentPage;
+      });
+    });
+    
+    function updatePreview() {
+      const device = devices[currentDevice];
+      const frame = document.getElementById('deviceFrame');
+      const screen = document.getElementById('deviceScreen');
+      const iframe = document.getElementById('previewFrame');
+      const info = document.getElementById('deviceInfo');
+      const notch = document.getElementById('notch');
+      
+      let width = device.width;
+      let height = device.height;
+      
+      if (isRotated) {
+        [width, height] = [height, width];
+      }
+      
+      // Scale device frame for smaller screens
+      const maxViewportWidth = window.innerWidth - 40; // Leave some margin
+      const maxViewportHeight = window.innerHeight - 300; // Leave space for controls
+      
+      let scaleX = 1;
+      let scaleY = 1;
+      
+      if (width > maxViewportWidth) {
+        scaleX = maxViewportWidth / width;
+      }
+      
+      if (height > maxViewportHeight) {
+        scaleY = maxViewportHeight / height;
+      }
+      
+      const scale = Math.min(scaleX, scaleY, 1); // Don't scale up, only down
+      
+      // Apply scaling
+      frame.style.transform = `scale(${scale})`;
+      frame.style.transformOrigin = 'top center';
+      
+      screen.style.width = width + 'px';
+      screen.style.height = height + 'px';
+      iframe.style.width = width + 'px';
+      iframe.style.height = (height - 30) + 'px'; // Subtract status bar
+      
+      info.textContent = `${device.name} - ${width}x${height}px ${isRotated ? '(Landscape)' : '(Portrait)'} ${scale < 1 ? `(Scaled: ${Math.round(scale * 100)}%)` : ''}`;
+      
+      notch.style.display = device.hasNotch && !isRotated ? 'block' : 'none';
+      
+      // Adjust notch size based on scale
+      if (device.hasNotch && !isRotated) {
+        notch.style.width = Math.min(150, width * 0.4) + 'px';
+      }
+    }
+    
+    function rotateDevice() {
+      isRotated = !isRotated;
+      updatePreview();
+    }
+    
+    function scrollToTop() {
+      const iframe = document.getElementById('previewFrame');
+      iframe.contentWindow.scrollTo(0, 0);
+    }
+    
+    function reloadFrame() {
+      const iframe = document.getElementById('previewFrame');
+      iframe.src = iframe.src;
+    }
+    
+    // Window resize handler for responsive scaling
+    window.addEventListener('resize', function() {
+      updatePreview();
+    });
+    
+    // Initial load
+    updatePreview();
+  </script>
+  
+  <script src="common.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof setupSidebarToggle === 'function') {
+        setupSidebarToggle({
+          buttonId: 'hamburgerBtn',
+          sidebarId: 'sidebar',
+          backdropId: 'sidebarBackdrop'
+        });
+      }
+    });
+  </script>
+</body>
+</html>

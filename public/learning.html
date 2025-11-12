@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSINT Learning Resources - PRISM OSINT</title>
+  <meta name="description" content="Comprehensive OSINT training videos and tutorials for law enforcement professionals">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+   <link rel="stylesheet" href="learning.css">
+  </head>
+
+  <body data-page="learning">
+
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  <a href="home.html" class="nav-link">🏠 Home</a>
+  <a href="contact.html" class="nav-link">📞 Contact Us</a>
+  <a href="github.html" class="nav-link">🐙 GitHub</a>
+  <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+    <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link active">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+    <li id="tool-financial-fraud-tools"><a id="tool-link-financial-fraud-tools" href="financialfraudosint.html" class="nav-link">💰 Financial Fraud Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main> 
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1 style="color: #fff; font-size: 2em; font-weight: bold; margin-bottom: 10px; letter-spacing: 1px;">OSINT LEARNING RESOURCES</h1>
+        <div style="color: #baff3c; font-size: 1.2em; margin-bottom: 10px; font-weight: 500;">Comprehensive training videos and tutorials to master Open Source Intelligence techniques</div>
+        <div style="display:flex; justify-content:center; gap:24px; margin:30px 0 10px 0;">
+          <a href="learning.html" class="main-option-btn active" target="_self">OSINT Videos</a>
+          <a href="osint-books.html" class="main-option-btn" target="_self">OSINT Books</a>
+          <a href="cyber.html" class="main-option-btn" target="_self">Cyber Security</a>
+        </div>
+      </div>
+
+      <div class="container-content">
+        <!-- Videos Grid -->
+        <div class="videos-grid">
+          <!-- Video 1 -->
+          <div class="video-section">
+            <h2 class="video-title">📖 Learn OSINT in 4.5 Hours</h2>
+            <p class="video-description">
+              <span class="instructor-name">Heath Adams</span><br>
+              Complete beginner course covering fundamentals and practical techniques.
+            </p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/qwA6MmbeGNo"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="video-section">
+            <h2 class="video-title">🧑‍💻 OSINT At Home Playlist</h2>
+            <p class="video-description">
+              <span class="instructor-name">Benjamin Strick</span><br>
+              Detailed playlist with real-world examples and demonstrations.
+            </p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PLrFPX1Vfqk3ehZKSFeb9pVIHqxqrNW8Sy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="video-section">
+            <h2 class="video-title">⏱️ 10 Minute OSINT Tips</h2>
+            <p class="video-description">
+              <span class="instructor-name">OSINT Curious Project</span><br>
+              Quick, actionable OSINT tips in bite-sized videos.
+            </p>
+                 <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PL423I_gHbWUUOs09899rex4t2l5py9YIk"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Video 4 -->
+          <div class="video-section">
+            <h2 class="video-title">🎯 Complete OSINT Exercises</h2>
+            <p class="video-description">
+              <span class="instructor-name">Sofia Santos</span><br>
+              Step-by-step walkthroughs of practical OSINT exercises.
+            </p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PL423I_gHbWUUOs09899rex4t2l5py9YIk"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Video 5 -->
+          <div class="video-section">
+            <h2 class="video-title">🎓 OSINT Training Course</h2>
+            <p class="video-description">
+              <span class="instructor-name">Motasem Hamdan</span><br>
+              Structured OSINT training covering tools and methodologies.
+            </p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PLqM63j87R5p6dZeq1l_EIPP6NkJi51wET"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Video 6 -->
+          <div class="video-section">
+            <h2 class="video-title">🎥 OSINT Course</h2>
+            <p class="video-description">
+              <span class="instructor-name">David Pereira</span><br>
+              Comprehensive OSINT course for investigators.
+            </p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PL1Kv5m-HTbQzxQd--mDXRjsR1ddqRk0aE"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Video 7 -->
+          <div class="video-section">
+            <h2 class="video-title">📚 Complete OSINT Course</h2>
+            <p class="video-description">
+              <span class="instructor-name">Irfan Shakeel</span><br>
+              Extensive course covering advanced techniques.
+            </p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/opLD4zFB5z0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Video 8 -->
+          <div class="video-section">
+            <h2 class="video-title">💻 OSINT Tutorials</h2>
+            <p class="video-description">
+              <span class="instructor-name">TechChip</span><br>
+              Technical tutorials on OSINT tools and techniques.
+            </p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PL0fjgIGwLMWQDNiizQiN3GDh7Uxcttntf"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Video 9 - Channel Link -->
+          <div class="video-section">
+            <h2 class="video-title">🔓 Null Byte OSINT Channel</h2>
+            <p class="video-description">
+              <span class="instructor-name">Null Byte</span><br>
+              Channel with various OSINT and hacking tutorials.
+            </p>
+            <div style="background: #f0f8ff; padding: 30px; border-radius: 8px; text-align: center; min-height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <p style="margin: 10px 0; color: #666;">
+                <strong>📺 Visit Null Byte YouTube Channel</strong>
+              </p>
+              <a href="https://www.youtube.com/@nullbytewht" target="_blank" rel="noopener"
+                 style="display:inline-block; background:#2a5298; color:#fff; padding:12px 24px; border-radius:5px; text-decoration:none; margin-top:10px; font-weight:bold; transition:background .3s;">
+                Open Channel →
+              </a>
+              <p style="margin-top: 15px; font-size: 0.85em; color: #999;">
+                Channel links cannot be embedded directly
+              </p>
+            </div>
+          </div>
+      </div>
+
+
+            <!-- Stanford University OSINT Video Playlist -->
+            <div class="stanford-main-container">
+              <h2 class="stanford-main-heading">STANFORD UNIVERSITY OSINT VIDEO PLAYLIST</h2>
+              <div class="stanford-main-description" style="display:block; text-align:center; font-size:1.25em; color:#3f53ef; margin:24px auto 32px auto; max-width:800px; font-family:inherit; font-weight:400; line-height:1.6; background:none; border:none;">
+                Explore a curated OSINT training videos from Stanford University. Click the links below to watch each video on YouTube.
+              </div>
+              <div class="stanford-video-grid">
+                <div class="stanford-video-row">
+                  <div>
+                    <div class="stanford-video-label">1. OSINT Fundamentals & Introduction</div>
+                    <a href="https://youtu.be/SQ3fZ1sAqXI?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&t=10" target="_blank" class="video-link-btn">Video 1</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">2. OSINT Techniques: Social Media & Web</div>
+                    <a href="https://www.youtube.com/watch?v=msHyYioAyNE&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=2&pp=iAQB" target="_blank" class="video-link-btn">Video 2</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">3. Advanced Search & Data Collection</div>
+                    <a href="https://www.youtube.com/watch?v=ptFiH_bHnJw&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=3&pp=iAQB" target="_blank" class="video-link-btn">Video 3</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">4. OSINT Tools & Automation</div>
+                    <a href="https://www.youtube.com/watch?v=LPv1KfUXLCo&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=4&pp=iAQB" target="_blank" class="video-link-btn">Video 4</a>
+                  </div>
+                </div>
+                <div class="stanford-video-row">
+                  <div>
+                    <div class="stanford-video-label">5. Data Analysis for OSINT</div>
+                    <a href="https://www.youtube.com/watch?v=6OBtO9niT00&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=5&pp=iAQB" target="_blank" class="video-link-btn">Video 5</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">6. Geolocation & Mapping in OSINT</div>
+                    <a href="https://www.youtube.com/watch?v=E8Mju53VB00&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=6&pp=iAQB" target="_blank" class="video-link-btn">Video 6</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">7. Privacy & Security in OSINT</div>
+                    <a href="https://www.youtube.com/watch?v=l1RJcDjzK8M&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=7&pp=iAQB" target="_blank" class="video-link-btn">Video 7</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">8. OSINT Case Studies</div>
+                    <a href="https://www.youtube.com/watch?v=LHpr5ytssLo&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=8&pp=iAQB" target="_blank" class="video-link-btn">Video 8</a>
+                  </div>
+                </div>
+                <div class="stanford-video-row">
+                  <div>
+                    <div class="stanford-video-label">9. OSINT for Law Enforcement</div>
+                    <a href="https://www.youtube.com/watch?v=6Q-ESEmDf4Q&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=9&pp=iAQB" target="_blank" class="video-link-btn">Video 9</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">10. OSINT Reporting & Documentation</div>
+                    <a href="https://www.youtube.com/watch?v=fcgPYo3OtV0&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=10&pp=iAQB" target="_blank" class="video-link-btn">Video 10</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">11. OSINT Mindset & Ethics</div>
+                    <a href="https://www.youtube.com/watch?v=OSYuUqGBQxw&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=11&pp=iAQB" target="_blank" class="video-link-btn">Video 11</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">12. OSINT Research Methodologies</div>
+                    <a href="https://www.youtube.com/watch?v=x-R5l2HsXqM&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=12&pp=iAQB" target="_blank" class="video-link-btn">Video 12</a>
+                  </div>
+                </div>
+                <div class="stanford-video-row">
+                  <div>
+                    <div class="stanford-video-label">13. OSINT Data Visualization</div>
+                    <a href="https://www.youtube.com/watch?v=WePxmeXU1xg&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=13&pp=iAQB" target="_blank" class="video-link-btn">Video 13</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">14. OSINT Risk Assessment</div>
+                    <a href="https://www.youtube.com/watch?v=9Cd0THLS1t0&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=14&pp=iAQB" target="_blank" class="video-link-btn">Video 14</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">15. OSINT Project Management</div>
+                    <a href="https://www.youtube.com/watch?v=Dfu7vC9jo4w&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=15&pp=iAQB" target="_blank" class="video-link-btn">Video 15</a>
+                  </div>
+                  <div>
+                    <div class="stanford-video-label">16. OSINT Career Pathways</div>
+                    <a href="https://www.youtube.com/watch?v=46f2QTDB08Q&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=16&pp=iAQB" target="_blank" class="video-link-btn">Video 16</a>
+                  </div>
+                </div>
+                <div class="stanford-video-row">
+                  <div>
+                    <div class="stanford-video-label">17. OSINT Future Trends</div>
+                    <a href="https://www.youtube.com/watch?v=JdGFdViaOJk&list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_&index=17&pp=iAQB" target="_blank" class="video-link-btn">Video 17</a>
+                  </div>
+                </div>
+              </div>
+            </div>      
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+  <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-learning">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-learning">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-learning">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-learning">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 18px; font-size: 1.1em; opacity: 1; color: #fff;">
+    🔄 Auto-refreshes every 30 seconds
+  </div>
+</div>
+
+<footer style="background: rgba(10, 20, 40, 0.92); border-top: 2px solid #1e3c72; color: #fff; padding: 24px 0; margin-top: 40px; text-align: center; box-shadow: 0 -4px 24px rgba(31,38,135,0.18);">
+  <address style="font-style: normal; color: #fff; font-size: 1.1em;">
+    Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+    Contact: +91-8523817999.<br>
+    Email: prism2025@appolice.gov.in | support@appoliceosint.com
+  </address>
+  <p style="color: #baff3c; font-size: 1.1em; margin-top: 12px;">&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+</footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof autoRefreshVisitorStats === 'function') {
+      autoRefreshVisitorStats('learning');
+    }
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+    // Tab logic for OSINT Videos/Books
+    var videosBtn = document.getElementById('osintVideosBtn');
+    var booksBtn = document.getElementById('osintBooksBtn');
+    var videosTab = document.getElementById('videosTabContent');
+    var booksTab = document.getElementById('booksTabContent');
+    videosBtn.addEventListener('click', function() {
+      videosBtn.classList.add('active');
+      booksBtn.classList.remove('active');
+      videosTab.style.display = '';
+      booksTab.style.display = 'none';
+    });
+    booksBtn.addEventListener('click', function() {
+      booksBtn.classList.add('active');
+      videosBtn.classList.remove('active');
+      booksTab.style.display = '';
+      videosTab.style.display = 'none';
+    });
+  });
+</script>
+</body>
+</html>

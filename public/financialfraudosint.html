@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Fraud OSINT Tools - PRISM OSINT</title>
+  <meta name="description" content="Comprehensive financial fraud investigation tools for law enforcement professionals">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+</head>
+
+<body data-page="financial-fraud">
+
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+    <a href="home.html" class="nav-link">🏠 Home</a>
+    <a href="contact.html" class="nav-link">📞 Contact Us</a>
+    <a href="github.html" class="nav-link">🐙 GitHub</a>
+    <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+      <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+    <li id="tool-financial-fraud-tools"><a id="tool-link-financial-fraud-tools" href="financialfraudosint.html" class="nav-link">💰 Financial Fraud Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main> 
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1>FINANCIAL FRAUD OSINT TOOLS</h1>
+      </div>
+      <div class="container-content">
+
+        <h2 id="search">1. SEARCH</h2>
+        <p><strong>USES:</strong> Essential search tools for financial investigation and research.</p>
+        <ol>
+          <li id="tool-occrp-data"><a id="tool-link-occrp-data" href="https://data.occrp.org/" target="_blank" rel="noopener">OCCRP Data</a></li>
+          <li id="tool-google-advanced-search"><a id="tool-link-google-advanced-search" href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank" rel="noopener">Google Advanced Search</a></li>
+          <li id="tool-google-translate"><a id="tool-link-google-translate" href="https://translate.google.com/" target="_blank" rel="noopener">Google Translate</a></li>
+        </ol>
+
+        <h2 id="professional-registers">2. PROFESSIONAL REGISTERS</h2>
+        <p><strong>USES:</strong> Professional registers for verification of financial and legal practitioners.</p>
+        <ol>
+          <li id="tool-fca-register"><a id="tool-link-fca-register" href="https://register.fca.org.uk/" target="_blank" rel="noopener">FCA Register</a></li>
+          <li id="tool-jersey-fsc"><a id="tool-link-jersey-fsc" href="https://www.jerseyfsc.org/registry/" target="_blank" rel="noopener">Jersey FSC Registry</a></li>
+          <li id="tool-central-bank-ireland"><a id="tool-link-central-bank-ireland" href="http://registers.centralbank.ie/" target="_blank" rel="noopener">Central Bank Ireland</a></li>
+          <li id="tool-guernsey-fsc"><a id="tool-link-guernsey-fsc" href="https://www.gfsc.gg/commission/regulated-entities" target="_blank" rel="noopener">Guernsey FSC</a></li>
+          <li id="tool-sra-law-firm"><a id="tool-link-sra-law-firm" href="https://www.sra.org.uk/consumers/using-solicitor/law-firm-search.page" target="_blank" rel="noopener">SRA Law Firm Search</a></li>
+          <li id="tool-law-society"><a id="tool-link-law-society" href="https://solicitors.lawsociety.org.uk/" target="_blank" rel="noopener">Law Society Solicitors</a></li>
+          <li id="tool-bar-standards"><a id="tool-link-bar-standards" href="https://www.barstandardsboard.org.uk/regulatory-requirements/the-barristers'-register/" target="_blank" rel="noopener">Bar Standards Board</a></li>
+          <li id="tool-cilex-directory"><a id="tool-link-cilex-directory" href="https://www.cilex.org.uk/about_cilex/about-cilex-lawyers/cilex-practitioners-directory" target="_blank" rel="noopener">CILEX Directory</a></li>
+          <li id="tool-law-society-ireland"><a id="tool-link-law-society-ireland" href="https://www.lawsociety.ie/Find-a-Solicitor/Solicitor-Firm-Search/" target="_blank" rel="noopener">Law Society Ireland</a></li>
+          <li id="tool-saica-members"><a id="tool-link-saica-members" href="https://www.saica.co.za/Members/VerifyaMember/tabid/1017/language/en-US/Default.aspx" target="_blank" rel="noopener">SAICA Members</a></li>
+          <li id="tool-clc-conveyancers"><a id="tool-link-clc-conveyancers" href="https://www.clc-uk.org.uk/cms/cms.jsp?menu_id=19871" target="_blank" rel="noopener">CLC Licensed Conveyancers</a></li>
+          <li id="tool-acca-directory"><a id="tool-link-acca-directory" href="https://www.accaglobal.com/pk/en/member/find-an-accountant/directory-of-member.html" target="_blank" rel="noopener">ACCA Directory</a></li>
+        </ol>
+
+        <h2 id="financial-search">3. FINANCIAL SEARCH TOOLS</h2>
+        <p><strong>USES:</strong> Essential financial verification and bank identification tools.</p>
+        <ol>
+          <li id="tool-swift-bic"><a id="tool-link-swift-bic" href="https://www2.swift.com/bsl/facelets/bicsearch.faces" target="_blank" rel="noopener">SWIFT BIC Search</a></li>
+          <li id="tool-sort-code"><a id="tool-link-sort-code" href="http://www.fasterpayments.org.uk/consumers/sort-code-checker" target="_blank" rel="noopener">Sort Code Checker</a></li>
+          <li id="tool-iban-codes"><a id="tool-link-iban-codes" href="https://www.iban.com/country-codes" target="_blank" rel="noopener">IBAN Country Codes</a></li>
+        </ol>
+
+        <h2 id="company-osint">4. COMPANY OSINT</h2>
+        <p><strong>USES:</strong> Corporate intelligence and company registration databases.</p>
+        <ol>
+          <li id="tool-companies-house"><a id="tool-link-companies-house" href="https://beta.companieshouse.gov.uk/" target="_blank" rel="noopener">Companies House</a></li>
+          <li id="tool-opencorporates"><a id="tool-link-opencorporates" href="https://opencorporates.com/" target="_blank" rel="noopener">OpenCorporates</a></li>
+          <li id="tool-open-ownership"><a id="tool-link-open-ownership" href="https://register.openownership.org/" target="_blank" rel="noopener">Open Ownership</a></li>
+          <li id="tool-company-registers"><a id="tool-link-company-registers" href="https://en.wikipedia.org/wiki/List_of_company_registers" target="_blank" rel="noopener">Company Registers List</a></li>
+          <li id="tool-eu-business-registers"><a id="tool-link-eu-business-registers" href="https://beta.e-justice.europa.eu/106/EN/business_registers_in_eu_countries" target="_blank" rel="noopener">EU Business Registers</a></li>
+          <li id="tool-isle-of-man"><a id="tool-link-isle-of-man" href="https://services.gov.im/ded/services/companiesregistry/companysearch.iom" target="_blank" rel="noopener">Isle of Man Companies</a></li>
+          <li id="tool-insolvency-direct"><a id="tool-link-insolvency-direct" href="https://www.insolvencydirect.bis.gov.uk/eiir/" target="_blank" rel="noopener">Insolvency Direct</a></li>
+          <li id="tool-companies-list"><a id="tool-link-companies-list" href="https://www.companieslist.co.uk/" target="_blank" rel="noopener">Companies List</a></li>
+          <li id="tool-the-gazette"><a id="tool-link-the-gazette" href="https://www.thegazette.co.uk/companies" target="_blank" rel="noopener">The Gazette</a></li>
+          <li id="tool-list-org"><a id="tool-link-list-org" href="https://www.list-org.com/" target="_blank" rel="noopener">List-Org</a></li>
+          <li id="tool-legal-entities"><a id="tool-link-legal-entities" href="https://en.wikipedia.org/wiki/List_of_legal_entity_types_by_country" target="_blank" rel="noopener">Legal Entity Types</a></li>
+          <li id="tool-offshore-leaks"><a id="tool-link-offshore-leaks" href="https://offshoreleaks.icij.org/" target="_blank" rel="noopener">Offshore Leaks</a></li>
+          <li id="tool-lowtax"><a id="tool-link-lowtax" href="https://www.lowtax.net/g/jurisdictions/" target="_blank" rel="noopener">Lowtax Jurisdictions</a></li>
+          <li id="tool-banktrack"><a id="tool-link-banktrack" href="https://www.banktrack.org/search#category=banks" target="_blank" rel="noopener">BankTrack</a></li>
+          <li id="tool-world-bank-debarred"><a id="tool-link-world-bank-debarred" href="https://projects-beta.worldbank.org/en/projects-operations/procurement/debarred-firms" target="_blank" rel="noopener">World Bank Debarred</a></li>
+        </ol>
+
+        <h2 id="individual-osint">5. INDIVIDUAL OSINT</h2>
+        <p><strong>USES:</strong> Individual verification and identity document analysis tools.</p>
+        <ol>
+          <li id="tool-emv-lab"><a id="tool-link-emv-lab" href="http://www.emvlab.org/mrz/" target="_blank" rel="noopener">EMV Lab MRZ</a></li>
+          <li id="tool-prado"><a id="tool-link-prado" href="https://www.consilium.europa.eu/prado/en/search-by-document-country.html" target="_blank" rel="noopener">PRADO Document Search</a></li>
+          <li id="tool-gro"><a id="tool-link-gro" href="https://www.gro.gov.uk/gro/content/certificates/login.asp" target="_blank" rel="noopener">GRO Certificates</a></li>
+          <li id="tool-scotlands-people"><a id="tool-link-scotlands-people" href="https://www.scotlandspeople.gov.uk/" target="_blank" rel="noopener">ScotlandsPeople</a></li>
+          <li id="tool-freebmd"><a id="tool-link-freebmd" href="https://www.freebmd.org.uk/" target="_blank" rel="noopener">FreeBMD</a></li>
+          <li id="tool-osint-framework"><a id="tool-link-osint-framework" href="https://osintframework.com/" target="_blank" rel="noopener">OSINT Framework</a></li>
+          <li id="tool-royal-mail"><a id="tool-link-royal-mail" href="https://www.royalmail.com/find-a-postcode" target="_blank" rel="noopener">Royal Mail Postcode</a></li>
+        </ol>
+
+        <h2 id="charity-osint">6. CHARITY OSINT</h2>
+        <p><strong>USES:</strong> Charity registration and regulatory information databases.</p>
+        <ol>
+          <li id="tool-charity-commission"><a id="tool-link-charity-commission" href="https://beta.charitycommission.gov.uk/" target="_blank" rel="noopener">Charity Commission</a></li>
+          <li id="tool-charity-advanced-search"><a id="tool-link-charity-advanced-search" href="http://apps.charitycommission.gov.uk/ShowCharity/RegisterOfCharities/AdvancedSearch.aspx" target="_blank" rel="noopener">Charity Advanced Search</a></li>
+          <li id="tool-irish-charities"><a id="tool-link-irish-charities" href="https://www.charitiesregulator.ie/en/information-for-the-public/search-the-charities-register" target="_blank" rel="noopener">Irish Charities Regulator</a></li>
+          <li id="tool-oscr"><a id="tool-link-oscr" href="https://www.oscr.org.uk/about-charities/search-the-register/register-search/" target="_blank" rel="noopener">OSCR Scottish Charities</a></li>
+        </ol>
+
+        <h2 id="sanctions">7. SANCTIONS</h2>
+        <p><strong>USES:</strong> Financial sanctions and regulatory compliance screening tools.</p>
+        <ol>
+          <li id="tool-uk-consolidated"><a id="tool-link-uk-consolidated" href="https://www.gov.uk/government/publications/financial-sanctions-consolidated-list-of-targets/consolidated-list-of-targets" target="_blank" rel="noopener">UK Consolidated List</a></li>
+          <li id="tool-ofac-search"><a id="tool-link-ofac-search" href="https://sanctionssearch.ofac.treas.gov/" target="_blank" rel="noopener">OFAC Sanctions Search</a></li>
+          <li id="tool-eu-sanctions"><a id="tool-link-eu-sanctions" href="https://data.europa.eu/euodp/en/data/dataset/consolidated-list-of-persons-groups-and-entities-subject-to-eu-financial-sanctions" target="_blank" rel="noopener">EU Sanctions List</a></li>
+          <li id="tool-namescan"><a id="tool-link-namescan" href="https://namescan.io/FreeSanctionsCheck.aspx" target="_blank" rel="noopener">NameScan Free Check</a></li>
+          <li id="tool-ofac-updates"><a id="tool-link-ofac-updates" href="https://public.govdelivery.com/accounts/USTREAS/subscriber/new?topic_id=USTREAS_61" target="_blank" rel="noopener">OFAC Updates Subscription</a></li>
+          <li id="tool-uk-ofsi"><a id="tool-link-uk-ofsi" href="https://www.gov.uk/email/subscriptions/new?frequency=immediately&topic_id=office-of-financial-sanctions-implementation" target="_blank" rel="noopener">UK OFSI Updates</a></li>
+          <li id="tool-sanctions-map"><a id="tool-link-sanctions-map" href="https://www.sanctionsmap.eu/#/main" target="_blank" rel="noopener">EU Sanctions Map</a></li>
+        </ol>
+
+        <h2 id="guidance">8. FINANCIAL CRIME GUIDANCE</h2>
+        <p><strong>USES:</strong> Regulatory guidance and compliance documentation for financial crime prevention.</p>
+        <ol>
+          <li id="tool-jmlsg"><a id="tool-link-jmlsg" href="http://www.jmlsg.org.uk/" target="_blank" rel="noopener">JMLSG Guidance</a></li>
+          <li id="tool-fca-guide"><a id="tool-link-fca-guide" href="https://www.handbook.fca.org.uk/handbook/FCG.pdf" target="_blank" rel="noopener">FCA Financial Crime Guide</a></li>
+          <li id="tool-fca-sup"><a id="tool-link-fca-sup" href="https://www.handbook.fca.org.uk/handbook/SUP/16/Annex42B.html?date=2018-01-03" target="_blank" rel="noopener">FCA SUP Annex</a></li>
+          <li id="tool-nca-publications"><a id="tool-link-nca-publications" href="https://www.nationalcrimeagency.gov.uk/who-we-are/publications?limit=100&sort=created_on&direction=desc" target="_blank" rel="noopener">NCA Publications</a></li>
+        </ol>
+
+        <h2 id="risk-guidance">9. FINANCIAL CRIME RISK GUIDANCE</h2>
+        <p><strong>USES:</strong> Country risk assessment and financial crime risk evaluation tools.</p>
+        <ol>
+          <li id="tool-basel-aml"><a id="tool-link-basel-aml" href="https://www.baselgovernance.org/asset-recovery/basel-aml-index/public-ranking" target="_blank" rel="noopener">Basel AML Index</a></li>
+          <li id="tool-transparency-cpi"><a id="tool-link-transparency-cpi" href="https://www.transparency.org/cpi2018" target="_blank" rel="noopener">Transparency CPI</a></li>
+          <li id="tool-fatf"><a id="tool-link-fatf" href="https://www.fatf-gafi.org/media/fatf/documents/recommendations/pdfs/FATF%20Recommendations%202012.pdf" target="_blank" rel="noopener">FATF Recommendations</a></li>
+          <li id="tool-know-your-country"><a id="tool-link-know-your-country" href="https://www.knowyourcountry.com/copy-of-country-reports" target="_blank" rel="noopener">Know Your Country</a></li>
+          <li id="tool-cia-factbook"><a id="tool-link-cia-factbook" href="https://www.cia.gov/library/publications/resources/the-world-factbook/" target="_blank" rel="noopener">CIA World Factbook</a></li>
+          <li id="tool-avyse"><a id="tool-link-avyse" href="https://www.avyse.co.uk/regulatory-gap-analysis-templates" target="_blank" rel="noopener">Avyse Gap Analysis</a></li>
+        </ol>
+
+        <h2 id="legislation">10. UK FINANCIAL CRIME LEGISLATION</h2>
+        <p><strong>USES:</strong> UK financial crime and anti-money laundering legislation resources.</p>
+        <ol>
+          <li id="tool-bribery-act"><a id="tool-link-bribery-act" href="https://www.legislation.gov.uk/ukpga/2010/23" target="_blank" rel="noopener">Bribery Act 2010</a></li>
+          <li id="tool-criminal-finances"><a id="tool-link-criminal-finances" href="http://www.legislation.gov.uk/ukpga/2017/22/contents/enacted" target="_blank" rel="noopener">Criminal Finances Act</a></li>
+          <li id="tool-companies-act"><a id="tool-link-companies-act" href="http://www.legislation.gov.uk/ukpga/2006/35/contents" target="_blank" rel="noopener">Companies Act 2006</a></li>
+          <li id="tool-psr-2019"><a id="tool-link-psr-2019" href="http://www.legislation.gov.uk/uksi/2019/1511/contents/made" target="_blank" rel="noopener">PSR 2019</a></li>
+          <li id="tool-mlr-2007"><a id="tool-link-mlr-2007" href="http://www.legislation.gov.uk/uksi/2007/2157/contents/made" target="_blank" rel="noopener">MLR 2007</a></li>
+          <li id="tool-mlr-2017"><a id="tool-link-mlr-2017" href="https://www.legislation.gov.uk/uksi/2017/692/contents" target="_blank" rel="noopener">MLR 2017</a></li>
+          <li id="tool-poca-2002"><a id="tool-link-poca-2002" href="http://www.legislation.gov.uk/ukpga/2002/29/contents" target="_blank" rel="noopener">POCA 2002</a></li>
+          <li id="tool-sanctions-act"><a id="tool-link-sanctions-act" href="http://www.legislation.gov.uk/ukpga/2018/13/contents/enacted" target="_blank" rel="noopener">Sanctions Act 2018</a></li>
+          <li id="tool-terrorism-act"><a id="tool-link-terrorism-act" href="http://www.legislation.gov.uk/ukpga/2000/11/contents" target="_blank" rel="noopener">Terrorism Act 2000</a></li>
+        </ol>
+
+        <h2 id="news">11. NEWS</h2>
+        <p><strong>USES:</strong> Financial crime news and industry updates for staying current with developments.</p>
+        <ol>
+          <li id="tool-thinking-crime"><a id="tool-link-thinking-crime" href="http://www.thinkingaboutcrime.com/newsroom.htm" target="_blank" rel="noopener">Thinking About Crime</a></li>
+          <li id="tool-nca-news"><a id="tool-link-nca-news" href="https://www.nationalcrimeagency.gov.uk/news" target="_blank" rel="noopener">NCA News</a></li>
+          <li id="tool-nca-reports"><a id="tool-link-nca-reports" href="https://www.nationalcrimeagency.gov.uk/who-we-are/publications?sort=created_on&direction=desc" target="_blank" rel="noopener">NCA Publications</a></li>
+          <li id="tool-hate-laundering"><a id="tool-link-hate-laundering" href="https://ihatemoneylaundering.wordpress.com/" target="_blank" rel="noopener">I Hate Money Laundering</a></li>
+          <li id="tool-kyc360"><a id="tool-link-kyc360" href="https://www.riskscreen.com/kyc360/news/" target="_blank" rel="noopener">KYC360 News</a></li>
+          <li id="tool-ml-news"><a id="tool-link-ml-news" href="https://www.moneylaunderingnews.com/" target="_blank" rel="noopener">Money Laundering News</a></li>
+          <li id="tool-occrp-news"><a id="tool-link-occrp-news" href="https://www.occrp.org/en/" target="_blank" rel="noopener">OCCRP</a></li>
+          <li id="tool-financial-crime-news"><a id="tool-link-financial-crime-news" href="https://thefinancialcrimenews.com/" target="_blank" rel="noopener">Financial Crime News</a></li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+  <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+      <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-financial-fraud">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+      <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-financial-fraud">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+      <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-financial-fraud">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+      <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-financial-fraud">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 18px; font-size: 1.1em; opacity: 1; color: #fff;">
+    🔄 Auto-refreshes every 30 seconds
+  </div>
+</div>
+
+<footer style="background: rgba(10, 20, 40, 0.92); border-top: 2px solid #1e3c72; color: #fff; padding: 24px 0; margin-top: 40px; text-align: center; box-shadow: 0 -4px 24px rgba(31,38,135,0.18);">
+  <address style="font-style: normal; color: #fff; font-size: 1.1em;">
+    Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+    Contact: +91-8523817999.<br>
+    Email: prism2025@appolice.gov.in | support@appoliceosint.com
+  </address>
+  <p style="color: #baff3c; font-size: 1.1em; margin-top: 12px;">&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+</footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof autoRefreshVisitorStats === 'function') {
+      autoRefreshVisitorStats('financial-fraud');
+    }
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+  });
+</script>
+</body>
+</html>
