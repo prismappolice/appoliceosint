@@ -75,7 +75,9 @@ function openExternalLinksInNewTab() {
       href.includes('social-media.html') || href.includes('domain-intel.html') ||
       href.includes('breach-data.html') || href.includes('osinttools.html') ||
       href.includes('darkweb-tools.html') || href.includes('blockchain-tools.html') ||
-      href.includes('learning.html') || href.includes('osint-books.html') || href.includes('index.html')
+      href.includes('learning.html') || href.includes('osint-books.html') || href.includes('index.html') ||
+      href.includes('financialfraudosint.html') || href.includes('phone-intel.html') ||
+      href.includes('aitools.html') || href.includes('contact.html') || href.includes('github.html')
     ) {
       // Internal navigation, do not open in new tab
       link.setAttribute('target', '_self');
