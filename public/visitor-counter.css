@@ -1,3 +1,100 @@
+/* --- PROFESSIONAL MOBILE-FRIENDLY VISITOR COUNTER IMPROVEMENTS --- */
+
+/* Remove inline grid and use this class for all visitor counters */
+.visitor-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+  .visitor-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 575px) {
+  .visitor-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 479px) {
+  .visitor-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 319px) {
+  .visitor-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+}
+
+/* Make the refresh note always fit and not overflow */
+.visitor-refresh-note, .visitor-stats-section > div:last-child {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 1em;
+  opacity: 0.9;
+  color: #e3f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  word-break: break-word;
+}
+
+/* Responsive font scaling for h3 */
+.visitor-stats-section h3 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+  .visitor-stats-section h3 {
+    font-size: 1.3em;
+    margin-bottom: 14px;
+  }
+}
+@media (max-width: 479px) {
+  .visitor-stats-section h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+}
+
+/* Remove extra padding/margin on mobile for the section */
+@media (max-width: 575px) {
+  .visitor-stats-section {
+    padding: 8px 2px;
+    margin: 8px 2px;
+    border-radius: 12px;
+  }
+}
+
+/* Make stat boxes fit better on mobile */
+@media (max-width: 575px) {
+  .visitor-stat {
+    padding: 8px 2px;
+    border-radius: 10px;
+  }
+  .visitor-stat div {
+    font-size: 1.1em;
+  }
+}
+/* Centering container for visitor counter */
+.visitor-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 /* visitor-counter.css: Styles for live visitor counter section */
 
 /* Base styles for all screen sizes */
@@ -59,12 +156,6 @@
   word-break: break-word;
   line-height: 1.2;
 }
-
-/* Color scheme for stats */
-.visitor-stat:nth-child(1) div { color: #4CAF50; }
-.visitor-stat:nth-child(2) div { color: #2196F3; }
-.visitor-stat:nth-child(3) div { color: #FF9800; }
-.visitor-stat:nth-child(4) div { color: #E91E63; }
 
 .visitor-label {
   font-size: 1em;

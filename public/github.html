@@ -83,9 +83,10 @@
 </main>
 
 <!-- Visitor Counter -->
+<div class="visitor-center-container">
 <div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
   <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+  <div class="visitor-stats-grid">
     <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
   <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-github">Loading...</div>
       <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
@@ -103,9 +104,8 @@
       <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
     </div>
   </div>
-  <div style="text-align: center; margin-top: 18px; font-size: 1.1em; opacity: 1; color: #fff;">
-    🔄 Auto-refreshes every 30 seconds
-  </div>
+  <div class="visitor-refresh-note">🔄 Auto-refreshes every 30 seconds</div>
+</div>
 </div>
 
 <footer>
