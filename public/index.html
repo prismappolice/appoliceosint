@@ -110,27 +110,51 @@
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
     const errorMsg = document.getElementById("error-message");
+    
+    // Clear previous error messages
+    errorMsg.style.display = "none";
+    
+    // Basic validation
+    if (!username || !password) {
+      errorMsg.textContent = "❌ Please enter both username and password";
+      errorMsg.style.display = "block";
+      return;
+    }
 
     try {
+      console.log("Attempting login for user:", username);
+      
       const response = await fetch("/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password })
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ username, password }),
+        credentials: 'same-origin'  // Important for mobile browsers
       });
 
+      console.log("Response status:", response.status);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
+      console.log("Login response:", data);
 
       if (data.success) {
         sessionStorage.setItem("loggedIn", "true");
         localStorage.setItem("loggedIn", "true"); // Backup in localStorage
         console.log("Login successful, redirecting to dashboard");
-  window.location.href = "home.html"; // ✅ redirect to home
+        window.location.href = "home.html"; // ✅ redirect to home
       } else {
-        errorMsg.textContent = "❌ " + data.message;
+        errorMsg.textContent = "❌ " + (data.message || "Login failed");
         errorMsg.style.display = "block";
       }
     } catch (error) {
-      errorMsg.textContent = "❌ Server error!";
+      console.error("Login error:", error);
+      errorMsg.textContent = "❌ Connection error. Please check your internet connection and try again.";
       errorMsg.style.display = "block";
     }
   }

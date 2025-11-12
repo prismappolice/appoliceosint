@@ -9,6 +9,21 @@ const crypto = require("crypto");
 
 // ---------- Config ----------
 app.set("trust proxy", true); // so req.ip respects X-Forwarded-For behind nginx/proxy
+
+// CORS middleware for mobile compatibility
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -171,21 +186,37 @@ app.get("/api/users", (_req, res) => {
 
 // ---------- API: login ----------
 app.post("/login", (req, res) => {
+  // Add CORS headers for mobile compatibility
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'POST');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+  
   try {
+    console.log("Login attempt from:", req.ip, "User-Agent:", req.headers["user-agent"]);
+    console.log("Request body:", req.body);
+    
     const { username, password } = req.body;
+    
     if (!username || !password) {
-      return res.json({ success: false, message: "Username and password required" });
+      console.log("Missing credentials");
+      return res.status(400).json({ success: false, message: "Username and password required" });
     }
+    
     const file = path.join(__dirname, "users.json");
     if (!fs.existsSync(file)) {
-      return res.json({ success: false, message: "User database missing" });
+      console.log("User database missing");
+      return res.status(500).json({ success: false, message: "User database missing" });
     }
+    
     const users = JSON.parse(fs.readFileSync(file, "utf-8"));
     const user = users.find(u => u.username === username && u.password === password);
+    
     if (user) {
+      console.log("Login successful for:", username);
       return res.json({ success: true, message: "Login successful" });
     } else {
-      return res.json({ success: false, message: "Invalid username or password" });
+      console.log("Invalid credentials for:", username);
+      return res.status(401).json({ success: false, message: "Invalid username or password" });
     }
   } catch (error) {
     console.error("Login error:", error);
