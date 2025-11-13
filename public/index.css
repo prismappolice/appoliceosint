@@ -262,7 +262,8 @@ footer address {
 /* Mobile (up to 600px) */
 @media (max-width: 600px) {
   header {
-    padding: 15px 8px;
+    padding: 6px 4px !important;
+    min-height: 60px !important;
   }
   
   header h1 {
@@ -407,7 +408,8 @@ footer address {
 /* Very small mobile (up to 480px) */
 @media (max-width: 480px) {
   header {
-    padding: 10px 5px;
+    padding: 4px 2px !important;
+    min-height: 40px !important;
   }
   
   header h1 {
