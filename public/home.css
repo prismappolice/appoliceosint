@@ -41,8 +41,11 @@
   border-left: #09141f solid 10px;
   text-align: justify;
   width: 100%;
-  padding: 15px 18px;        /* ✅ Added padding for readability */
+  padding: 15px 18px;
   color: #000;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .welcome-highlight {
@@ -219,6 +222,11 @@
     height: auto;
     padding: 2vw;
     font-size: 0.95em;
+  }
+  .welcome-text {
+    font-size: 0.98em;
+    padding: 8px 6px;
+    border-left-width: 6px;
   }
   .prism-logo {
     height: 60px;

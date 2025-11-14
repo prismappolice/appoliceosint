@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Financial Fraud OSINT Tools - PRISM OSINT</title>
+  <title>appoliceosint.com</title>
   <meta name="description" content="Comprehensive financial fraud investigation tools for law enforcement professionals">
   <link rel="stylesheet" href="dashboard.css">
   <link rel="stylesheet" href="navbar.css">
@@ -52,6 +52,7 @@
 </nav>
 
 <!-- Sidebar (hidden by default) -->
+<div id="sidebarBackdrop"></div>
 <aside id="sidebar" class="sidebar" aria-hidden="true">
   <ul class="sidebar-list">
     <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
@@ -67,7 +68,7 @@
     <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
   </ul>
 </aside>
-<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
 
 <div class="scroll-content">
 <main> 
@@ -91,13 +92,12 @@
         <ol>
           <li id="tool-fca-register"><a id="tool-link-fca-register" href="https://register.fca.org.uk/" target="_blank" rel="noopener">FCA Register</a></li>
           <li id="tool-jersey-fsc"><a id="tool-link-jersey-fsc" href="https://www.jerseyfsc.org/registry/" target="_blank" rel="noopener">Jersey FSC Registry</a></li>
-          <li id="tool-central-bank-ireland"><a id="tool-link-central-bank-ireland" href="http://registers.centralbank.ie/" target="_blank" rel="noopener">Central Bank Ireland</a></li>
+  
           <li id="tool-guernsey-fsc"><a id="tool-link-guernsey-fsc" href="https://www.gfsc.gg/commission/regulated-entities" target="_blank" rel="noopener">Guernsey FSC</a></li>
           <li id="tool-sra-law-firm"><a id="tool-link-sra-law-firm" href="https://www.sra.org.uk/consumers/using-solicitor/law-firm-search.page" target="_blank" rel="noopener">SRA Law Firm Search</a></li>
           <li id="tool-law-society"><a id="tool-link-law-society" href="https://solicitors.lawsociety.org.uk/" target="_blank" rel="noopener">Law Society Solicitors</a></li>
           <li id="tool-bar-standards"><a id="tool-link-bar-standards" href="https://www.barstandardsboard.org.uk/regulatory-requirements/the-barristers'-register/" target="_blank" rel="noopener">Bar Standards Board</a></li>
           <li id="tool-cilex-directory"><a id="tool-link-cilex-directory" href="https://www.cilex.org.uk/about_cilex/about-cilex-lawyers/cilex-practitioners-directory" target="_blank" rel="noopener">CILEX Directory</a></li>
-          <li id="tool-law-society-ireland"><a id="tool-link-law-society-ireland" href="https://www.lawsociety.ie/Find-a-Solicitor/Solicitor-Firm-Search/" target="_blank" rel="noopener">Law Society Ireland</a></li>
           <li id="tool-saica-members"><a id="tool-link-saica-members" href="https://www.saica.co.za/Members/VerifyaMember/tabid/1017/language/en-US/Default.aspx" target="_blank" rel="noopener">SAICA Members</a></li>
           <li id="tool-clc-conveyancers"><a id="tool-link-clc-conveyancers" href="https://www.clc-uk.org.uk/cms/cms.jsp?menu_id=19871" target="_blank" rel="noopener">CLC Licensed Conveyancers</a></li>
           <li id="tool-acca-directory"><a id="tool-link-acca-directory" href="https://www.accaglobal.com/pk/en/member/find-an-accountant/directory-of-member.html" target="_blank" rel="noopener">ACCA Directory</a></li>
@@ -118,7 +118,7 @@
           <li id="tool-opencorporates"><a id="tool-link-opencorporates" href="https://opencorporates.com/" target="_blank" rel="noopener">OpenCorporates</a></li>
           <li id="tool-open-ownership"><a id="tool-link-open-ownership" href="https://register.openownership.org/" target="_blank" rel="noopener">Open Ownership</a></li>
           <li id="tool-company-registers"><a id="tool-link-company-registers" href="https://en.wikipedia.org/wiki/List_of_company_registers" target="_blank" rel="noopener">Company Registers List</a></li>
-          <li id="tool-eu-business-registers"><a id="tool-link-eu-business-registers" href="https://beta.e-justice.europa.eu/106/EN/business_registers_in_eu_countries" target="_blank" rel="noopener">EU Business Registers</a></li>
+          
           <li id="tool-isle-of-man"><a id="tool-link-isle-of-man" href="https://services.gov.im/ded/services/companiesregistry/companysearch.iom" target="_blank" rel="noopener">Isle of Man Companies</a></li>
           <li id="tool-insolvency-direct"><a id="tool-link-insolvency-direct" href="https://www.insolvencydirect.bis.gov.uk/eiir/" target="_blank" rel="noopener">Insolvency Direct</a></li>
           <li id="tool-companies-list"><a id="tool-link-companies-list" href="https://www.companieslist.co.uk/" target="_blank" rel="noopener">Companies List</a></li>
@@ -137,9 +137,8 @@
           <li id="tool-emv-lab"><a id="tool-link-emv-lab" href="http://www.emvlab.org/mrz/" target="_blank" rel="noopener">EMV Lab MRZ</a></li>
           <li id="tool-prado"><a id="tool-link-prado" href="https://www.consilium.europa.eu/prado/en/search-by-document-country.html" target="_blank" rel="noopener">PRADO Document Search</a></li>
           <li id="tool-gro"><a id="tool-link-gro" href="https://www.gro.gov.uk/gro/content/certificates/login.asp" target="_blank" rel="noopener">GRO Certificates</a></li>
-          <li id="tool-scotlands-people"><a id="tool-link-scotlands-people" href="https://www.scotlandspeople.gov.uk/" target="_blank" rel="noopener">ScotlandsPeople</a></li>
+
           <li id="tool-freebmd"><a id="tool-link-freebmd" href="https://www.freebmd.org.uk/" target="_blank" rel="noopener">FreeBMD</a></li>
-          <li id="tool-osint-framework"><a id="tool-link-osint-framework" href="https://osintframework.com/" target="_blank" rel="noopener">OSINT Framework</a></li>
           <li id="tool-royal-mail"><a id="tool-link-royal-mail" href="https://www.royalmail.com/find-a-postcode" target="_blank" rel="noopener">Royal Mail Postcode</a></li>
         </ol>
 
@@ -148,20 +147,15 @@
         <ol>
           <li id="tool-charity-commission"><a id="tool-link-charity-commission" href="https://beta.charitycommission.gov.uk/" target="_blank" rel="noopener">Charity Commission</a></li>
           <li id="tool-charity-advanced-search"><a id="tool-link-charity-advanced-search" href="http://apps.charitycommission.gov.uk/ShowCharity/RegisterOfCharities/AdvancedSearch.aspx" target="_blank" rel="noopener">Charity Advanced Search</a></li>
-          <li id="tool-irish-charities"><a id="tool-link-irish-charities" href="https://www.charitiesregulator.ie/en/information-for-the-public/search-the-charities-register" target="_blank" rel="noopener">Irish Charities Regulator</a></li>
-          <li id="tool-oscr"><a id="tool-link-oscr" href="https://www.oscr.org.uk/about-charities/search-the-register/register-search/" target="_blank" rel="noopener">OSCR Scottish Charities</a></li>
         </ol>
 
         <h2 id="sanctions">7. SANCTIONS</h2>
         <p><strong>USES:</strong> Financial sanctions and regulatory compliance screening tools.</p>
         <ol>
-          <li id="tool-uk-consolidated"><a id="tool-link-uk-consolidated" href="https://www.gov.uk/government/publications/financial-sanctions-consolidated-list-of-targets/consolidated-list-of-targets" target="_blank" rel="noopener">UK Consolidated List</a></li>
+
           <li id="tool-ofac-search"><a id="tool-link-ofac-search" href="https://sanctionssearch.ofac.treas.gov/" target="_blank" rel="noopener">OFAC Sanctions Search</a></li>
-          <li id="tool-eu-sanctions"><a id="tool-link-eu-sanctions" href="https://data.europa.eu/euodp/en/data/dataset/consolidated-list-of-persons-groups-and-entities-subject-to-eu-financial-sanctions" target="_blank" rel="noopener">EU Sanctions List</a></li>
           <li id="tool-namescan"><a id="tool-link-namescan" href="https://namescan.io/FreeSanctionsCheck.aspx" target="_blank" rel="noopener">NameScan Free Check</a></li>
           <li id="tool-ofac-updates"><a id="tool-link-ofac-updates" href="https://public.govdelivery.com/accounts/USTREAS/subscriber/new?topic_id=USTREAS_61" target="_blank" rel="noopener">OFAC Updates Subscription</a></li>
-          <li id="tool-uk-ofsi"><a id="tool-link-uk-ofsi" href="https://www.gov.uk/email/subscriptions/new?frequency=immediately&topic_id=office-of-financial-sanctions-implementation" target="_blank" rel="noopener">UK OFSI Updates</a></li>
-          <li id="tool-sanctions-map"><a id="tool-link-sanctions-map" href="https://www.sanctionsmap.eu/#/main" target="_blank" rel="noopener">EU Sanctions Map</a></li>
         </ol>
 
         <h2 id="guidance">8. FINANCIAL CRIME GUIDANCE</h2>
@@ -242,13 +236,13 @@
 </div>
 </div>
 
-<footer style="background: rgba(10, 20, 40, 0.92); border-top: 2px solid #1e3c72; color: #fff; padding: 24px 0; margin-top: 40px; text-align: center; box-shadow: 0 -4px 24px rgba(31,38,135,0.18);">
-  <address style="font-style: normal; color: #fff; font-size: 1.1em;">
+<footer>
+  <address>
     Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
     Contact: +91-8523817999.<br>
     Email: prism2025@appolice.gov.in | support@appoliceosint.com
   </address>
-  <p style="color: #baff3c; font-size: 1.1em; margin-top: 12px;">&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+  <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
 </footer>
 </div>
 

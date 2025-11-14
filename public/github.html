@@ -3,10 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GitHub Resources - PRISM OSINT</title>
+  <title>appoliceosint.com</title>
   <link rel="stylesheet" href="dashboard.css">
   <link rel="stylesheet" href="navbar.css">
   <link rel="stylesheet" href="visitor-counter.css">
+  <style>
+    @media (max-width: 992px) {
+      .sidebar {
+        left: -260px;
+        transition: left 0.3s cubic-bezier(.4,0,.2,1);
+        z-index: 3000;
+      }
+      .sidebar.sidebar-open {
+        left: 0;
+      }
+      #sidebarBackdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.3);
+        z-index: 2999;
+      }
+      #sidebarBackdrop.active {
+        display: block;
+      }
+    }
+  </style>
 </head>
 <body data-page="github">
 <header class="header-row">
@@ -44,22 +69,25 @@
     </div>
   </div>
 </nav>
+
+<!-- Sidebar (hidden by default) -->
 <aside id="sidebar" class="sidebar" aria-hidden="true">
   <ul class="sidebar-list">
-    <li><a href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
-    <li><a href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
-    <li><a href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
-    <li><a href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
-    <li><a href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
-    <li><a href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
-    <li><a href="domain-intel.html" class="nav-link">🌐 Domain Intel Tools</a></li>
-    <li><a href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
-    <li><a href="learning.html" class="nav-link">📚 Learning</a></li>
-    <li><a href="phone-intel.html" class="nav-link">📱 Phone Intelligence Tools</a></li>
-    <li><a href="github.html" class="nav-link active">🐙 GitHub</a></li>
+    <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link active">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+    <li id="tool-financial-fraud-tools"><a id="tool-link-financial-fraud-tools" href="financialfraudosint.html" class="nav-link">💰 Financial Fraud Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
   </ul>
 </aside>
 <div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
 
 <div class="scroll-content">
 <main>

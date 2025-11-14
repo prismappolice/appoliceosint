@@ -230,18 +230,42 @@ function setupSidebarToggle(options) {
   if (!hamburgerBtn || !sidebar || !sidebarBackdrop) return;
   const sidebarLinks = sidebar.querySelectorAll('a.nav-link');
 
-  function toggleSidebar() {
-    sidebar.classList.toggle('active');
-    sidebarBackdrop.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+  function openSidebar() {
+    sidebar.classList.add('sidebar-open');
+    sidebarBackdrop.classList.add('active');
+    sidebar.setAttribute('aria-hidden', 'false');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
   }
   function closeSidebar() {
-    sidebar.classList.remove('active');
-    sidebarBackdrop.style.display = 'none';
+    sidebar.classList.remove('sidebar-open');
+    sidebarBackdrop.classList.remove('active');
+    sidebar.setAttribute('aria-hidden', 'true');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+  }
+  function toggleSidebar() {
+    if (sidebar.classList.contains('sidebar-open')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
   }
   hamburgerBtn.addEventListener('click', toggleSidebar);
   sidebarBackdrop.addEventListener('click', closeSidebar);
   sidebarLinks.forEach(link => {
     link.addEventListener('click', closeSidebar);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeSidebar();
+  });
+  // Close sidebar when clicking anywhere outside sidebar or hamburger
+  document.addEventListener('mousedown', function (e) {
+    if (
+      sidebar.classList.contains('sidebar-open') &&
+      !sidebar.contains(e.target) &&
+      !hamburgerBtn.contains(e.target)
+    ) {
+      closeSidebar();
+    }
   });
 }
 
@@ -308,7 +332,8 @@ window.addEventListener('DOMContentLoaded', function () {
   const allPages = [
     'osinttools.html', 'social-media.html', 'domain-intel.html', 'breach-data.html', 
     'darkweb-tools.html', 'blockchain-tools.html', 'phone-intel.html', 'factcheck.html', 
-    'aitools.html', 'learning.html', 'osint-books.html', 'contact.html', 'github.html', 'home.html'
+    'aitools.html', 'learning.html', 'osint-books.html', 'contact.html', 'github.html', 'home.html',
+    'index.html', 'financialfraudosint.html', 'mobile-test.html', 'cyber.html'
   ];
 
   // Comprehensive tool mapping including all tools from your screenshot

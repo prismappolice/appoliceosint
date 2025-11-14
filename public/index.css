@@ -13,6 +13,52 @@ html, body {
   background-attachment: fixed;
   color: white;
   background-image: url(abstract-digital-grid-black-background.avif);
+  overflow-x: hidden;
+}
+/* Landscape phones/tablets (568px–800px) */
+@media (min-width: 568px) and (max-width: 800px) {
+  header {
+    padding: 10px 8px;
+    min-height: 70px;
+  }
+  header h1 {
+    font-size: 1.3rem;
+    line-height: 1.2;
+  }
+  header h2 {
+    font-size: 1.1rem;
+  }
+  .login-heading {
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+  .logo-left,
+  .logo-right {
+    width: 50px;
+  }
+  form {
+    padding: 12px;
+    font-size: 0.95rem;
+    width: 97%;
+    margin: 0 auto;
+  }
+  .button-group {
+    gap: 12px;
+  }
+  .login-btn, .reset-btn {
+    font-size: 0.95rem;
+    min-width: 80px;
+    padding: 10px 8px;
+  }
+  .standard-button {
+    font-size: 0.95rem !important;
+    min-width: 80px !important;
+    padding: 10px 8px !important;
+  }
+  .forgot-password-link {
+    font-size: 0.85rem !important;
+    padding: 6px 10px !important;
+  }
 }
 
 /* ================= Header ================= */

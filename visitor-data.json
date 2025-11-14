@@ -1,5 +1,5 @@
 {
-  "totalVisitors": 25582,
+  "totalVisitors": 26489,
   "uniqueVisitors": [
     "43b468993c138a738e919931ac34c32724f3a23ba1639cecadcaf01efc282126",
     "c38201c44ccd94c5bb44ea5b6aaf7e7fce2b5a7135c84239a2cb4ecec2e9cc22",
@@ -362,7 +362,9 @@
     "d015a9984133195f5b12552ca871c6f67c08ee3a0b1d5b705cb4de4a9436ca98",
     "ae9ead2795996fb35bb4d3567c5e4a103270092501b9d8246e256f8ffd28d69b",
     "4d0655e45e2d02fc8478797e82ca5b5f5ab10a334f57891f03968b9d1e9d0a01",
-    "7994e1d4820655d2d2213d60fa0140441a3c7a1568b5655a9445c8bdc70d06fb"
+    "7994e1d4820655d2d2213d60fa0140441a3c7a1568b5655a9445c8bdc70d06fb",
+    "691b2e4c2821803f3dbb1ae25ac95b105c6dd0cf750f453d34c1b91d3de33f91",
+    "70e6241efadee78db1a1e50a9a249e06ee33819bd6e6dd9d91bda6621811fbb1"
   ],
   "dailyStats": {
     "2025-10-23": {
@@ -416,7 +418,18 @@
     "2025-11-12": {
       "visits": 1232,
       "uniques": 1232
+    },
+    "2025-11-13": {
+      "visits": 772,
+      "uniques": 772
+    },
+    "2025-11-14": {
+      "visits": 135,
+      "uniques": 134,
+      "uniqueIds": [
+        "4d0655e45e2d02fc8478797e82ca5b5f5ab10a334f57891f03968b9d1e9d0a01"
+      ]
     }
   },
-  "lastUpdated": "2025-11-12T10:27:36.414Z"
+  "lastUpdated": "2025-11-14T06:28:27.942Z"
 }

@@ -118,10 +118,15 @@ function recordVisit(req) {
   if (wasNew) state.uniqueVisitors.add(id);
   // daily stats
   if (!state.dailyStats[today]) {
-    state.dailyStats[today] = { visits: 0, uniques: 0 };
+    state.dailyStats[today] = { visits: 0, uniques: 0, uniqueIds: [] };
   }
   state.dailyStats[today].visits += 1;
-  state.dailyStats[today].uniques += 1;
+  // Only increment uniques if this user hasn't visited today
+  if (!state.dailyStats[today].uniqueIds) state.dailyStats[today].uniqueIds = [];
+  if (!state.dailyStats[today].uniqueIds.includes(id)) {
+    state.dailyStats[today].uniques += 1;
+    state.dailyStats[today].uniqueIds.push(id);
+  }
   state.lastUpdated = new Date().toISOString();
   console.log(`[VISITOR] recordVisit called. IP: ${req.ip}, UA: ${req.headers["user-agent"]}, ID: ${id}, totalVisitors: ${state.totalVisitors}, uniqueVisitors: ${state.uniqueVisitors.size}`);
   scheduleSave();
@@ -133,7 +138,9 @@ app.use(express.static(path.join(__dirname, "public")));
 // ---------- Page view counter middleware ----------
 // Count only for GET requests to non-API paths (i.e., actual page views)
 app.use((req, res, next) => {
+  console.log(`[MIDDLEWARE] ${req.method} ${req.path}`);
   if (req.method === "GET" && !req.path.startsWith("/api/")) {
+    console.log(`[MIDDLEWARE] Calling recordVisit for: ${req.method} ${req.path}`);
     recordVisit(req);
   }
   next();
@@ -147,8 +154,7 @@ app.get("/healthz", (_req, res) => {
 // ---------- API: visitor stats ----------
 app.get("/api/visitor-stats", (req, res) => {
   try {
-    // INCREMENT visitor count on every API call (not recommended for accuracy)
-    recordVisit(req);
+    // Do NOT increment visitor count on API call
     const today = new Date().toISOString().slice(0, 10);
     let todayStats = state.dailyStats[today];
     // Always provide numbers, never N/A
