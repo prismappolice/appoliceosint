@@ -154,19 +154,23 @@ app.get("/healthz", (_req, res) => {
 // ---------- API: visitor stats ----------
 app.get("/api/visitor-stats", (req, res) => {
   try {
-    // Do NOT increment visitor count on API call
+    const diskData = safeReadJSON(VISITOR_DATA_FILE, {
+      totalVisitors: 0,
+      uniqueVisitors: [],
+      dailyStats: {},
+      lastUpdated: new Date().toISOString(),
+    });
     const today = new Date().toISOString().slice(0, 10);
-    let todayStats = state.dailyStats[today];
-    // Always provide numbers, never N/A
-    const todayVisitors = (todayStats && typeof todayStats.visits === 'number') ? todayStats.visits : 0;
-    const todayUniqueVisitors = (todayStats && typeof todayStats.uniques === 'number') ? todayStats.uniques : 0;
+    const todayStats = diskData.dailyStats && diskData.dailyStats[today] ? diskData.dailyStats[today] : {};
+    const todayVisitors = typeof todayStats.visits === 'number' ? todayStats.visits : 0;
+    const todayUniqueVisitors = typeof todayStats.uniques === 'number' ? todayStats.uniques : 0;
     res.json({
-      totalVisitors: state.totalVisitors,
-      uniqueVisitors: state.uniqueVisitors.size,
+      totalVisitors: diskData.totalVisitors,
+      uniqueVisitors: Array.isArray(diskData.uniqueVisitors) ? diskData.uniqueVisitors.length : 0,
       todayVisitors,
       todayUniqueVisitors,
-      dailyStats: state.dailyStats,
-      lastUpdated: state.lastUpdated,
+      dailyStats: diskData.dailyStats,
+      lastUpdated: diskData.lastUpdated,
     });
   } catch (error) {
     console.error("Error getting visitor stats:", error);
