@@ -1,37 +1,19 @@
-# Dependencies
-node_modules/
-npm-debug.log*
-
-# Environment variables
+# Never commit secrets
 .env
-.env.local
-.env.production
+*.pem
+*.key
 
-# Logs
-logs
+# OS / editor junk
+*.swp
+.DS_Store
+
+# Node / web common
+node_modules/
+dist/
+build/
 *.log
 
-# Runtime data
-pids
-*.pid
-*.seed
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Build outputs
-build/
-dist/
+# Python (if any)
+venv/
+__pycache__/
+*.pyc
