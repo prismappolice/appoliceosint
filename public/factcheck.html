@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>appoliceosint.com</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+</head>
+
+<body data-page="factcheck">
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn"
+         aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  <a href="home.html" class="nav-link">🏠 Home</a>
+  <a href="contact.html" class="nav-link">📞 Contact Us</a>
+  <a href="github.html" class="nav-link">🐙 GitHub</a>
+  <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+    <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link active">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main>
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1>FACT CHECK TOOLS</h1>
+      </div>
+
+      <div class="container-content">
+  <h2 id="monitoring-misinformation-tools">1. MONITORING MISINFORMATION TOOLS</h2>
+        <p><strong>USES:</strong> These tools help monitor and identify misinformation, fake news, and false narratives across digital platforms.</p>
+        <ol>
+          <li id="tool-google-fact-check-explorer"><a id="tool-link-google-fact-check-explorer" href="https://toolbox.google.com/factcheck/explorer/search/list:recent;hl=en" target="_blank" rel="noopener">Google.Factcheck.Explorer</a></li>
+          <li id="tool-tweetdeck-x-twitter"><a id="tool-link-tweetdeck-x-twitter" href="https://pro.x.com/i/premium_sign_up?referring_page=pro" target="_blank" rel="noopener">Tweetdeck.X.Twitter</a></li>
+        </ol>
+
+  <h2 id="facial-recognition-tools">2. FACIAL RECOGNITION TOOLS</h2>
+        <p><strong>USES:</strong> Facial recognition tools help identify individuals in images and verify identity claims in fact-checking investigations.</p>
+        <ol>
+          <li id="tool-facecheck"><a id="tool-link-facecheck" href="https://facecheck.id/" target="_blank" rel="noopener">Facecheck</a></li>
+          <li id="tool-pimeyes"><a id="tool-link-pimeyes" href="https://pimeyes.com/en" target="_blank" rel="noopener">Pimeyes</a></li>
+        </ol>
+
+  <h2 id="error-level-analysis-tools">3. ERROR LEVEL ANALYSIS TOOLS</h2>
+        <ol>
+          <li id="tool-exifeditor"><a id="tool-link-exifeditor" href="https://exifeditor.io/#google_vignette/" target="_blank" rel="noopener">Exifeditor</a></li>
+          <li id="tool-exif-tool"><a id="tool-link-exif-tool" href="https://exif.tools/" target="_blank" rel="noopener">Exif.Tool</a></li>
+          <li id="tool-metadata2go"><a id="tool-link-metadata2go" href="https://www.metadata2go.com/" target="_blank" rel="noopener">Metadata2Go</a></li>
+          <li id="tool-fotoforensics"><a id="tool-link-fotoforensics" href="https://fotoforensics.com/" target="_blank" rel="noopener">FotoForensics</a></li>
+          <li id="tool-29ach-forensics"><a id="tool-link-29ach-forensics" href="https://29a.ch/photo-forensics/" target="_blank" rel="noopener">29a.ch Forensics</a></li>
+        </ol>
+
+  <h2 id="archive-cache-tools">4. ARCHIVE &amp; CACHE TOOLS</h2>
+        <p><strong>USES:</strong> Archive and cache tools help preserve and verify historical versions of web pages and digital content.</p>
+        <ol>
+          <li id="tool-archive-is"><a id="tool-link-archive-is" href="https://archive.is/" target="_blank" rel="noopener">Archive.Is</a></li>
+        </ol>
+
+  <h2 id="visual-verification-tools">5. VISUAL VERIFICATION TOOLS</h2>
+        <p><strong>USES:</strong> Visual verification tools help authenticate images and videos, detect manipulation, and verify the authenticity of visual content.</p>
+        <ol>
+          <li id="tool-invid-verification-plugin"><a id="tool-link-invid-verification-plugin" href="https://www.invid-project.eu/tools-and-services/invid-verification-plugin/" target="_blank" rel="noopener">Invid.Verification.Plugin</a></li>
+          <li id="tool-youtube-data-viewer"><a id="tool-link-youtube-data-viewer" href="https://www.amnesty.org/en/latest/research/2019/03/introducing-youtube-data-viewer-a-new-tool-to-help-verify-user-generated-videos/" target="_blank" rel="noopener">YouTube.Data.Viewer</a></li>
+          <li id="tool-google-lens"><a id="tool-link-google-lens" href="https://lens.google/#cta-section" target="_blank" rel="noopener">Google.Lens</a></li>
+          <li id="tool-search-by-image"><a id="tool-link-search-by-image" href="https://chromewebstore.google.com/detail/search-by-image/cnojnbdhbhnkbcieeekonklommdnndci?hl=en" target="_blank" rel="noopener">Search.By.Image</a></li>
+          <li id="tool-sider-chat"><a id="tool-link-sider-chat" href="https://chromewebstore.google.com/detail/sider-chat-with-all-ai-gp/difoiogjjojoaoomphldepapgpbgkhkb" target="_blank" rel="noopener">Sider.Chat</a></li>
+        </ol>
+
+  <h2 id="quick-help-tools">6. QUICK HELP TOOLS</h2>
+        <p><strong>USES:</strong> Quick help tools provide utilities for downloading, editing, and processing content for verification purposes.</p>
+        <ol>
+          <li><a href="https://fdown.net/" target="_blank" rel="noopener">Facebook Video Downloader</a></li>
+          <li><a href="https://chromewebstore.google.com/detail/x-twitter-video-downloade/akmdionenlnfcipmdhbhcnkighafmdha" target="_blank" rel="noopener">X Video Downloader</a></li>
+          <!-- Removed one broken Chrome Web Store link that was truncating HTML -->
+          <li><a href="https://findyoutubevideo.thetechrobo.ca/" target="_blank" rel="noopener">YouTube Video Finder</a></li>
+          <li><a href="https://www.remove.bg/" target="_blank" rel="noopener">Remove Bg</a></li>
+          <li><a href="https://cleanup.pictures/" target="_blank" rel="noopener">Cleanup Pictures</a></li>
+        </ol>
+
+  <h2 id="geo-location">7. GEO LOCATION</h2>
+        <p><strong>USES:</strong> Tools for map-based verification and geolocation during fact-checking.</p>
+        <ol>
+          <li><a href="https://www.google.com/intl/en_in/earth/about/versions/" target="_blank" rel="noopener">Google Earth Pro</a></li>
+          <li><a href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a></li>
+          <li><a href="https://www.bing.com/maps" target="_blank" rel="noopener">Bing Maps</a></li>
+          <li><a href="https://www.openstreetmap.org" target="_blank" rel="noopener">OpenStreetMap</a></li>
+          <li><a href="https://www.instantstreetview.com/" target="_blank" rel="noopener">Instant Street View</a></li>
+          <li><a href="https://inteltechniques.com/tools/Location.html" target="_blank" rel="noopener">Maps Search Tool</a></li>
+          <li><a href="https://wikimapia.org/#lang=en&lat=13.083300&lon=80.283300&z=12&m=w" target="_blank" rel="noopener">Wiki Maps</a></li>
+          <li><a href="https://picarta.ai/" target="_blank" rel="noopener">Picarta</a></li>
+          <li><a href="https://www.gpsvisualizer.com/" target="_blank" rel="noopener">GPSVisualizer</a></li>
+        </ol>
+
+  <h2 id="social-media-search-tools">8. SOCIAL MEDIA SEARCH TOOLS</h2>
+        <p><strong>USES:</strong> Social media search tools help track the origin and spread of content across different platforms for verification purposes.</p>
+        <ol>
+          <li><a href="https://graph.tips/beta/" target="_blank" rel="noopener">Graph</a></li>
+          <li><a href="https://whopostedwhat.com/" target="_blank" rel="noopener">Whopostedwhat</a></li>
+          <li><a href="https://findidfb.com/" target="_blank" rel="noopener">FindMyFbID</a></li>
+          <li><a href="https://webmii.com/" target="_blank" rel="noopener">Webmii</a></li>
+          <li><a href="https://www.mention.com/en/" target="_blank" rel="noopener">Mention</a></li>
+          <li><a href="https://mattw.io/youtube-geofind/location?location=48.2100,2.2800&doSearch=true/" target="_blank" rel="noopener">MW Geofind</a></li>
+          <li><a href="https://www.tofler.in/" target="_blank" rel="noopener">Tofler</a></li>
+          <li><a href="https://www.zaubacorp.com/" target="_blank" rel="noopener">Zaubacorp</a></li>
+          <li><a href="https://instahunt.huntintel.io/" target="_blank" rel="noopener">Instahunt</a></li>
+        </ol>
+
+  <h2 id="ai-detection-tools">9. AI DETECTION TOOLS</h2>
+        <p><strong>USES:</strong> AI detection tools help identify artificially generated content including deepfakes, AI-generated images, and synthetic media.</p>
+        <ol>
+          <li><a href="https://hivemoderation.com/ai-generated-content-detection" target="_blank" rel="noopener">Hive Moderation</a></li>
+          <li><a href="https://isitai.com/" target="_blank" rel="noopener">IsitAI?</a></li>
+          <li><a href="https://wasitai.com/" target="_blank" rel="noopener">WasitAI?</a></li>
+          <li><a href="https://zinc.cse.buffalo.edu/ubmdfl/deep-o-meter/login?next=%2Fubmdfl%2Fdeep-o-meter%2Fhome_login/" target="_blank" rel="noopener">DEEPFAKE-O-METER</a></li>
+          <li><a href="https://sightengine.com/detect-ai-generated-images" target="_blank" rel="noopener">SightengineAI</a></li>
+          <li><a href="https://www.aiornot.com/" target="_blank" rel="noopener">Optic AI or NOT</a></li>
+          <li><a href="https://www.hiya.com/products/deepfake-voice-detector" target="_blank" rel="noopener">Deepfake Voice Detector</a></li>
+          <li><a href="https://detect.resemble.ai/" target="_blank" rel="noopener">ResembleAI</a></li>
+          <li><a href="https://lenso.ai/en" target="_blank" rel="noopener">Lenso.ai</a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-center-container">
+<div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+  <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+  <div class="visitor-stats-grid">
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-factcheck">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-factcheck">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-factcheck">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-factcheck">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+    </div>
+  </div>
+  <div class="visitor-refresh-note">🔄 Auto-refreshes every 30 seconds</div>
+</div>
+</div>
+
+<footer>
+  <address>
+    Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+    Contact: +91-8523817999.<br>
+    Email: prism2025@appolice.gov.in | support@appoliceosint.com
+  </address>
+  <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+</footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof autoRefreshVisitorStats === 'function') {
+      autoRefreshVisitorStats('factcheck');
+    }
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+  });
+</script>
+</body>
+</html>

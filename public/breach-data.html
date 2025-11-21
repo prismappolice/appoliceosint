@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>appoliceosint.com</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+</head>
+
+<body data-page="breach-data">
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  <a href="home.html" class="nav-link">🏠 Home</a>
+  <a href="contact.html" class="nav-link">📞 Contact Us</a>
+  <a href="github.html" class="nav-link">🐙 GitHub</a>
+  <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+    <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link active">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main>
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1>BREACH DATA TOOLS</h1>
+      </div>
+
+      <div class="container-content">
+  <h2 id="credential-breach-databases">1. CREDENTIAL BREACH DATABASES</h2>
+        <p><strong>USES:</strong> Credential breach databases help law enforcement identify compromised accounts, leaked passwords, and data breaches for cybercrime investigations.</p>
+        <ol>
+          <li id="tool-osintleak-com"><a id="tool-link-osintleak-com" href="https://osintleak.com" target="_blank" rel="noopener">Osintleak.Com</a></li>
+          <li id="tool-haveibeenpwned"><a id="tool-link-haveibeenpwned" href="https://haveibeenpwned.com/" target="_blank" rel="noopener">Haveibeenpwned</a></li>
+          <li id="tool-breach-directory"><a id="tool-link-breach-directory" href="https://breachdirectory.org/" target="_blank" rel="noopener">Breach.Directory</a></li>
+          <li id="tool-leakcheck"><a id="tool-link-leakcheck" href="https://leakcheck.io/" target="_blank" rel="noopener">Leakcheck</a></li>
+        </ol>
+
+  <h2 id="hash-cracking-tools">2. HASH CRACKING TOOLS</h2>
+        <p><strong>USES:</strong> Hash cracking tools help law enforcement decrypt passwords and analyze compromised credentials for digital forensics investigations.</p>
+        <ol>
+          <li id="tool-hashmob"><a id="tool-link-hashmob" href="https://hashmob.net/" target="_blank" rel="noopener">Hashmob</a></li>
+          <li id="tool-crackstation"><a id="tool-link-crackstation" href="https://crackstation.net/" target="_blank" rel="noopener">Crackstation</a></li>
+          <li id="tool-md5-decrypt"><a id="tool-link-md5-decrypt" href="https://md5decrypt.net/" target="_blank" rel="noopener">Md5.Decrypt</a></li>
+          <li id="tool-online-hash-crack"><a id="tool-link-online-hash-crack" href="https://www.onlinehashcrack.com/" target="_blank" rel="noopener">Online.Hash.Crack</a></li>
+        </ol>
+
+  <h2 id="data-leak-monitoring">3. DATA LEAK MONITORING</h2>
+        <p><strong>USES:</strong> Data leak monitoring tools help track new breaches, monitor dark web marketplaces, and alert on compromised data for proactive security.</p>
+        <ol>
+          <li id="tool-firefox-monitor"><a id="tool-link-firefox-monitor" href="https://monitor.firefox.com/" target="_blank" rel="noopener">Firefox.Monitor</a></li>
+          <li id="tool-google-password-checkup"><a id="tool-link-google-password-checkup" href="https://www.google.com/landing/2step/" target="_blank" rel="noopener">Google.Password.Checkup</a></li>
+          <li id="tool-experian-dark-web-scan"><a id="tool-link-experian-dark-web-scan" href="https://www.experian.com/blogs/ask-experian/identity-monitoring/" target="_blank" rel="noopener">Experian.Darkweb.Scan</a></li>
+          <li id="tool-avast-hack-check"><a id="tool-link-avast-hack-check" href="https://www.avast.com/hackcheck" target="_blank" rel="noopener">Avast.Hackcheck</a></li>
+        </ol>
+
+  <h2 id="ransomware-tracking">4. RANSOMWARE TRACKING</h2>
+        <p><strong>USES:</strong> Ransomware tracking tools help law enforcement monitor ransomware groups, track payments, and analyze attack patterns for cybercrime investigations.</p>
+        <ol>
+          <li id="tool-no-more-ransom"><a id="tool-link-no-more-ransom" href="https://www.nomoreransom.org/" target="_blank" rel="noopener">No.More.Ransom</a></li>
+          </ol>
+
+  <h2 id="cryptocurrency-investigations">5. CRYPTOCURRENCY INVESTIGATIONS</h2>
+        <p><strong>USES:</strong> Cryptocurrency investigation tools help trace blockchain transactions, identify wallet addresses, and track illicit financial activities.</p>
+        <ol>
+          <li id="tool-blockchain-explorer"><a id="tool-link-blockchain-explorer" href="https://www.blockchain.com/explorer" target="_blank" rel="noopener">Blockchain.Explorer</a></li>
+          <li id="tool-wallet-explorer"><a id="tool-link-wallet-explorer" href="https://www.walletexplorer.com/" target="_blank" rel="noopener">Wallet.Explorer</a></li>
+          <li id="tool-mempool-space"><a id="tool-link-mempool-space" href="https://mempool.space/" target="_blank" rel="noopener">Mempool.space</a></li>
+        </ol>
+
+  <h2 id="malware-analysis">6. MALWARE ANALYSIS</h2>
+        <p><strong>USES:</strong> Malware analysis tools help law enforcement examine malicious software, analyze attack vectors, and understand cybercriminal techniques.</p>
+        <ol>
+          <li id="tool-virustotal"><a id="tool-link-virustotal" href="https://www.virustotal.com/" target="_blank" rel="noopener">Virustotal</a></li>
+          <li id="tool-hybrid-analysis"><a id="tool-link-hybrid-analysis" href="https://www.hybrid-analysis.com/" target="_blank" rel="noopener">Hybrid.Analysis</a></li>
+          <li id="tool-joe-sandbox"><a id="tool-link-joe-sandbox" href="https://www.joesandbox.com/" target="_blank" rel="noopener">Joe.Sandbox</a></li>
+        </ol>
+
+  <h2 id="threat-intelligence">7. THREAT INTELLIGENCE</h2>
+        <p><strong>USES:</strong> Threat intelligence tools help gather information on cyber threats, attack patterns, and criminal infrastructure for proactive defense.</p>
+        <ol>
+          <li id="tool-alienvault-otx"><a id="tool-link-alienvault-otx" href="https://otx.alienvault.com/" target="_blank" rel="noopener">Alienvault.Otx</a></li>
+          <li id="tool-threatminer"><a id="tool-link-threatminer" href="https://www.threatminer.org/" target="_blank" rel="noopener">Threatminer</a></li>
+          <li id="tool-abuse-ch"><a id="tool-link-abuse-ch" href="https://www.abuse.ch/" target="_blank" rel="noopener">Abuse.Ch</a></li>
+          <li id="tool-circl"><a id="tool-link-circl" href="https://www.circl.lu/" target="_blank" rel="noopener">Circl</a></li>
+        </ol>
+
+  <h2 id="dark-web-monitoring">8. DARK WEB MONITORING</h2>
+        <p><strong>USES:</strong> Dark web monitoring tools help law enforcement track illegal marketplaces, monitor criminal activities, and gather intelligence from hidden networks.</p>
+        <ol>
+          <li id="tool-dark-web-daily"><a id="tool-link-dark-web-daily" href="https://darkwebdaily.live/" target="_blank" rel="noopener">Darkweb.Daily</a></li>
+        </ol>
+
+  <h2 id="cybersecurity-databases">9. CYBERSECURITY DATABASES</h2>
+        <p><strong>USES:</strong> Cybersecurity databases provide comprehensive information on vulnerabilities, exploits, and security advisories for threat assessment.</p>
+        <ol>
+          <li id="tool-cve-database"><a id="tool-link-cve-database" href="https://cve.mitre.org/" target="_blank" rel="noopener">Cve.Database</a></li>
+          <li id="tool-nvd"><a id="tool-link-nvd" href="https://nvd.nist.gov/" target="_blank" rel="noopener">Nvd</a></li>
+          <li id="tool-exploit-db"><a id="tool-link-exploit-db" href="https://www.exploit-db.com/" target="_blank" rel="noopener">Exploit.Database</a></li>
+        </ol>
+
+  <h2 id="digital-forensics">10. DIGITAL FORENSICS</h2>
+        <p><strong>USES:</strong> Digital forensics tools help law enforcement analyze digital evidence, recover deleted data, and investigate cybercrime incidents.</p>
+        <ol>
+          <li id="tool-autopsy"><a id="tool-link-autopsy" href="https://www.autopsy">Autopsy</a></li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-center-container">
+  <div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+    <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+    <div class="visitor-stats-grid">
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-breach">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-breach">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-breach">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-breach">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+      </div>
+    </div>
+    <div class="visitor-refresh-note">🔄 Auto-refreshes every 30 seconds</div>
+  </div>
+</div>
+
+
+    <footer>
+      <address>
+        Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+        Contact: +91-8523817999.<br>
+        Email: prism2025@appolice.gov.in | support@appoliceosint.com
+      </address>
+      <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof autoRefreshVisitorStats === 'function') {
+      autoRefreshVisitorStats('breach');
+    }
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+  });
+</script>
+</body>
+</html>

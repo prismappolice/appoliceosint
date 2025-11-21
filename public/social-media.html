@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>appoliceosint.com</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+</head>
+
+<body data-page="social-media">
+ <header class="header-row">
+      <div class="profile-container left">
+        <div class="profile-icon">
+          <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+        </div>
+      </div>
+      <div class="header-center">
+        <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+        <h2>(Open Source Intelligence Tools Platform)</h2>
+      </div>
+      <div class="profile-container right">
+        <div class="profile-icon">
+          <img src="Appolice-Logo.png" alt="profile">
+        </div>
+      </div> 
+    </header>
+
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn"
+         aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  <a href="home.html" class="nav-link">🏠 Home</a>
+  <a href="contact.html" class="nav-link">📞 Contact Us</a>
+  <a href="github.html" class="nav-link">🐙 GitHub</a>
+  <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+  <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+  <span class="search-icon" id="searchBtn"
+    style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+    role="button" aria-label="Search">🔍</span>
+    </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-osint-tools"><a id="tool-link-osint-tools" href="osinttools.html" class="nav-link">🔍 OSINT Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link active">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone-Intel Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+    
+<div class="scroll-content">
+<main>
+      <div class="container">
+        <div class="unified-container">
+          <div class="container-header">
+            <h1>SOCIAL MEDIA INTELLIGENCE TOOLS</h1>
+          </div>
+          <div class="container-content">
+            <h2 id="facebook-tools">1. FACEBOOK TOOLS</h2>
+            <p><strong>USES:</strong> Facebook investigation tools help law enforcement analyze profiles, posts, and networks to gather intelligence and track criminal activity.</p>
+            <ol>
+              <li id="tool-graph-tips"><a id="tool-link-graph-tips" href="https://graph.tips/beta/">Graph.Tips</a></li>
+              <li id="tool-who-posted-what"><a id="tool-link-who-posted-what" href="https://whopostedwhat.com/">Who.Posted.What</a></li>
+              <li id="tool-find-my-facebook-id"><a id="tool-link-find-my-facebook-id" href="https://findidfb.com/">Find.My.Facebook.Id</a></li>
+              <li id="tool-lookup-id"><a id="tool-link-lookup-id" href="https://lookup-id.com/">Lookup.Id</a></li>
+            </ol>
+
+            <h2 id="twitter-x-tools">2. TWITTER/X TOOLS</h2>
+            <p><strong>USES:</strong> Twitter/X investigation tools help analyze tweets, user behavior, and social networks for threat assessment and criminal investigations.</p>
+            <ol>
+              <li id="tool-tweetdeck"><a id="tool-link-tweetdeck" href="https://tweetdeck.twitter.com/">Tweetdeck</a></li>
+              <li id="tool-foller-me"><a id="tool-link-foller-me" href="https://foller.me/">Foller.Me</a></li>
+              <li id="tool-social-bearing"><a id="tool-link-social-bearing" href="https://socialbearing.com/">Social.Bearing</a></li>
+            </ol>
+
+            <h2 id="instagram-tools">3. INSTAGRAM TOOLS</h2>
+            <p><strong>USES:</strong> Instagram investigation tools help analyze photos, stories, and user profiles for location tracking and behavioral analysis.</p>
+            <ol>
+              <li id="tool-instahunt"><a id="tool-link-instahunt" href="https://instahunt.huntintel.io/">Instahunt</a></li>
+              <li id="tool-search-my-bio"><a id="tool-link-search-my-bio" href="https://searchmy.bio/">Search.My.Bio</a></li>
+              <li id="tool-picuki"><a id="tool-link-picuki" href="https://www.picuki.com/">Picuki</a></li>
+              <li id="tool-imginn"><a id="tool-link-imginn" href="https://imginn.com/">Imginn</a></li>
+            </ol>
+
+            <h2 id="linkedin-tools">4. LINKEDIN TOOLS</h2>
+            <p><strong>USES:</strong> LinkedIn investigation tools help gather professional information, employment history, and business connections for background checks.</p>
+            <ol>
+              <li id="tool-free-people-search"><a id="tool-link-free-people-search" href="https://freepeoplesearchtool.com/">Free.People.Search</a></li>
+              <li id="tool-linkedin-sales-navigator"><a id="tool-link-linkedin-sales-navigator" href="https://www.linkedin.com/sales/ssi">Linkedin.Sales.Navigator</a></li>
+              <li id="tool-recruitin-net"><a id="tool-link-recruitin-net" href="https://recruitin.net/">Recruitin.Net</a></li>
+            </ol>
+
+            <h2 id="youtube-tools">5. YOUTUBE TOOLS</h2>
+            <p><strong>USES:</strong> YouTube investigation tools help analyze video content, channels, and metadata for evidence gathering and threat monitoring.</p>
+            <ol>
+              <li id="tool-youtube-geofind"><a id="tool-link-youtube-geofind" href="https://mattw.io/youtube-geofind/">Youtube.Geofind</a></li>
+            </ol>
+
+            <h2 id="telegram-tools">6. TELEGRAM TOOLS</h2>
+            <p><strong>USES:</strong> Telegram investigation tools help monitor channels, groups, and user activity for threat intelligence and criminal investigations.</p>
+            <ol>
+              <li id="tool-telegram-channel-viewer"><a id="tool-link-telegram-channel-viewer" href="https://t.me/s/">Telegram.Channel.Viewer</a></li>
+            </ol>
+
+            <h2 id="tiktok-tools">7. TIKTOK TOOLS</h2>
+            <p><strong>USES:</strong> TikTok investigation tools help analyze videos, trends, and user behavior for social media intelligence and threat assessment.</p>
+            <ol>
+              <li id="tool-tikwm"><a id="tool-link-tikwm" href="https://www.tikwm.com/">Tikwm</a></li>
+              <li id="tool-exolyt"><a id="tool-link-exolyt" href="https://exolyt.com/">Exolyt</a></li>
+              <li id="tool-tiktok-counter"><a id="tool-link-tiktok-counter" href="https://tiktokcounter.net/">Tiktok.Counter</a></li>
+            </ol>
+
+            <h2 id="whatsapp-tools">8. WhatsApp Tools</h2>
+            <p><strong>USES:</strong> Digital Communication Intelligence tools help law enforcement analyze call records, messages, and metadata to trace suspects and uncover criminal networks.</p>
+            <ol>
+              <li id="tool-whatsapp-analyzer"><a id="tool-link-whatsapp-analyzer" href="https://whatsanalyze-80665.web.app">Whatsappanalyzer.Com</a></li>
+            </ol>
+
+            <h2 id="multi-platform-tools">9. MULTI-PLATFORM TOOLS</h2>
+            <p><strong>USES:</strong> Multi-platform social media tools help investigate across multiple networks simultaneously for comprehensive digital intelligence.</p>
+            <ol>
+              <li id="tool-namechk"><a id="tool-link-namechk" href="https://namechk.com/">Namechk</a></li>
+              <li id="tool-whatsmyname"><a id="tool-link-whatsmyname" href="https://whatsmyname.app/">Whatsmyname</a></li>
+              <li id="tool-namecheckup"><a id="tool-link-namecheckup" href="https://namecheckup.com/" target="_blank" rel="noopener">NameCheckup</a></li>
+              <li id="tool-usersearch"><a id="tool-link-usersearch" href="https://usersearch.org/" target="_blank" rel="noopener">UserSearch</a></li>
+              <li id="tool-sherlock"><a id="tool-link-sherlock" href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noopener">Sherlock (GitHub)</a></li>
+              <li id="tool-maigret"><a id="tool-link-maigret" href="https://github.com/soxoj/maigret" target="_blank" rel="noopener">Maigret (GitHub)</a></li>
+              <li id="tool-whatsmyname-app"><a id="tool-link-whatsmyname-app" href="https://whatsmyname.app/" target="_blank" rel="noopener">WhatsMyName.app</a></li>
+            </ol>
+          </div>
+          </div>
+      </div>
+    </main>
+
+    <!-- Visitor Counter -->
+<div class="visitor-center-container">
+  <div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+    <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;"> 🌐 Visitor Statistics</h3>
+    <div class="visitor-stats-grid">
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-social">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-social">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-social">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-social">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+      </div>
+    </div>
+    <div class="visitor-refresh-note"> 🔄 Auto-refreshes every 30 seconds</div>
+  </div>
+</div>
+
+<footer>
+  <address>
+    Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+    Contact: +91-8523817999.<br>
+    Email: prism2025@appolice.gov.in | support@appoliceosint.com
+  </address>
+  <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+</footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof autoRefreshVisitorStats === 'function') {
+      autoRefreshVisitorStats('social');
+    }
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+  });
+</script>
+</body>
+</html>
