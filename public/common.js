@@ -65,25 +65,17 @@ function loadBreachVisitorStats() {
 // Shared JavaScript for navigation, visitor stats, and UI logic
 
 function openExternalLinksInNewTab() {
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href') ? link.getAttribute('href').toLowerCase() : '';
-    // Do NOT open in new tab for internal navigation or tab links
-    if (
-      link.classList.contains('main-option-btn') ||
-      link.closest('.navbar') || link.classList.contains('nav-link') ||
-      href.includes('home.html') || href.includes('factcheck.html') ||
-      href.includes('social-media.html') || href.includes('domain-intel.html') ||
-      href.includes('breach-data.html') || href.includes('osinttools.html') ||
-      href.includes('darkweb-tools.html') || href.includes('blockchain-tools.html') ||
-      href.includes('learning.html') || href.includes('osint-books.html') || href.includes('index.html') ||
-      href.includes('phone-intel.html') || href.includes('aitools.html') || href.includes('contact.html')
-    ) {
-      // Internal navigation, do not open in new tab
+  // Only affect links inside <main> (not home.html cards or navigation)
+  document.querySelectorAll('main a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+    // Only open external links in new tab
+    if (/^https?:\/\//i.test(href) && !href.includes(window.location.hostname)) {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    } else {
       link.setAttribute('target', '_self');
-      return;
     }
-    link.setAttribute('target', '_blank');
-    link.setAttribute('rel', 'noopener noreferrer');
   });
 }
 
