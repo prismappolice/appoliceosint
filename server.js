@@ -1,3 +1,30 @@
+// --- Login Logging Helper ---
+function logLogin(user) {
+  const now = new Date().toISOString();
+  db.run(
+    'INSERT INTO login_logs (user_id, username, email, login_time) VALUES (?, ?, ?, ?)',
+    [user.id || null, user.username || null, user.email || null, now]
+  );
+}
+
+function logLogout(user) {
+  // Find the latest login for this user with no logout_time
+  db.get(
+    'SELECT id, login_time FROM login_logs WHERE (user_id = ? OR username = ? OR email = ?) AND logout_time IS NULL ORDER BY login_time DESC LIMIT 1',
+    [user.id || null, user.username || null, user.email || null],
+    (err, row) => {
+      if (row) {
+        const logoutTime = new Date().toISOString();
+        const loginTime = new Date(row.login_time);
+        const duration = Math.floor((new Date(logoutTime) - loginTime) / 1000);
+        db.run(
+          'UPDATE login_logs SET logout_time = ?, duration_seconds = ? WHERE id = ?',
+          [logoutTime, duration, row.id]
+        );
+      }
+    }
+  );
+}
 // server.js
 const nodemailer = require('nodemailer');
 // --- Email (nodemailer) Setup ---
@@ -343,6 +370,7 @@ app.post("/login", (req, res) => {
         }
         if (row) {
           console.log('Login successful for:', username);
+          logLogin(row); // Log login event
           return res.json({ success: true, message: 'Login successful' });
         } else {
           console.log('Invalid credentials for:', username);
@@ -361,6 +389,7 @@ app.post("/login", (req, res) => {
         if (row) {
           if (row.email_verified) {
             console.log('Login successful for:', email);
+            logLogin(row); // Log login event
             return res.json({ success: true, message: 'Login successful' });
           } else {
             return res.status(401).json({ success: false, message: 'Please verify your email before logging in.' });
@@ -404,6 +433,30 @@ app.post("/login", (req, res) => {
           });
         }
       });
+    // --- Logout API (logs logout time and duration) ---
+    app.post('/logout', (req, res) => {
+      // You may need to adjust how you get the user info from the session or request
+      const { username, email } = req.body;
+      if (!username && !email) {
+        return res.status(400).json({ success: false, message: 'Username or email required for logout logging.' });
+      }
+      // Find user by username or email
+      let query, param;
+      if (username) {
+        query = 'SELECT * FROM users WHERE username = ?';
+        param = username;
+      } else {
+        query = 'SELECT * FROM users WHERE email = ?';
+        param = email;
+      }
+      db.get(query, [param], (err, user) => {
+        if (err || !user) {
+          return res.status(404).json({ success: false, message: 'User not found.' });
+        }
+        logLogout(user);
+        return res.json({ success: true, message: 'Logout logged.' });
+      });
+    });
     }
   } catch (error) {
     console.error("Login error:", error);
