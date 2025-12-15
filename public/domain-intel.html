@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>appoliceosint.com</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+</head>
+
+<body data-page="domain-intel">
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn"
+         aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  <a href="home.html" class="nav-link">🏠 Home</a>
+  <a href="contact.html" class="nav-link">📞 Contact Us</a>
+  <a href="github.html" class="nav-link">🐙 GitHub</a>
+  <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+    <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone Intelligence Tools</a></li>
+    <li id="tool-email-intelligence-tools"><a id="tool-link-email-intelligence-tools" href="emailintelligence.html" class="nav-link">✉️ Email Intelligence Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main>
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1>DOMAIN INTELLIGENCE TOOLS</h1>
+      </div>
+
+      <div class="container-content">
+    <h2 id="general-best-osint-tools">6. GENERAL & BEST OSINT TOOLS</h2>
+          <p><strong>USES:</strong> These tools help law enforcement collect, analyze, and visualize public data from the web, domains, and cyber infrastructure for investigations and threat intelligence.</p>
+          <ol>
+            <li id="tool-web-check-xyz"><a id="tool-link-web-check-xyz" href="https://web-check.xyz" target="_blank" rel="noopener">Web.Check.Xyz</a> <span style="color:#888;font-size:0.95em;">(Web OSINT)</span></li>
+            <li id="tool-gitsearchai"><a id="tool-link-gitsearchai" href="https://www.gitsearchai.com" target="_blank" rel="noopener">Gitsearch.ai</a></li>
+            <li id="tool-cyber-url-scanner"><a id="tool-link-cyber-url-scanner" href="https://cyscan.io" target="_blank" rel="noopener">Cyber.Url.Scanner</a></li>
+            <li id="tool-website-informer"><a id="tool-link-website-informer" href="https://website.informer.com" target="_blank" rel="noopener">Website.Informer</a></li>
+            <li id="tool-osint-portal"><a id="tool-link-osint-portal" href="https://osintportal.com" target="_blank" rel="noopener">Osint.Portal</a></li>
+            <li id="tool-deepfind-me"><a id="tool-link-deepfind-me" href="https://www.deepfind.me" target="_blank" rel="noopener">Deepfind.Me</a></li>
+            <li id="tool-talkwalker"><a id="tool-link-talkwalker" href="https://www.talkwalker.com/blog/best-osint-tools" target="_blank" rel="noopener">Talkwalker</a></li>
+            <li id="tool-maltego-com"><a id="tool-link-maltego-com" href="https://www.maltego.com" target="_blank" rel="noopener">Maltego.Com</a></li>
+            <li id="tool-shodan-io"><a id="tool-link-shodan-io" href="https://shodan.io" target="_blank" rel="noopener">Shodan.Io</a></li>
+            <li id="tool-securitytrails"><a id="tool-link-securitytrails" href="https://securitytrails.com" target="_blank" rel="noopener">Securitytrails</a></li>
+          </ol>
+  <h2 id="whois-lookup-tools">1. WHOIS LOOKUP TOOLS</h2>
+        <p><strong>USES:</strong> WHOIS lookup tools help law enforcement investigate domain ownership, registration details, and contact information for cybercrime investigations.</p>
+        <ol>
+          <li id="tool-whoisxml-api"><a id="tool-link-whoisxml-api" href="https://www.whoisxmlapi.com/" target="_blank" rel="noopener">WhoisXML API</a></li>
+          <li id="tool-domain-tools"><a id="tool-link-domain-tools" href="https://whois.domaintools.com/" target="_blank" rel="noopener">Domain Tools</a></li>
+          <li id="tool-whois-com"><a id="tool-link-whois-com" href="https://www.whois.com/" target="_blank" rel="noopener">Whois.com</a></li>
+          <li id="tool-viewdns-reverse-ip"><a id="tool-link-viewdns-reverse-ip" href="https://viewdns.info/reverseip/" target="_blank" rel="noopener">ViewDNS Reverse IP</a></li>
+        </ol>
+
+  <h2 id="dns-lookup-tools">2. DNS LOOKUP TOOLS</h2>
+        <p><strong>USES:</strong> DNS lookup tools help analyze domain name resolution, mail servers, and network infrastructure for cybercrime investigations.</p>
+        <ol>
+          <li id="tool-dns-lytics"><a id="tool-link-dns-lytics" href="https://dnslytics.com/" target="_blank" rel="noopener">DNS Lytics</a></li>
+          <li id="tool-nslookup-io"><a id="tool-link-nslookup-io" href="https://www.nslookup.io/" target="_blank" rel="noopener">NSLookup.io</a></li>
+          <li id="tool-dns-checker"><a id="tool-link-dns-checker" href="https://dnschecker.org/" target="_blank" rel="noopener">DNS Checker</a></li>
+          <li id="tool-whats-my-dns"><a id="tool-link-whats-my-dns" href="https://www.whatsmydns.net/" target="_blank" rel="noopener">What's My DNS</a></li>
+          <li id="tool-securitytrails"><a id="tool-link-securitytrails" href="https://securitytrails.com/" target="_blank" rel="noopener">SecurityTrails</a></li>
+          <li id="tool-urlscan"><a id="tool-link-urlscan" href="https://urlscan.io/" target="_blank" rel="noopener">URLScan</a></li>
+        </ol>
+
+  <h2 id="subdomain-discovery">3. SUBDOMAIN DISCOVERY</h2>
+        <p><strong>USES:</strong> Subdomain discovery tools help law enforcement find hidden subdomains and infrastructure associated with criminal websites.</p>
+        <ol>
+          <li id="tool-subdomain-finder"><a id="tool-link-subdomain-finder" href="https://subdomainfinder.c99.nl/" target="_blank" rel="noopener">Subdomain Finder</a></li>
+          <li id="tool-dns-dumpster"><a id="tool-link-dns-dumpster" href="https://dnsdumpster.com/" target="_blank" rel="noopener">DNS Dumpster</a></li>
+          <li id="tool-certificate-transparency"><a id="tool-link-certificate-transparency" href="https://crt.sh/" target="_blank" rel="noopener">Certificate Transparency</a></li>
+          <li id="tool-virustotal"><a id="tool-link-virustotal" href="https://www.virustotal.com/" target="_blank" rel="noopener">VirusTotal</a></li>
+        </ol>
+
+  <h2 id="domain-reputation">4. DOMAIN REPUTATION</h2>
+        <p><strong>USES:</strong> Domain reputation tools help assess website safety, detect malicious domains, and analyze threat intelligence for cybersecurity.</p>
+        <ol>
+          <li id="tool-urlvoid"><a id="tool-link-urlvoid" href="https://www.urlvoid.com/" target="_blank" rel="noopener">URLVoid</a></li>
+          <li id="tool-virustotal-2"><a id="tool-link-virustotal-2" href="https://www.virustotal.com/" target="_blank" rel="noopener">VirusTotal</a></li>
+          <li id="tool-checkphish"><a id="tool-link-checkphish" href="https://checkphish.ai/" target="_blank" rel="noopener">CheckPhish</a></li>
+          <li id="tool-abuse-ch"><a id="tool-link-abuse-ch" href="https://www.abuse.ch/" target="_blank" rel="noopener">Abuse.ch</a></li>
+        </ol>
+
+  <h2 id="web-technology-detection">5. WEB TECHNOLOGY DETECTION</h2>
+        <p><strong>USES:</strong> Web technology detection tools help identify technologies, frameworks, and vulnerabilities used by criminal websites.</p>
+        <ol>
+          <li id="tool-builtwith"><a id="tool-link-builtwith" href="https://builtwith.com/" target="_blank" rel="noopener">BuiltWith</a></li>
+          <li id="tool-wappalyzer"><a id="tool-link-wappalyzer" href="https://www.wappalyzer.com/" target="_blank" rel="noopener">Wappalyzer</a></li>
+          <li id="tool-w3techs"><a id="tool-link-w3techs" href="https://w3techs.com/" target="_blank" rel="noopener">W3Techs</a></li>
+          <li id="tool-whatweb"><a id="tool-link-whatweb" href="https://whatweb.net/" target="_blank" rel="noopener">WhatWeb</a></li>
+        </ol>
+
+  <h2 id="ssl-tls-certificate-analysis">6. SSL/TLS CERTIFICATE ANALYSIS</h2>
+        <p><strong>USES:</strong> SSL certificate analysis tools help investigate website security, certificate authorities, and encryption details for cybercrime cases.</p>
+        <ol>
+          <li id="tool-ssl-labs"><a id="tool-link-ssl-labs" href="https://www.ssllabs.com/ssltest/" target="_blank" rel="noopener">SSL Labs</a></li>
+          <li id="tool-certificate-transparency-2"><a id="tool-link-certificate-transparency-2" href="https://crt.sh/" target="_blank" rel="noopener">Certificate Transparency</a></li>
+          <li id="tool-censys"><a id="tool-link-censys" href="https://censys.io/" target="_blank" rel="noopener">Censys</a></li>
+          <li id="tool-shodan"><a id="tool-link-shodan" href="https://www.shodan.io/" target="_blank" rel="noopener">Shodan</a></li>
+        </ol>
+
+  <h2 id="ip-address-investigation">7. IP ADDRESS INVESTIGATION</h2>
+        <p><strong>USES:</strong> IP address investigation tools help track server locations, hosting providers, and network infrastructure for cybercrime investigations.</p>
+        <ol>
+          <li id="tool-ip2location"><a id="tool-link-ip2location" href="https://www.ip2location.com/" target="_blank" rel="noopener">IP2Location</a></li>
+          <li id="tool-ipinfo"><a id="tool-link-ipinfo" href="https://ipinfo.io/" target="_blank" rel="noopener">IPinfo</a></li>
+          <li id="tool-maxmind"><a id="tool-link-maxmind" href="https://www.maxmind.com/" target="_blank" rel="noopener">MaxMind</a></li>
+          <li id="tool-abuseipdb"><a id="tool-link-abuseipdb" href="https://www.abuseipdb.com/" target="_blank" rel="noopener">AbuseIPDB</a></li>
+        </ol>
+
+  <h2 id="website-archiving">8. WEBSITE ARCHIVING</h2>
+        <p><strong>USES:</strong> Website archiving tools help retrieve historical versions of criminal websites for evidence collection and investigation.</p>
+        <ol>
+          <li id="tool-wayback-machine"><a id="tool-link-wayback-machine" href="https://web.archive.org/" target="_blank" rel="noopener">Wayback Machine</a></li>
+          <li id="tool-archive-today"><a id="tool-link-archive-today" href="https://archive.today/" target="_blank" rel="noopener">Archive.today</a></li>
+          <li id="tool-cachedview"><a id="tool-link-cachedview" href="https://www.cachedview.com/" target="_blank" rel="noopener">CachedView</a></li>
+          <li id="tool-ghost-archive"><a id="tool-link-ghost-archive" href="https://ghostarchive.org/" target="_blank" rel="noopener">Ghost Archive</a></li>
+        </ol>
+
+  <h2 id="domain-monitoring">9. DOMAIN MONITORING</h2>
+        <p><strong>USES:</strong> Domain monitoring tools help track new domain registrations, typosquatting, and brand impersonation for proactive threat detection.</p>
+        <ol>
+          <li id="tool-domain-tools-2"><a id="tool-link-domain-tools-2" href="https://www.domaintools.com/" target="_blank" rel="noopener">Domain Tools</a></li>
+          <li id="tool-dns-twist"><a id="tool-link-dns-twist" href="https://dnstwist.it/" target="_blank" rel="noopener">DNS Twist</a></li>
+          <li id="tool-whoisds"><a id="tool-link-whoisds" href="https://www.whoisds.com/" target="_blank" rel="noopener">WhoisDS</a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-center-container">
+<div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+  <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+  <div class="visitor-stats-grid">
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-domain">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-domain">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-domain">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+  <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-domain">Loading...</div>
+      <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+    <footer>
+      <address>
+        Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+        Contact: +91-8523817999.<br>
+        Email: prism2025@appolice.gov.in | support@appoliceosint.com
+      </address>
+      <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+    </footer>
+    </div>
+
+  <script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+    if (typeof loadVisitorStats === 'function') {
+      loadVisitorStats('domain');
+    }
+  });
+</script>
+</body>
+</html>

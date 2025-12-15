@@ -1,0 +1,20 @@
+# Never commit secrets
+visitors-data.json
+.env
+*.pem
+*.key
+
+# OS / editor junk
+*.swp
+.DS_Store
+
+# Node / web common
+node_modules/
+dist/
+build/
+*.log
+
+# Python (if any)
+venv/
+__pycache__/
+*.pyc

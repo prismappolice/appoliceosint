@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>appoliceosint.com</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+</head>
+<body data-page="emailintelligence">
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+    <a href="home.html" class="nav-link">🏠 Home</a>
+    <a href="contact.html" class="nav-link">📞 Contact Us</a>
+    <a href="github.html" class="nav-link">🐙 GitHub</a>
+    <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+      <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+  </div>
+</nav>
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li><a href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li><a href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li><a href="phone-intel.html" class="nav-link">📱 Phone Intelligence Tools</a></li>
+    <li><a href="emailintelligence.html" class="nav-link active">✉️ Email Intelligence Tools</a></li>
+    <li><a href="domain-intel.html" class="nav-link">🌐 Domain Intel Tools</a></li>
+    <li><a href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li><a href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li><a href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li><a href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li><a href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+<div class="scroll-content">
+<main>
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1>Email Intelligence Tools</h1>
+      </div>
+      <div class="container-content">
+        <h2 id="heading-email-intel">1. EMAIL LOOKUP & INTELLIGENCE</h2>
+        <p id="desc-email-intel"><strong>USES:</strong> Lookup, verify, and analyze email addresses for investigative and intelligence purposes.</p>
+        <ol id="search-email-intel">
+          <li id="tool-tracefind"><a id="tool-link-tracefind" href="https://tracefind.info" target="_blank" rel="noopener">Tracefind.Info</a></li>
+          <li id="tool-epieos"><a id="tool-link-epieos" href="https://epieos.com/" target="_blank" rel="noopener">EPIEOS</a></li>
+          <li id="tool-castrick"><a id="tool-link-castrick" href="https://castrickclues.com/" target="_blank" rel="noopener">Castrick</a></li>
+          <li id="tool-signalhire"><a id="tool-link-signalhire" href="https://www.signalhire.com/" target="_blank" rel="noopener">SignalHire</a></li>
+          <li id="tool-hunter"><a id="tool-link-hunter" href="https://hunter.io/" target="_blank" rel="noopener">Hunter.io</a></li>
+        </ol>
+
+        <h2 id="heading-breach-leak">2. BREACH & LEAK CHECK</h2>
+        <p id="desc-breach-leak"><strong>USES:</strong> Check if email addresses have been exposed in data breaches or leaks.</p>
+        <ol id="search-breach-leak">
+          <li id="tool-haveibeenpwned"><a id="tool-link-haveibeenpwned" href="https://haveibeenpwned.com/" target="_blank" rel="noopener">HaveIBeenPwned</a></li>
+          <li id="tool-breachdirectory"><a id="tool-link-breachdirectory" href="https://breachdirectory.org/" target="_blank" rel="noopener">BreachDirectory</a></li>
+        </ol>
+
+        <h2 id="heading-scam-fraud">3. SCAM & FRAUD DETECTION</h2>
+        <p id="desc-scam-fraud"><strong>USES:</strong> Detect scam, fraud, and suspicious email addresses.</p>
+        <ol id="search-scam-fraud">
+          <li id="tool-scamsearch"><a id="tool-link-scamsearch" href="https://scamsearch.io/" target="_blank" rel="noopener">Scamsearch.io</a></li>
+        </ol>
+
+        <h2 id="heading-open-source">4. OPEN SOURCE & AUTOMATION TOOLS</h2>
+        <p id="desc-open-source"><strong>USES:</strong> Open source tools for advanced email OSINT and automation.</p>
+        <ol id="search-open-source">
+          <li id="tool-osintrocks"><a id="tool-link-osintrocks" href="https://osint.rocks/" target="_blank" rel="noopener">osint.rocks</a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-center-container">
+  <div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+    <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+    <div class="visitor-stats-grid">
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-emailintelligence">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-emailintelligence">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-emailintelligence">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-emailintelligence">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <address>
+    Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+    Contact: +91-8523817999.<br>
+    Email: prism2025@appolice.gov.in | support@appoliceosint.com
+  </address>
+  <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+</footer>
+</div>
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+    if (typeof loadVisitorStats === 'function') {
+      loadVisitorStats('emailintelligence');
+    }
+  });
+</script>
+</body>
+</html>

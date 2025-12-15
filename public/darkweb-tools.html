@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>appoliceosint.com</title>
+  <meta name="description" content="Professional Dark Web Tools for law enforcement investigations and threat intelligence gathering">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+</head>
+<body data-page="darkweb-tools">
+
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+  <a href="home.html" class="nav-link">🏠 Home</a>
+  <a href="contact.html" class="nav-link">📞 Contact Us</a>
+  <a href="github.html" class="nav-link">🐙 GitHub</a>
+  <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+    <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone Intelligence Tools</a></li>
+    <li id="tool-email-intelligence-tools"><a id="tool-link-email-intelligence-tools" href="emailintelligence.html" class="nav-link">✉️ Email Intelligence Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main> 
+  <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1>DARK WEB TOOLS</h1>
+      </div>
+      <div class="container-content">
+  <h2 id="osint-crawling-scraping">7. OSINT CRAWLING & SCRAPING TOOLS</h2>
+        <p><strong>USES:</strong> These OSINT tools help law enforcement extract and analyze public web data for cybercrime detection and threat monitoring.</p>
+        <ol>
+          <li id="tool-scrapegraphai"><a id="tool-link-scrapegraphai" href="https://scrapegraphai.com" target="_blank" rel="noopener">Scrapegraphai</a></li>
+        </ol>
+
+  <h2 id="access-the-dark-web-securely">1. ACCESS THE DARK WEB SECURELY</h2>
+        <p><strong>USES:</strong> These tools provide secure access to the dark web for legitimate law enforcement investigations.</p>
+        <ol>
+          <li id="tool-tor-browser"><a id="tool-link-tor-browser" href="https://www.torproject.org/" target="_blank" rel="noopener">Tor.Browser</a></li>
+          <li id="tool-onion-live"><a id="tool-link-onion-live" href="https://onion.live/" target="_blank" rel="noopener">Onion.Live</a></li>
+        </ol>
+
+  <h2 id="dark-web-search-engines">2. DARK WEB SEARCH ENGINES</h2>
+        <p><strong>USES:</strong> Specialized search engines for finding content on the dark web during investigations.</p>
+        <ol>
+          <li id="tool-ahmia"><a id="tool-link-ahmia" href="https://ahmia.fi/" target="_blank" rel="noopener">Ahmia</a></li>
+          <li id="tool-onion-engine"><a id="tool-link-onion-engine" href="https://onionengine.com/" target="_blank" rel="noopener">Onion.Engine</a></li>
+          <li id="tool-tor-link"><a id="tool-link-tor-link" href="https://tor.link/" target="_blank" rel="noopener">Tor.Link</a></li>
+          <li id="tool-the-hidden-wiki"><a id="tool-link-the-hidden-wiki" href="https://thehiddenwiki.org/" target="_blank" rel="noopener">The.Hidden.Wiki</a></li>
+        </ol>
+
+  <h2 id="breach-data-intelligence">3. BREACH DATA & INTELLIGENCE</h2>
+        <p><strong>USES:</strong> Tools for checking data breaches and compromised accounts in criminal investigations.</p>
+        <ol>
+          <li id="tool-dehashed"><a id="tool-link-dehashed" href="https://www.dehashed.com/" target="_blank" rel="noopener">Dehashed</a></li>
+          <li id="tool-haveibeenpwned"><a id="tool-link-haveibeenpwned" href="https://haveibeenpwned.com/" target="_blank" rel="noopener">Haveibeenpwned</a></li>
+          <li id="tool-ghost-project"><a id="tool-link-ghost-project" href="https://ghostproject.fr/" target="_blank" rel="noopener">Ghost.Project</a></li>
+        </ol>
+
+  <h2 id="telegram-intelligence-tools">4. TELEGRAM INTELLIGENCE TOOLS</h2>
+        <p><strong>USES:</strong> OSINT tools for monitoring and analyzing Telegram channels and criminal communications.</p>
+        <ol>
+          <li id="tool-telemetry"><a id="tool-link-telemetry" href="https://telemetr.io/en" target="_blank" rel="noopener">Telemetry</a></li>
+          <li id="tool-leakosint-bot"><a id="tool-link-leakosint-bot" href="https://t.me/LeakOsintBot" target="_blank" rel="noopener">Leakosint.Bot</a></li>
+          <li id="tool-universal-search-bot"><a id="tool-link-universal-search-bot" href="https://t.me/UniversalSearchBot" target="_blank" rel="noopener">Universal.Search.Bot</a></li>
+        </ol>
+
+  <h2 id="cryptocurrency-tracking">5. CRYPTOCURRENCY TRACKING</h2>
+        <p><strong>USES:</strong> Tools for tracking cryptocurrency transactions used in dark web criminal activities.</p>
+        <ol>
+          <li id="tool-chainalysis"><a id="tool-link-chainalysis" href="https://www.chainalysis.com/" target="_blank" rel="noopener">Chainalysis</a></li>
+          <li id="tool-elliptic"><a id="tool-link-elliptic" href="https://www.elliptic.co/" target="_blank" rel="noopener">Elliptic</a></li>
+        </ol>
+
+  <h2 id="threat-intelligence-platforms">6. THREAT INTELLIGENCE PLATFORMS</h2>
+        <p><strong>USES:</strong> Professional threat intelligence platforms for monitoring dark web activities.</p>
+        <ol>
+          <li id="tool-flashpoint"><a id="tool-link-flashpoint" href="https://www.flashpoint-intel.com/" target="_blank" rel="noopener">Flashpoint</a></li>
+          <li id="tool-recorded-future"><a id="tool-link-recorded-future" href="https://www.recordedfuture.com/" target="_blank" rel="noopener">Recorded.Future</a></li>
+        </ol>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-center-container">
+  <div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+    <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+    <div class="visitor-stats-grid">
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-darkweb">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-darkweb">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-darkweb">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-darkweb">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <address>
+    Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+    Contact: +91-8523817999.<br>
+    Email: prism2025@appolice.gov.in | support@appoliceosint.com
+  </address>
+  <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+</footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+    if (typeof loadVisitorStats === 'function') {
+      loadVisitorStats('darkweb');
+    }
+  });
+</script>
+</body>
+</html>

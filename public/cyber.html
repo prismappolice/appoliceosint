@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta charset="UTF-8" />
+  <link rel="icon" href="Appolice-Logo.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>appoliceosint.com</title>
+  <meta name="description" content="Comprehensive cyber security training resources and tools for law enforcement professionals">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="visitor-counter.css">
+  <link rel="stylesheet" href="learning.css">
+  <style>
+    /* Document Cards Styling */
+    .documents-section {
+      margin: 30px 0;
+    }
+    
+    .documents-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .document-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,249,250,0.98));
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border: 2px solid rgba(34, 24, 24, 0.2);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .document-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border-color: rgba(66,133,244,0.3);
+    }
+    
+    .document-preview {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border: 1px solid #2a2e34;
+      overflow: hidden;
+      margin: 8px 0;
+      object-fit: cover;
+    }
+    
+    .document-preview iframe {
+      border: none !important;
+      outline: none !important;
+      overflow: hidden !important;
+      scrollbar-width: none !important; /* Firefox */
+      -ms-overflow-style: none !important; /* IE and Edge */
+    }
+    
+    .document-preview iframe::-webkit-scrollbar {
+      display: none !important; /* Chrome, Safari and Opera */
+    }
+    
+    /* Hide scrollbars for object tags (PDFs) */
+    .document-preview object {
+      scrollbar-width: none !important; /* Firefox */
+      -ms-overflow-style: none !important; /* IE and Edge */
+    }
+    
+    .document-preview object::-webkit-scrollbar {
+      display: none !important; /* Chrome, Safari and Opera */
+    }
+    
+    /* PDF Preview Container */
+    .pdf-preview-container {
+      width: 100%;
+      height: 150px;
+      margin-top: 30px;
+      position: relative;
+      border-radius: 6px;
+      background: #fff;
+      border: 1px solid #ddd;
+      overflow: hidden;
+      padding: 8px;
+    }
+    
+    /* PDF Object Styling */
+    .pdf-object {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+      object-fit: contain;
+      object-position: center;
+      overflow: hidden;
+    }
+    
+    /* PDF Fallback Content */
+    .pdf-fallback {
+      width: 100%;
+      height: 100%;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+    }
+    
+    .document-type {
+      background: rgba(255,255,255,0.2);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: bold;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      text-align: center;
+    }
+    
+    .document-icon {
+      font-size: 32px;
+      margin-top: 10px;
+    }
+    
+    .document-info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+    
+    .document-title {
+      font-size: 0.85em;
+      font-weight: 600;
+      color: #1a365d;
+      margin: 0 0 8px 0;
+      line-height: 1.2;
+      text-align: center;
+      height: 2.4em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .document-meta {
+      display: flex;
+      gap: 4px;
+      font-size: 0.85em;
+      color: #666;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .document-pages {
+      font-weight: 500;
+    }
+    
+    .document-description {
+      font-size: 0.9em;
+      color: #555;
+      line-height: 1.4;
+      margin: 4px 0 8px 0;
+    }
+    
+    .document-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .document-download-btn, .document-view-btn {
+      padding: 10px 16px;
+      margin: auto;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.75em;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 85px;
+      height: 32px;
+      box-sizing: border-box;
+      line-height: 1;
+    }
+    
+    .document-download-btn {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+      color: white !important;
+      box-shadow: 0 2px 8px rgba(37,99,235,0.3) !important;
+      border: 1px solid rgba(31, 34, 39, 0.2) !important;
+    }
+    
+    .document-download-btn:hover {
+      background: linear-gradient(135deg, #1d4ed8, #767c91) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.4) !important;
+    }
+    
+    .document-view-btn {
+      background: linear-gradient(135deg, #64748b, #475569) !important;
+      color: white !important;
+      border: 1px solid rgba(100,116,139,0.2) !important;
+    }
+    
+    .document-view-btn:hover {
+      background: linear-gradient(135deg, #475569, #334155) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: 0 4px 12px rgba(100,116,139,0.4) !important;
+    }
+    
+    
+    /* Extra Large Screens (4K, Ultra-wide) - 1920px+ */
+    @media (min-width: 1920px) {
+      .documents-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        max-width: 1800px;
+      }
+      .pdf-preview-container {
+        height: 180px;
+      }
+      .document-title {
+        font-size: 0.95em;
+      }
+    }
+    
+    /* Large Desktops - 1440px to 1919px */
+    @media (max-width: 1919px) and (min-width: 1440px) {
+      .documents-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1600px;
+      }
+      .pdf-preview-container {
+        height: 170px;
+      }
+    }
+    
+    /* Standard Desktops & Large Laptops - 1200px to 1439px */
+    @media (max-width: 1439px) and (min-width: 1200px) {
+      .documents-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+        max-width: 1400px;
+      }
+      .pdf-preview-container {
+        height: 160px;
+      }
+    }
+    
+    /* Medium Laptops - 992px to 1199px */
+    @media (max-width: 1199px) and (min-width: 992px) {
+      .documents-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .pdf-preview-container {
+        height: 155px;
+      }
+      .document-title {
+        font-size: 0.85em;
+      }
+    }
+    
+    /* Small Laptops & Large Tablets - 768px to 991px */
+    @media (max-width: 991px) and (min-width: 768px) {
+      .documents-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .pdf-preview-container {
+        height: 145px;
+      }
+      .document-title {
+        font-size: 0.8em;
+      }
+      .document-download-btn, .document-view-btn {
+        width: 75px;
+        font-size: 0.7em;
+        padding: 8px 12px;
+      }
+    }
+    
+    /* Portrait Tablets & Large Phones - 576px to 767px */
+    @media (max-width: 767px) and (min-width: 576px) {
+      .documents-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .pdf-preview-container {
+        height: 140px;
+      }
+      .document-title {
+        font-size: 0.8em;
+        height: 3em;
+      }
+      .document-card {
+        padding: 10px;
+      }
+      .document-download-btn, .document-view-btn {
+        width: 70px;
+        font-size: 0.7em;
+        padding: 8px 10px;
+      }
+    }
+    
+    /* Large Phones - 480px to 575px */
+    @media (max-width: 575px) and (min-width: 480px) {
+      .documents-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .pdf-preview-container {
+        height: 130px;
+      }
+      .document-title {
+        font-size: 0.75em;
+        height: 3.2em;
+      }
+      .document-card {
+        padding: 8px;
+      }
+      .document-download-btn, .document-view-btn {
+        width: 65px;
+        font-size: 0.65em;
+        padding: 6px 8px;
+        height: 28px;
+      }
+    }
+    
+    /* Medium Phones - 375px to 479px */
+    @media (max-width: 479px) and (min-width: 375px) {
+      .documents-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .pdf-preview-container {
+        height: 160px;
+      }
+      .document-title {
+        font-size: 0.85em;
+        height: 2.8em;
+      }
+      .document-card {
+        padding: 12px;
+        margin: 0 10px;
+      }
+      .document-actions {
+        flex-direction: row;
+        gap: 8px;
+      }
+      .document-download-btn, .document-view-btn {
+        width: 80px;
+        font-size: 0.7em;
+        padding: 8px 12px;
+        height: 32px;
+      }
+    }
+    
+    /* Small Phones - 320px to 374px */
+    @media (max-width: 374px) {
+      .documents-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .pdf-preview-container {
+        height: 150px;
+      }
+      .document-title {
+        font-size: 0.8em;
+        height: 3em;
+        line-height: 1.1;
+      }
+      .document-card {
+        padding: 10px;
+        margin: 0 5px;
+      }
+      .document-actions {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .document-download-btn, .document-view-btn {
+        width: 100%;
+        font-size: 0.75em;
+        padding: 10px;
+        height: 36px;
+      }
+    }
+    
+    /* Extra Small Phones - Below 320px */
+    @media (max-width: 319px) {
+      .documents-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .pdf-preview-container {
+        height: 140px;
+      }
+      .document-title {
+        font-size: 0.75em;
+        height: 3.5em;
+        line-height: 1.0;
+      }
+      .document-card {
+        padding: 8px;
+        margin: 0 2px;
+      }
+      .document-actions {
+        flex-direction: column;
+        gap: 4px;
+      }
+      .document-download-btn, .document-view-btn {
+        width: 100%;
+        font-size: 0.7em;
+        padding: 8px;
+        height: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body data-page="cyber">
+
+<header class="header-row">
+  <div class="profile-container left">
+    <div class="profile-icon">
+      <img src="AdhraPradesh.jpeg" alt="Andhra Pradesh Police Logo">
+    </div>
+  </div>
+  <div class="header-center">
+    <h1>ANDHRA PRADESH POLICE DEPARTMENT</h1>
+    <h2>(Open Source Intelligence Tools Platform)</h2>
+  </div>
+  <div class="profile-container right">
+    <div class="profile-icon">
+      <img src="Appolice-Logo.png" alt="profile">
+    </div>
+  </div>
+</header>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </div>
+    <a href="home.html" class="nav-link">🏠 Home</a>
+    <a href="contact.html" class="nav-link">📞 Contact Us</a>
+    <a href="github.html" class="nav-link">🐙 GitHub</a>
+    <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-input-wrapper" style="position:relative">
+      <input type="text" placeholder="Search tools..." id="searchBar" aria-label="Search tools" autocomplete="off">
+      <span class="search-icon" id="searchBtn"
+            style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
+            role="button" aria-label="Search">🔍</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Sidebar (hidden by default) -->
+<aside id="sidebar" class="sidebar" aria-hidden="true">
+  <ul class="sidebar-list">
+    <li id="tool-fact-check-tools"><a id="tool-link-fact-check-tools" href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
+    <li id="tool-social-media-tools"><a id="tool-link-social-media-tools" href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
+    <li id="tool-phone-intel-tools"><a id="tool-link-phone-intel-tools" href="phone-intel.html" class="nav-link">📱 Phone Intelligence Tools</a></li>
+    <li id="tool-email-intelligence-tools"><a id="tool-link-email-intelligence-tools" href="emailintelligence.html" class="nav-link">✉️ Email Intelligence Tools</a></li>
+    <li id="tool-domain-intel-tools"><a id="tool-link-domain-intel-tools" href="domain-intel.html" class="nav-link">🌐 Domain Intel Tools</a></li>
+    <li id="tool-breach-data-tools"><a id="tool-link-breach-data-tools" href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li id="tool-darkweb-tools"><a id="tool-link-darkweb-tools" href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li id="tool-blockchain-tools"><a id="tool-link-blockchain-tools" href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li id="tool-ai-tools"><a id="tool-link-ai-tools" href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
+    <li id="tool-learning"><a id="tool-link-learning" href="learning.html" class="nav-link">📚 Learning</a></li>
+  </ul>
+</aside>
+<div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
+
+<div class="scroll-content">
+<main> 
+   <div class="container">
+    <div class="unified-container">
+      <div class="container-header">
+        <h1 style="color: #fff; font-size: 2em; font-weight: bold; margin-bottom: 10px; letter-spacing: 1px;">OSINT LEARNING RESOURCES</h1>
+        <div style="color: #baff3c; font-size: 1.2em; margin-bottom: 10px; font-weight: 500;">Comprehensive training videos and tutorials to master Open Source Intelligence techniques</div>
+        <div class="main-option-btn-group" style="margin:30px 0 10px 0;">
+          <a href="learning.html" class="main-option-btn" target="_self">OSINT Videos</a>
+          <a href="osint-books.html" class="main-option-btn" target="_self">OSINT Books</a>
+          <a href="cyber.html" class="main-option-btn active" target="_self">Cyber Security</a>
+        </div>
+      </div>
+
+      <div class="container-content">
+        
+        <!-- Cyber Security Documents Section -->
+        <div class="documents-section">
+          <h2 id="cyber-documents">📚 CYBER SECURITY DOCUMENTS & RESOURCES</h2>
+          <p><strong>COLLECTION:</strong> Essential cybersecurity manuals, guides, and documentation for law enforcement digital investigations and cyber crime analysis.</p>
+          
+          <!-- Documents Grid -->
+          <div class="documents-grid">
+            
+            <!-- Document 1 -->
+            <div class="document-card">
+              <div class="document-info">
+                <h3 class="document-title">Cyber Crime Investigation Manual Volume III</h3>
+              </div>
+              <div class="document-preview">
+                <div class="document-type">PDF</div>
+                <div class="pdf-preview-container">
+                  <object data="cyber/Cyber Crime Investigation Manual Volume - III - SVPNPA.pdf#page=1&zoom=FitH&toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&view=FitH" 
+                          type="application/pdf" 
+                          class="pdf-object">
+                    <div class="pdf-fallback">
+                      <span>📄 PDF Preview</span>
+                    </div>
+                  </object>
+                </div>
+              </div>
+              <div class="document-actions">
+                <a href="cyber/Cyber Crime Investigation Manual Volume - III - SVPNPA.pdf" class="document-download-btn" download>📥 Download</a>
+                <a href="cyber/Cyber Crime Investigation Manual Volume - III - SVPNPA.pdf" class="document-view-btn" target="_blank">👁️ View</a>
+              </div>
+            </div>
+
+            <!-- Document 1A -->
+            <div class="document-card">
+              <div class="document-info">
+                <h3 class="document-title">Cyber Crime Investigation Manual Volume I</h3>
+              </div>
+              <div class="document-preview">
+                <div class="document-type">PDF</div>
+                <div class="pdf-preview-container">
+                  <object data="cyber/Cyber_Crime_Investigation_Manual_Volume_-_I_-_SVPNPA.pdf#page=1&zoom=FitH&toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&view=FitH" 
+                          type="application/pdf" 
+                          class="pdf-object">
+                    <div class="pdf-fallback">
+                      <span>📄 PDF Preview</span>
+                    </div>
+                  </object>
+                </div>
+              </div>
+              <div class="document-actions">
+                <a href="cyber/Cyber_Crime_Investigation_Manual_Volume_-_I_-_SVPNPA.pdf" class="document-download-btn" download>📥 Download</a>
+                <a href="cyber/Cyber_Crime_Investigation_Manual_Volume_-_I_-_SVPNPA.pdf" class="document-view-btn" target="_blank">👁️ View</a>
+              </div>
+            </div>
+
+            <!-- Document 1B -->
+            <div class="document-card">
+              <div class="document-info">
+                <h3 class="document-title">Cyber Crime Investigation Manual Volume II</h3>
+              </div>
+              <div class="document-preview">
+                <div class="document-type">PDF</div>
+                <div class="pdf-preview-container">
+                  <object data="cyber/Cyber_Crime_Investigation_Manual_Volume_-_II_-_SVPNPA.pdf#page=1&zoom=FitH&toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&view=FitH" 
+                          type="application/pdf" 
+                          class="pdf-object">
+                    <div class="pdf-fallback">
+                      <span>📄 PDF Preview</span>
+                    </div>
+                  </object>
+                </div>
+              </div>
+              <div class="document-actions">
+                <a href="cyber/Cyber_Crime_Investigation_Manual_Volume_-_II_-_SVPNPA.pdf" class="document-download-btn" download>📥 Download</a>
+                <a href="cyber/Cyber_Crime_Investigation_Manual_Volume_-_II_-_SVPNPA.pdf" class="document-view-btn" target="_blank">👁️ View</a>
+              </div>
+            </div>
+
+            <!-- Document 2 -->
+            <div class="document-card">
+              <div class="document-info">
+                <h3 class="document-title">Cyber Crime Investigation Manual Volume V</h3>
+              </div>
+              <div class="document-preview">
+                <div class="document-type">PDF</div>
+                <div class="pdf-preview-container">
+                  <object data="cyber/Cyber Crime Investigation Manual Volume - V - SVPNPA.pdf#page=1&zoom=FitH&toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&view=FitH" 
+                          type="application/pdf" 
+                          class="pdf-object">
+                    <div class="pdf-fallback">
+                      <span>📄 PDF Preview</span>
+                    </div>
+                  </object>
+                </div>
+              </div>
+              <div class="document-actions">
+                <a href="cyber/Cyber Crime Investigation Manual Volume - V - SVPNPA.pdf" class="document-download-btn" download>📥 Download</a>
+                <a href="cyber/Cyber Crime Investigation Manual Volume - V - SVPNPA.pdf" class="document-view-btn" target="_blank">👁️ View</a>
+              </div>
+            </div>
+
+            <!-- Document 3 -->
+            <div class="document-card">
+              <div class="document-info">
+                <h3 class="document-title">Cyber Crime Investigation Manual Volume IV</h3>
+              </div>
+              <div class="document-preview">
+                <div class="document-type">PDF</div>
+                <div class="pdf-preview-container">
+                  <object data="cyber/Cyber Crime Investigation Manual Volume - IV - SVPNPA.pdf#page=1&zoom=FitH&toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&view=FitH" 
+                          type="application/pdf" 
+                          class="pdf-object">
+                    <div class="pdf-fallback">
+                      <span>📄 PDF Preview</span>
+                    </div>
+                  </object>
+                </div>
+              </div>
+              <div class="document-actions">
+                <a href="cyber/Cyber Crime Investigation Manual Volume - IV - SVPNPA.pdf" class="document-download-btn" download>📥 Download</a>
+                <a href="cyber/Cyber Crime Investigation Manual Volume - IV - SVPNPA.pdf" class="document-view-btn" target="_blank">👁️ View</a>
+              </div>
+            </div>
+
+            <!-- Document 4 -->
+            <div class="document-card">
+              <div class="document-info">
+                <h3 class="document-title">Cyber Offences Issues Challenges and Solutions</h3>
+              </div>
+              <div class="document-preview">
+                <div class="document-type">PDF</div>
+                <div class="pdf-preview-container">
+                  <object data="cyber/Cyber offences issues challenges and solutions.pdf#page=1&zoom=FitH&toolbar=0&navpanes=0&scrollbar=0&statusbar=0&messages=0&view=FitH" 
+                          type="application/pdf" 
+                          class="pdf-object">
+                    <div class="pdf-fallback">
+                      <span>📄 PDF Preview</span>
+                    </div>
+                  </object>
+                </div>
+              </div>
+              <div class="document-actions">
+                <a href="cyber/Cyber offences issues challenges and solutions.pdf" class="document-download-btn" download>📥 Download</a>
+                <a href="cyber/Cyber offences issues challenges and solutions.pdf" class="document-view-btn" target="_blank">👁️ View</a>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Visitor Counter -->
+<div class="visitor-center-container">
+  <div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+    <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+    <div class="visitor-stats-grid">
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-cyber">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-cyber">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Unique Visitors</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-cyber">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+        <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-cyber">Loading...</div>
+        <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <address>
+      Address: The Director General OF Police O/o The DGP, APSP 6th Battalion, Mangalagiri(V&M), Guntur District, AP-522 503.<br>
+      Contact: +91-8523817999.<br>
+      Email: prism2025@appolice.gov.in | support@appoliceosint.com
+    </address>
+    <p>&copy; 2025 PRISM. All content protected under copyright law. All Rights Reserved.</p>
+  </footer>
+</div>
+
+<script src="common.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+    if (typeof loadVisitorStats === 'function') {
+      loadVisitorStats('cyber');
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "appolice-osint",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google-cloud/datastore": "^9.2.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.3",
+    "express": "^4.22.1",
+    "express-session": "^1.18.2",
+    "nodemailer": "^7.0.11",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "sqlite3": "^5.1.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PRISM2025/appoliceosint.git"
+  },
+  "keywords": [
+    "osint",
+    "police",
+    "intelligence",
+    "andhra-pradesh",
+    "prism"
+  ],
+  "author": "PRISM - Police Research Institute of Systems Modernisation",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PRISM2025/appoliceosint/issues"
+  },
+  "homepage": "https://github.com/PRISM2025/appoliceosint#readme",
+  "description": ""
+}
