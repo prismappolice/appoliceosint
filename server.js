@@ -105,7 +105,10 @@ passport.use(new GoogleStrategy({
 
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-  // Successful authentication, redirect home
+  // Successful authentication, log login and redirect home
+  if (req.user) {
+    logLogin(req.user);
+  }
   res.redirect('/home.html');
 });
 
@@ -370,7 +373,7 @@ app.post("/login", (req, res) => {
         }
         if (row) {
           console.log('Login successful for:', username);
-          logLogin(row); // Log login event
+          logLogin(row); // or logLogin(req.user);
           return res.json({ success: true, message: 'Login successful' });
         } else {
           console.log('Invalid credentials for:', username);
@@ -389,7 +392,7 @@ app.post("/login", (req, res) => {
         if (row) {
           if (row.email_verified) {
             console.log('Login successful for:', email);
-            logLogin(row); // Log login event
+            logLogin(row); // or logLogin(req.user);
             return res.json({ success: true, message: 'Login successful' });
           } else {
             return res.status(401).json({ success: false, message: 'Please verify your email before logging in.' });
