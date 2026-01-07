@@ -156,8 +156,8 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
       sameSite: 'lax'
     });
   }
-  // Redirect to app shell - URL stays at /app
-  res.redirect('/app');
+  // Redirect to home page
+  res.redirect('/home');
 });
 
 
@@ -366,50 +366,7 @@ app.use((req, res, next) => {
     return next();
   }
   
-  // App shell route - check auth and serve app.html
-  if (req.path === '/app') {
-    const token = req.cookies.auth_token;
-    if (!token) {
-      return res.redirect('/');
-    }
-    try {
-      const user = jwt.verify(token, JWT_SECRET);
-      req.user = user;
-      // Refresh the cookie
-      const newToken = generateToken(user);
-      res.cookie('auth_token', newToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        maxAge: SESSION_TIMEOUT,
-        sameSite: 'lax'
-      });
-      return res.sendFile(path.join(__dirname, 'public', 'app.html'));
-    } catch (err) {
-      res.clearCookie('auth_token');
-      return res.redirect('/');
-    }
-  }
-  
-  // Content routes for iframe (no URL change)
-  if (req.path.startsWith('/content/')) {
-    const pageName = req.path.replace('/content/', '');
-    const token = req.cookies.auth_token;
-    if (!token) {
-      return res.status(401).send('Unauthorized');
-    }
-    try {
-      jwt.verify(token, JWT_SECRET);
-      const htmlFile = path.join(__dirname, 'public', pageName + '.html');
-      if (fs.existsSync(htmlFile)) {
-        return res.sendFile(htmlFile);
-      }
-    } catch (err) {
-      return res.status(401).send('Unauthorized');
-    }
-    return res.status(404).send('Not found');
-  }
-  
-  // Check if this is a protected page (direct access - redirect to app)
+  // Check if this is a protected page
   const pageName = req.path.slice(1); // Remove leading /
   if (PROTECTED_PAGES.includes(pageName)) {
     const token = req.cookies.auth_token;
@@ -420,14 +377,22 @@ app.use((req, res, next) => {
     try {
       const user = jwt.verify(token, JWT_SECRET);
       req.user = user;
-      // Redirect to app shell - URL will be /app, not /home
-      return res.redirect('/app');
+      // Refresh the cookie to extend session
+      const newToken = generateToken(user);
+      res.cookie('auth_token', newToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: SESSION_TIMEOUT,
+        sameSite: 'lax'
+      });
     } catch (err) {
       console.log(`[AUTH] Invalid token for protected page: ${pageName}`);
       res.clearCookie('auth_token');
       return res.redirect('/');
     }
   }
+  next();
+});
   next();
 });
 
