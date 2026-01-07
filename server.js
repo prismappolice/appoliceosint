@@ -63,22 +63,36 @@ const GOOGLE_CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL || 'http://localhost
 // JWT secret key (use a strong secret in production)
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
 
+// Session timeout (30 minutes in milliseconds)
+const SESSION_TIMEOUT = 30 * 60 * 1000;
+
 // Function to generate JWT token for a user
 function generateToken(user) {
-  return jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+  return jwt.sign({ id: user.id, username: user.username, loginTime: Date.now() }, JWT_SECRET, { expiresIn: '30m' });
 }
 
-// Middleware to verify JWT token
+// Middleware to verify JWT token from cookie
 function authenticateToken(req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1];
-  if (!token) return res.status(401).json({ error: 'Token missing' });
+  const token = req.cookies.auth_token;
+  if (!token) {
+    return res.redirect('/');
+  }
   jwt.verify(token, JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ error: 'Token invalid' });
+    if (err) {
+      res.clearCookie('auth_token');
+      return res.redirect('/');
+    }
     req.user = user;
     next();
   });
 }
+
+// List of protected pages that require login
+const PROTECTED_PAGES = [
+  'home', 'factcheck', 'social-media', 'phone-intel', 'emailintelligence',
+  'domain-intel', 'breach-data', 'darkweb-tools', 'blockchain-tools',
+  'aitools', 'learning', 'github', 'contact', 'osint-books', 'cyber'
+];
 app.use(session({
   secret: 'ap-police-osint-secret',
   resave: false,
@@ -127,15 +141,20 @@ passport.use(new GoogleStrategy({
 
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-  // Successful authentication, log login and redirect home
+  // Successful authentication, log login and set JWT cookie
   if (req.user) {
     logLogin(req.user);
-    // Set session variables for client-side authentication
-    req.session.loggedIn = true;
-    req.session.username = req.user.username || req.user.email;
+    // Generate JWT token and set as HTTP-only cookie
+    const token = generateToken(req.user);
+    res.cookie('auth_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: SESSION_TIMEOUT,
+      sameSite: 'lax'
+    });
   }
-  // Redirect to a special page that will set client-side session and then go to home
-  res.redirect('/auth-success');
+  // Redirect directly to home - no auth-success.html needed
+  res.redirect('/home');
 });
 
 
@@ -331,6 +350,47 @@ app.use((req, res, next) => {
   next();
 });
 
+// ---------- Protected Pages Authentication ----------
+// Check JWT cookie for all protected pages
+app.use((req, res, next) => {
+  // Skip API routes, auth routes, and static files with extensions
+  if (req.path.startsWith('/api/') || req.path.startsWith('/auth/') || req.path.includes('.')) {
+    return next();
+  }
+  
+  // Root path (login page) - always allow
+  if (req.path === '/') {
+    return next();
+  }
+  
+  // Check if this is a protected page
+  const pageName = req.path.slice(1); // Remove leading /
+  if (PROTECTED_PAGES.includes(pageName)) {
+    const token = req.cookies.auth_token;
+    if (!token) {
+      console.log(`[AUTH] No token for protected page: ${pageName}`);
+      return res.redirect('/');
+    }
+    try {
+      const user = jwt.verify(token, JWT_SECRET);
+      req.user = user;
+      // Refresh the cookie to extend session
+      const newToken = generateToken(user);
+      res.cookie('auth_token', newToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: SESSION_TIMEOUT,
+        sameSite: 'lax'
+      });
+    } catch (err) {
+      console.log(`[AUTH] Invalid token for protected page: ${pageName}`);
+      res.clearCookie('auth_token');
+      return res.redirect('/');
+    }
+  }
+  next();
+});
+
 // Serve HTML files without extension
 app.use((req, res, next) => {
   // Skip API routes, static files with extensions, and auth routes
@@ -442,7 +502,15 @@ app.post("/login", (req, res) => {
         }
         if (row) {
           console.log('Login successful for:', username);
-          logLogin(row); // or logLogin(req.user);
+          logLogin(row);
+          // Generate JWT token and set as HTTP-only cookie
+          const token = generateToken(row);
+          res.cookie('auth_token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            maxAge: SESSION_TIMEOUT,
+            sameSite: 'lax'
+          });
           return res.json({ success: true, message: 'Login successful' });
         } else {
           console.log('Invalid credentials for:', username);
@@ -461,7 +529,15 @@ app.post("/login", (req, res) => {
         if (row) {
           if (row.email_verified) {
             console.log('Login successful for:', email);
-            logLogin(row); // or logLogin(req.user);
+            logLogin(row);
+            // Generate JWT token and set as HTTP-only cookie
+            const token = generateToken(row);
+            res.cookie('auth_token', token, {
+              httpOnly: true,
+              secure: process.env.NODE_ENV === 'production',
+              maxAge: SESSION_TIMEOUT,
+              sameSite: 'lax'
+            });
             return res.json({ success: true, message: 'Login successful' });
           } else {
             return res.status(401).json({ success: false, message: 'Please verify your email before logging in.' });
@@ -505,34 +581,50 @@ app.post("/login", (req, res) => {
           });
         }
       });
-    // --- Logout API (logs logout time and duration) ---
-    app.post('/logout', (req, res) => {
-      // You may need to adjust how you get the user info from the session or request
-      const { username, email } = req.body;
-      if (!username && !email) {
-        return res.status(400).json({ success: false, message: 'Username or email required for logout logging.' });
-      }
-      // Find user by username or email
-      let query, param;
-      if (username) {
-        query = 'SELECT * FROM users WHERE username = ?';
-        param = username;
-      } else {
-        query = 'SELECT * FROM users WHERE email = ?';
-        param = email;
-      }
-      db.get(query, [param], (err, user) => {
-        if (err || !user) {
-          return res.status(404).json({ success: false, message: 'User not found.' });
-        }
-        logLogout(user);
-        return res.json({ success: true, message: 'Logout logged.' });
-      });
-    });
     }
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
+// --- Logout API (clears cookie and logs logout) ---
+app.post('/logout', (req, res) => {
+  // Clear the auth cookie first
+  res.clearCookie('auth_token');
+  
+  const { username, email } = req.body;
+  if (username || email) {
+    // Find user by username or email
+    let query, param;
+    if (username) {
+      query = 'SELECT * FROM users WHERE username = ?';
+      param = username;
+    } else {
+      query = 'SELECT * FROM users WHERE email = ?';
+      param = email;
+    }
+    db.get(query, [param], (err, user) => {
+      if (!err && user) {
+        logLogout(user);
+      }
+    });
+  }
+  return res.json({ success: true, message: 'Logged out successfully.' });
+});
+
+// --- API: Check auth status ---
+app.get('/api/auth-status', (req, res) => {
+  const token = req.cookies.auth_token;
+  if (!token) {
+    return res.json({ authenticated: false });
+  }
+  try {
+    const user = jwt.verify(token, JWT_SECRET);
+    return res.json({ authenticated: true, username: user.username });
+  } catch (err) {
+    res.clearCookie('auth_token');
+    return res.json({ authenticated: false });
   }
 });
 
