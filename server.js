@@ -393,8 +393,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-  next();
-});
 
 // Serve HTML files without extension
 app.use((req, res, next) => {
