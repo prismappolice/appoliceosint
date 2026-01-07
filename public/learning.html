@@ -55,6 +55,7 @@
             style="position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:1.2em; color:#888;"
             role="button" aria-label="Search">🔍</span>
     </div>
+  </div>
 </nav>
 
 <!-- Sidebar (hidden by default) -->
@@ -359,7 +360,6 @@
     if (typeof requireAuth === 'function' && !requireAuth()) {
       return; // Not authenticated, redirecting to login
     }
-    
     if (typeof setupSidebarToggle === 'function') {
       setupSidebarToggle({
         buttonId: 'hamburgerBtn',
@@ -367,23 +367,28 @@
         backdropId: 'sidebarBackdrop'
       });
     }
-    // Tab logic for OSINT Videos/Books
+    if (typeof loadVisitorStats === 'function') {
+      loadVisitorStats('learning');
+    }
+    // Tab logic for OSINT Videos/Books (if present)
     var videosBtn = document.getElementById('osintVideosBtn');
     var booksBtn = document.getElementById('osintBooksBtn');
     var videosTab = document.getElementById('videosTabContent');
     var booksTab = document.getElementById('booksTabContent');
-    videosBtn.addEventListener('click', function() {
-      videosBtn.classList.add('active');
-      booksBtn.classList.remove('active');
-      videosTab.style.display = '';
-      booksTab.style.display = 'none';
-    });
-    booksBtn.addEventListener('click', function() {
-      booksBtn.classList.add('active');
-      videosBtn.classList.remove('active');
-      booksTab.style.display = '';
-      videosTab.style.display = 'none';
-    });
+    if (videosBtn && booksBtn && videosTab && booksTab) {
+      videosBtn.addEventListener('click', function() {
+        videosBtn.classList.add('active');
+        booksBtn.classList.remove('active');
+        videosTab.style.display = '';
+        booksTab.style.display = 'none';
+      });
+      booksBtn.addEventListener('click', function() {
+        booksBtn.classList.add('active');
+        videosBtn.classList.remove('active');
+        booksTab.style.display = '';
+        videosTab.style.display = 'none';
+      });
+    }
   });
 </script>
 </body>
