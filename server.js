@@ -41,6 +41,9 @@ const transporter = nodemailer.createTransport({
   }
 });
 const express = require("express");
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const hpp = require('hpp');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const path = require("path");
@@ -48,6 +51,45 @@ const fs = require("fs");
 const crypto = require("crypto");
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
+
+// ============== SECURITY MIDDLEWARE ==============
+
+// Helmet - Sets various HTTP headers for security
+app.use(helmet({
+  contentSecurityPolicy: false, // We set custom CSP below
+  crossOriginEmbedderPolicy: false
+}));
+
+// Prevent HTTP Parameter Pollution
+app.use(hpp());
+
+// Rate Limiting - Prevent brute force attacks
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: { success: false, message: 'Too many requests, please try again later.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use(generalLimiter);
+
+// Strict rate limit for login attempts
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Only 5 login attempts per 15 minutes
+  message: { success: false, message: 'Too many login attempts, please try again after 15 minutes.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+  skipSuccessfulRequests: true, // Don't count successful logins
+});
+
+// Rate limit for API endpoints
+const apiLimiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 30, // 30 requests per minute
+  message: { success: false, message: 'API rate limit exceeded.' },
+});
+
 app.use(cookieParser());
 // --- Google OAuth Setup ---
 const session = require('express-session');
@@ -494,7 +536,7 @@ app.get("/healthz", (_req, res) => {
 });
 
 // ---------- API: visitor stats ----------
-app.get("/api/visitor-stats", (req, res) => {
+app.get("/api/visitor-stats", apiLimiter, (req, res) => {
   try {
     const today = ymd();
     if (!state.dailyStats[today]) {
@@ -515,8 +557,13 @@ app.get("/api/visitor-stats", (req, res) => {
   }
 });
 
-// ---------- API: users ----------
-app.get("/api/users", (_req, res) => {
+// ---------- API: users (DISABLED in production for security) ----------
+app.get("/api/users", apiLimiter, (req, res) => {
+  // Block this endpoint in production - exposes sensitive data
+  if (process.env.NODE_ENV === 'production') {
+    return res.status(403).json({ error: "Access denied" });
+  }
+  
   try {
     const file = path.join(__dirname, "users.json");
     if (!fs.existsSync(file)) {
@@ -532,7 +579,7 @@ app.get("/api/users", (_req, res) => {
 });
 
 // ---------- API: login ----------
-app.post("/login", (req, res) => {
+app.post("/login", loginLimiter, (req, res) => {
   // Add CORS headers for mobile compatibility
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'POST');
@@ -540,9 +587,24 @@ app.post("/login", (req, res) => {
   
   try {
     console.log("Login attempt from:", req.ip, "User-Agent:", req.headers["user-agent"]);
-    console.log("Request body:", req.body);
+    // Don't log passwords in production
+    if (process.env.NODE_ENV !== 'production') {
+      console.log("Request body:", req.body);
+    }
     
     const { username, email, password } = req.body;
+    
+    // Input validation - prevent SQL injection and XSS
+    if (username && (typeof username !== 'string' || username.length > 50 || /[<>\"\'`;]/.test(username))) {
+      return res.status(400).json({ success: false, message: "Invalid username format" });
+    }
+    if (email && (typeof email !== 'string' || email.length > 100 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) {
+      return res.status(400).json({ success: false, message: "Invalid email format" });
+    }
+    if (!password || typeof password !== 'string' || password.length > 100) {
+      return res.status(400).json({ success: false, message: "Invalid password format" });
+    }
+    
     if ((!username && !email) || !password) {
       console.log("Missing credentials");
       return res.status(400).json({ success: false, message: "Username or email and password required" });
