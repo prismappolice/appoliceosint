@@ -279,6 +279,40 @@
       loadVisitorStats('contact');
     }
   });
+    // SPA Navigation - intercept all internal links
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a');
+      if (link && link.href && link.href.includes(window.location.hostname)) {
+        const url = new URL(link.href);
+        const path = url.pathname.replace(/^\//, '').replace(/\.html$/, '');
+        
+        // Check if it's an internal page navigation
+        const internalPages = ['home', 'factcheck', 'social-media', 'phone-intel', 'emailintelligence',
+          'domain-intel', 'breach-data', 'darkweb-tools', 'blockchain-tools', 'aitools', 
+          'learning', 'github', 'contact', 'osint-books', 'cyber'];
+        
+        if (internalPages.includes(path)) {
+          e.preventDefault();
+          // If inside iframe, tell parent to navigate
+          if (window.parent !== window) {
+            window.parent.postMessage({ type: 'navigate', page: path }, '*');
+          } else {
+            // Direct access - go to app
+            window.location.href = '/app';
+          }
+        }
+      }
+    });
+  });
+  
+  // Override logout for iframe
+  function logout() {
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'logout' }, '*');
+    } else {
+      performLogout();
+    }
+  }
 </script>
 </body>
 </html>
