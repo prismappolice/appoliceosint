@@ -1,3 +1,206 @@
+// ============================================
+// SECURE AUTHENTICATION SYSTEM
+// ============================================
+
+// Session timeout in milliseconds (30 minutes)
+const SESSION_TIMEOUT = 30 * 60 * 1000;
+
+// Session check interval (every 1 minute)
+const SESSION_CHECK_INTERVAL = 60 * 1000;
+
+// Generate unique session ID
+function generateSessionId() {
+  return 'session_' + Date.now() + '_' + Math.random().toString(36).substring(2, 15);
+}
+
+// Check if this is a new tab (direct URL access)
+function isNewTab() {
+  // In a new tab with pasted URL, history.length is 1
+  // After login and navigation, history.length is > 1
+  if (window.history.length <= 1) {
+    console.log('[AUTH] New tab detected (history.length = 1)');
+    return true;
+  }
+  
+  // Also check performance navigation - if type is 'navigate' and no referrer from same origin
+  try {
+    const navEntries = performance.getEntriesByType('navigation');
+    if (navEntries.length > 0) {
+      const navEntry = navEntries[0];
+      // If typed directly or pasted, and no internal referrer
+      if (navEntry.type === 'navigate') {
+        const referrer = document.referrer;
+        // If no referrer or referrer is from different origin, it's likely a new tab
+        if (!referrer || !referrer.includes(window.location.hostname)) {
+          console.log('[AUTH] New tab detected (no internal referrer)');
+          return true;
+        }
+      }
+    }
+  } catch (e) {
+    console.log('[AUTH] Error checking navigation:', e);
+  }
+  
+  return false;
+}
+
+// Check if user is authenticated
+function isAuthenticated() {
+  const loggedIn = sessionStorage.getItem('loggedIn') === 'true';
+  const sessionId = sessionStorage.getItem('sessionId');
+  const loginTime = parseInt(sessionStorage.getItem('loginTime') || '0');
+  const lastActivity = parseInt(sessionStorage.getItem('lastActivity') || '0');
+  const isNewLogin = sessionStorage.getItem('isNewLogin') === 'true';
+  const now = Date.now();
+  
+  // Check if session exists
+  if (!loggedIn || !sessionId || !loginTime) {
+    console.log('[AUTH] No valid session found');
+    return false;
+  }
+  
+  // If this is right after login (isNewLogin flag), allow access
+  if (isNewLogin) {
+    sessionStorage.removeItem('isNewLogin');
+    console.log('[AUTH] New login detected, allowing access');
+    return true;
+  }
+  
+  // CRITICAL: Check if this is a new tab with direct URL access
+  if (isNewTab()) {
+    console.log('[AUTH] Direct URL access in new tab, requiring re-login');
+    sessionStorage.clear();
+    return false;
+  }
+  
+  // Check if session has expired (30 minutes of inactivity)
+  if (now - lastActivity > SESSION_TIMEOUT) {
+    console.log('[AUTH] Session expired due to inactivity');
+    performLogout(true);
+    return false;
+  }
+  
+  return true;
+}
+
+// Update last activity timestamp
+function updateLastActivity() {
+  if (sessionStorage.getItem('loggedIn') === 'true') {
+    sessionStorage.setItem('lastActivity', Date.now().toString());
+  }
+}
+
+// Perform logout
+function performLogout(silent = false) {
+  sessionStorage.clear();
+  localStorage.removeItem('loggedIn');
+  localStorage.setItem('logout_event', Date.now().toString());
+  
+  if (!silent) {
+    window.location.href = '/';
+  }
+}
+
+// Listen for logout events from other tabs
+window.addEventListener('storage', function(event) {
+  if (event.key === 'logout_event') {
+    console.log('[AUTH] Logout detected from another tab');
+    sessionStorage.clear();
+    if (!window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') {
+      window.location.href = '/';
+    }
+  }
+});
+
+// Track user activity
+function setupActivityTracking() {
+  const activityEvents = ['mousedown', 'keydown', 'scroll', 'touchstart'];
+  let lastUpdate = Date.now();
+  
+  activityEvents.forEach(event => {
+    document.addEventListener(event, function() {
+      if (Date.now() - lastUpdate > 30000) {
+        updateLastActivity();
+        lastUpdate = Date.now();
+      }
+    }, { passive: true });
+  });
+}
+
+// Check session validity periodically
+function startSessionChecker() {
+  setInterval(function() {
+    const loggedIn = sessionStorage.getItem('loggedIn') === 'true';
+    const lastActivity = parseInt(sessionStorage.getItem('lastActivity') || '0');
+    
+    if (loggedIn && (Date.now() - lastActivity > SESSION_TIMEOUT)) {
+      if (!window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') {
+        alert('⚠️ Your session has expired. Please login again.');
+        performLogout();
+      }
+    }
+  }, SESSION_CHECK_INTERVAL);
+}
+
+// Check authentication for protected pages
+function requireAuth() {
+  if (!isAuthenticated()) {
+    console.log('[AUTH] User not authenticated, redirecting to login');
+    window.location.href = '/';
+    return false;
+  }
+  
+  updateLastActivity();
+  setupActivityTracking();
+  startSessionChecker();
+  
+  // Mask the URL to hide page name
+  initURLMasking();
+  
+  return true;
+}
+
+// Login function - call after successful login
+function setLoginSession(username) {
+  const sessionId = generateSessionId();
+  const now = Date.now();
+  
+  sessionStorage.clear();
+  sessionStorage.setItem('loggedIn', 'true');
+  sessionStorage.setItem('sessionId', sessionId);
+  sessionStorage.setItem('loginTime', now.toString());
+  sessionStorage.setItem('lastActivity', now.toString());
+  sessionStorage.setItem('username', username || 'user');
+  sessionStorage.setItem('isNewLogin', 'true');
+  
+  localStorage.setItem('loggedIn', 'true');
+  console.log('[AUTH] Login session created:', sessionId);
+}
+
+// ============================================
+// URL MASKING - Hide page names from URL bar
+// ============================================
+function maskURL() {
+  // Replace current URL with base URL to hide page name
+  // Only do this for protected pages, not login page
+  if (window.location.pathname !== '/' && !window.location.pathname.endsWith('index.html')) {
+    // Store actual page in session for back button handling
+    sessionStorage.setItem('currentPage', window.location.pathname);
+    // Replace URL to show only base domain
+    window.history.replaceState({page: window.location.pathname}, '', '/');
+  }
+}
+
+// Call maskURL when page loads (after auth check passes)
+function initURLMasking() {
+  // Small delay to ensure page has loaded
+  setTimeout(maskURL, 100);
+}
+
+// ============================================
+// VISITOR COUNTER SCRIPTS
+// ============================================
+
 // Visitor Counter Script for factcheck.html compatibility
 function loadFactcheckVisitorStats() {
   try {
@@ -108,9 +311,8 @@ function setupDropdownMenu() {
 
 function setupLogout() {
   window.logout = function () {
-    sessionStorage.clear();
-    localStorage.clear();
-    window.location.href = 'index.html';
+    console.log('[AUTH] User initiated logout');
+    performLogout();
   };
 }
 

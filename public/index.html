@@ -111,7 +111,19 @@
 </footer>
 
 <!-- ✅ Login Script -->
+<script src="common.js"></script>
 <script>
+  // Each tab requires its own login - no auto-redirect to home
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof setupSidebarToggle === 'function') {
+      setupSidebarToggle({
+        buttonId: 'hamburgerBtn',
+        sidebarId: 'sidebar',
+        backdropId: 'sidebarBackdrop'
+      });
+    }
+  });
+
   async function loginUser(event) {
     event.preventDefault();
     const username = document.getElementById("username").value.trim();
@@ -138,9 +150,15 @@
       }
       const data = await response.json();
       if (data.success) {
-        sessionStorage.setItem("loggedIn", "true");
-        localStorage.setItem("loggedIn", "true");
-        window.location.href = "home.html";
+        // Use secure session management
+        if (typeof setLoginSession === 'function') {
+          setLoginSession(username);
+        } else {
+          // Fallback if common.js not loaded
+          sessionStorage.setItem("loggedIn", "true");
+          localStorage.setItem("loggedIn", "true");
+        }
+        window.location.href = "/home";
       } else {
         errorMsg.textContent = "❌ " + (data.message || "Login failed");
         errorMsg.style.display = "block";
@@ -156,19 +174,7 @@
   document.getElementById("google-login-btn").addEventListener("click", function() {
     window.location.href = "/auth/google";
   });
-  
-  // Call the visitor stats loader for index page after common.js loads
-  document.addEventListener('DOMContentLoaded', function() {
-    if (typeof setupSidebarToggle === 'function') {
-      setupSidebarToggle({
-        buttonId: 'hamburgerBtn',
-        sidebarId: 'sidebar',
-        backdropId: 'sidebarBackdrop'
-      });
-    }
-  });
 </script>
-<script src="common.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     if (typeof loadVisitorStats === 'function') {

@@ -47,6 +47,7 @@ const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
 const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 app.use(cookieParser());
 // --- Google OAuth Setup ---
 const session = require('express-session');
@@ -59,6 +60,25 @@ const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const GOOGLE_CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL || 'http://localhost:8080/auth/google/callback';
 
+// JWT secret key (use a strong secret in production)
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key';
+
+// Function to generate JWT token for a user
+function generateToken(user) {
+  return jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+}
+
+// Middleware to verify JWT token
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'Token missing' });
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ error: 'Token invalid' });
+    req.user = user;
+    next();
+  });
+}
 app.use(session({
   secret: 'ap-police-osint-secret',
   resave: false,
@@ -91,6 +111,8 @@ passport.use(new GoogleStrategy({
     } else {
       // Create new user
       db.run('INSERT INTO users (username, email, password, email_verified) VALUES (?, ?, ?, 1)', [profile.displayName, profile.emails[0].value, 'GOOGLE_OAUTH'], function (insertErr) {
+          const token = generateToken(row);
+          return res.json({ success: true, token });
         if (insertErr) return done(insertErr);
         db.get('SELECT * FROM users WHERE id = ?', [this.lastID], (err2, newRow) => {
           if (err2) return done(err2);
@@ -108,8 +130,12 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
   // Successful authentication, log login and redirect home
   if (req.user) {
     logLogin(req.user);
+    // Set session variables for client-side authentication
+    req.session.loggedIn = true;
+    req.session.username = req.user.username || req.user.email;
   }
-  res.redirect('/home.html');
+  // Redirect to a special page that will set client-side session and then go to home
+  res.redirect('/auth-success');
 });
 
 
@@ -284,6 +310,49 @@ function recordVisit(req, res) {
     console.log(`[VISITOR] Repeat visit ignored for today. IP: ${req.ip}, UA: ${req.headers["user-agent"]}, ID: ${id}`);
   }
 }
+
+// ---------- Clean URLs (remove .html extension) ----------
+// Redirect .html URLs to clean URLs
+app.use((req, res, next) => {
+  // Skip API routes and static files
+  if (req.path.startsWith('/api/') || req.path.startsWith('/auth/')) {
+    return next();
+  }
+  
+  // If URL ends with .html, redirect to clean URL
+  if (req.path.endsWith('.html')) {
+    const cleanPath = req.path.slice(0, -5); // Remove .html
+    // For index.html, redirect to root
+    if (cleanPath === '/index' || cleanPath === '') {
+      return res.redirect(301, '/');
+    }
+    return res.redirect(301, cleanPath);
+  }
+  next();
+});
+
+// Serve HTML files without extension
+app.use((req, res, next) => {
+  // Skip API routes, static files with extensions, and auth routes
+  if (req.path.startsWith('/api/') || req.path.startsWith('/auth/') || req.path.includes('.')) {
+    return next();
+  }
+  
+  // Root path serves index.html
+  if (req.path === '/') {
+    return res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  }
+  
+  // Try to serve the corresponding .html file
+  const htmlFile = path.join(__dirname, 'public', req.path + '.html');
+  const fs = require('fs');
+  
+  if (fs.existsSync(htmlFile)) {
+    return res.sendFile(htmlFile);
+  }
+  
+  next();
+});
 
 // ---------- Static files ----------
 app.use(express.static(path.join(__dirname, "public")));

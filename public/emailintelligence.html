@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <link rel="icon" href="Appolice-Logo.png" type="image/png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>appoliceosint.com</title>
+  <title>appoliceosint.com</title>  <script>
+    // Immediately mask URL before page renders
+    if (window.location.pathname !== '/') {
+      window.history.replaceState({}, document.title, '/');
+    }
+  </script>
   <link rel="stylesheet" href="dashboard.css">
   <link rel="stylesheet" href="navbar.css">
   <link rel="stylesheet" href="visitor-counter.css">
@@ -31,10 +36,10 @@
     <div class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </div>
-    <a href="home.html" class="nav-link">🏠 Home</a>
-    <a href="contact.html" class="nav-link">📞 Contact Us</a>
-    <a href="github.html" class="nav-link">🐙 GitHub</a>
-    <a href="index.html" class="nav-link logout-link" onclick="logout()">🔚 Logout</a>
+    <a href="/home" class="nav-link">🏠 Home</a>
+    <a href="/contact" class="nav-link">📞 Contact Us</a>
+    <a href="/github" class="nav-link">🐙 GitHub</a>
+    <a href="#" class="nav-link logout-link" onclick="logout(); return false;">🔚 Logout</a>
   </div>
   <div class="nav-right">
     <div class="search-input-wrapper" style="position:relative">
@@ -47,16 +52,16 @@
 </nav>
 <aside id="sidebar" class="sidebar" aria-hidden="true">
   <ul class="sidebar-list">
-    <li><a href="factcheck.html" class="nav-link">✅ Fact Check Tools</a></li>
-    <li><a href="social-media.html" class="nav-link">📱 Social Media Tools</a></li>
-    <li><a href="phone-intel.html" class="nav-link">📱 Phone Intelligence Tools</a></li>
-    <li><a href="emailintelligence.html" class="nav-link active">✉️ Email Intelligence Tools</a></li>
-    <li><a href="domain-intel.html" class="nav-link">🌐 Domain Intel Tools</a></li>
-    <li><a href="breach-data.html" class="nav-link">🔒 Breach Data Tools</a></li>
-    <li><a href="darkweb-tools.html" class="nav-link">🕵️ Dark Web Tools</a></li>
-    <li><a href="blockchain-tools.html" class="nav-link">⛓️ Blockchain Tools</a></li>
-    <li><a href="aitools.html" class="nav-link">🤖 AI Tools</a></li>
-    <li><a href="learning.html" class="nav-link">📚 Learning</a></li>
+    <li><a href="/factcheck" class="nav-link">✅ Fact Check Tools</a></li>
+    <li><a href="/social-media" class="nav-link">📱 Social Media Tools</a></li>
+    <li><a href="/phone-intel" class="nav-link">📱 Phone Intelligence Tools</a></li>
+    <li><a href="/emailintelligence" class="nav-link active">✉️ Email Intelligence Tools</a></li>
+    <li><a href="/domain-intel" class="nav-link">🌐 Domain Intel Tools</a></li>
+    <li><a href="/breach-data" class="nav-link">🔒 Breach Data Tools</a></li>
+    <li><a href="/darkweb-tools" class="nav-link">🕵️ Dark Web Tools</a></li>
+    <li><a href="/blockchain-tools" class="nav-link">⛓️ Blockchain Tools</a></li>
+    <li><a href="/aitools" class="nav-link">🤖 AI Tools</a></li>
+    <li><a href="/learning" class="nav-link">📚 Learning</a></li>
   </ul>
 </aside>
 <div id="sidebarBackdrop" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999;"></div>
@@ -137,6 +142,11 @@
 <script src="common.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Check authentication - redirect to login if not authenticated
+    if (typeof requireAuth === 'function' && !requireAuth()) {
+      return; // Not authenticated, redirecting to login
+    }
+    
     if (typeof setupSidebarToggle === 'function') {
       setupSidebarToggle({
         buttonId: 'hamburgerBtn',
