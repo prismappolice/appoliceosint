@@ -386,13 +386,22 @@ function getClientId(req) {
   return crypto.createHash("sha256").update(raw).digest("hex");
 }
 
+// Session timeout for counting new visits (30 minutes in milliseconds)
+const VISIT_SESSION_TIMEOUT = 30 * 60 * 1000;
 
 // Count a visit (call this for page views, not for every API hit)
 function recordVisit(req, res) {
   const today = ymd();
   const id = getClientId(req);
+  const now = Date.now();
+  
   if (!state.dailyStats[today]) {
-    state.dailyStats[today] = { visits: 0, uniques: 0, uniqueIds: [] };
+    state.dailyStats[today] = { visits: 0, uniques: 0, uniqueIds: [], lastVisitTime: {} };
+  }
+  
+  // Ensure lastVisitTime exists
+  if (!state.dailyStats[today].lastVisitTime) {
+    state.dailyStats[today].lastVisitTime = {};
   }
   
   // Check if this is a truly new unique visitor (never visited before)
@@ -401,8 +410,15 @@ function recordVisit(req, res) {
   // Check if this visitor already visited today
   const alreadyVisitedToday = state.dailyStats[today].uniqueIds.includes(id);
   
+  // Check last visit time for this visitor
+  const lastVisit = state.dailyStats[today].lastVisitTime[id] || 0;
+  const timeSinceLastVisit = now - lastVisit;
+  
+  // Update last visit time
+  state.dailyStats[today].lastVisitTime[id] = now;
+  
   if (!alreadyVisitedToday) {
-    // First visit of the day - increment today's stats
+    // First visit of the day - increment both visits and uniques
     state.dailyStats[today].visits += 1;
     state.dailyStats[today].uniques += 1;
     state.dailyStats[today].uniqueIds.push(id);
@@ -420,9 +436,17 @@ function recordVisit(req, res) {
     
     state.lastUpdated = new Date().toISOString();
     scheduleSave();
+  } else if (timeSinceLastVisit > VISIT_SESSION_TIMEOUT) {
+    // Already visited today, but came back after 30+ minutes - count as new visit (not refresh)
+    state.dailyStats[today].visits += 1;
+    state.totalVisitors += 1;
+    console.log(`[VISITOR] New session visit (after ${Math.round(timeSinceLastVisit/60000)} min). ID: ${id}, Today Visits: ${state.dailyStats[today].visits}`);
+    
+    state.lastUpdated = new Date().toISOString();
+    scheduleSave();
   } else {
-    // Already visited today, do not increment anything
-    console.log(`[VISITOR] Repeat visit ignored for today. ID: ${id}`);
+    // Refresh or quick revisit (within 30 min) - do not count
+    console.log(`[VISITOR] Refresh/quick revisit ignored (${Math.round(timeSinceLastVisit/1000)}s ago). ID: ${id}`);
   }
 }
 
