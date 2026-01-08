@@ -70,6 +70,7 @@ const generalLimiter = rateLimit({
   message: { success: false, message: 'Too many requests, please try again later.' },
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { trustProxy: false } // Disable trust proxy validation for development
 });
 app.use(generalLimiter);
 
@@ -81,6 +82,7 @@ const loginLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   skipSuccessfulRequests: true, // Don't count successful logins
+  validate: { trustProxy: false } // Disable trust proxy validation for development
 });
 
 // Rate limit for API endpoints
@@ -88,6 +90,7 @@ const apiLimiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
   max: 30, // 30 requests per minute
   message: { success: false, message: 'API rate limit exceeded.' },
+  validate: { trustProxy: false } // Disable trust proxy validation for development
 });
 
 app.use(cookieParser());
@@ -222,6 +225,17 @@ db.serialize(() => {
     password TEXT,
     email_verified INTEGER DEFAULT 0,
     verification_code TEXT
+  )`);
+  
+  // Create login_logs table for tracking login/logout
+  db.run(`CREATE TABLE IF NOT EXISTS login_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    username TEXT,
+    email TEXT,
+    login_time TEXT,
+    logout_time TEXT,
+    duration_seconds INTEGER
   )`);
 });
 
