@@ -63,7 +63,7 @@ app.use(helmet({
 // Prevent HTTP Parameter Pollution
 app.use(hpp());
 
-// Rate Limiting - Prevent brute force attacks
+// Rate Limiting - Prevent brute force attacks (apply only to /api/ routes)
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per windowMs
@@ -72,7 +72,8 @@ const generalLimiter = rateLimit({
   legacyHeaders: false,
   validate: { trustProxy: false } // Disable trust proxy validation for development
 });
-app.use(generalLimiter);
+// Only apply generalLimiter to /api/ routes
+app.use('/api/', generalLimiter);
 
 // Strict rate limit for login attempts
 const loginLimiter = rateLimit({
