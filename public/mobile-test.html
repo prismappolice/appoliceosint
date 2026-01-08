@@ -969,7 +969,32 @@
     <button onclick="scrollToTop()">⬆️ Top</button>
     <button onclick="reloadFrame()">🔃 Reload</button>
   </div>
-  
+
+  <!-- Visitor Counter -->
+  <div class="visitor-center-container">
+    <div class="visitor-stats-section" style="margin: 30px 20px; padding: 20px; background: #2e4256; border-radius: 24px; color: #fff; box-shadow: 0 8px 32px rgba(31,38,135,0.37); border: none;">
+      <h3 style="text-align: center; margin: 0 0 20px 0; font-size: 2em; color: #fff; font-weight: bold; letter-spacing: 1px;">🌐 Visitor Statistics</h3>
+      <div class="visitor-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+        <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+          <div style="font-size: 2.2em; font-weight: bold; color: #4CAF50;" id="total-visitors-mobiletest">Loading...</div>
+          <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Visits</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+          <div style="font-size: 2.2em; font-weight: bold; color: #2196F3;" id="unique-visitors-mobiletest">Loading...</div>
+          <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Total Unique Visitors</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+          <div style="font-size: 2.2em; font-weight: bold; color: #FF9800;" id="today-visitors-mobiletest">Loading...</div>
+          <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Visits</div>
+        </div>
+        <div style="background: rgba(255,255,255,0.08); padding: 24px; border-radius: 18px; text-align: center; color: #fff;">
+          <div style="font-size: 2.2em; font-weight: bold; color: #E91E63;" id="today-unique-mobiletest">Loading...</div>
+          <div style="font-size: 1.1em; opacity: 1; margin-top: 8px; color: #fff;">Today's Unique</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const devices = {
       'iphone-se': { width: 375, height: 667, name: 'iPhone SE', hasNotch: false },
@@ -1097,6 +1122,10 @@
           sidebarId: 'sidebar',
           backdropId: 'sidebarBackdrop'
         });
+      }
+      // Load visitor stats
+      if (typeof autoRefreshVisitorStats === 'function') {
+        autoRefreshVisitorStats('mobiletest');
       }
     });
   </script>
