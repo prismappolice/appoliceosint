@@ -394,21 +394,35 @@ function recordVisit(req, res) {
   if (!state.dailyStats[today]) {
     state.dailyStats[today] = { visits: 0, uniques: 0, uniqueIds: [] };
   }
-  // Only increment today's visits and uniques if this device hasn't visited today
-  if (!state.dailyStats[today].uniqueIds.includes(id)) {
-    state.totalVisitors += 1;
-    if (!state.uniqueVisitors.has(id)) {
-      state.uniqueVisitors.add(id);
-    }
+  
+  // Check if this is a truly new unique visitor (never visited before)
+  const isNewUniqueVisitor = !state.uniqueVisitors.has(id);
+  
+  // Check if this visitor already visited today
+  const alreadyVisitedToday = state.dailyStats[today].uniqueIds.includes(id);
+  
+  if (!alreadyVisitedToday) {
+    // First visit of the day - increment today's stats
     state.dailyStats[today].visits += 1;
     state.dailyStats[today].uniques += 1;
     state.dailyStats[today].uniqueIds.push(id);
+    
+    // Increment total page views
+    state.totalVisitors += 1;
+    
+    // Only add to all-time unique visitors if truly new
+    if (isNewUniqueVisitor) {
+      state.uniqueVisitors.add(id);
+      console.log(`[VISITOR] NEW ALL-TIME unique visitor! ID: ${id}, Total Unique: ${state.uniqueVisitors.size}`);
+    } else {
+      console.log(`[VISITOR] Returning visitor (new day). ID: ${id}, Total Unique: ${state.uniqueVisitors.size}`);
+    }
+    
     state.lastUpdated = new Date().toISOString();
     scheduleSave();
-    console.log(`[VISITOR] NEW unique visit for today. IP: ${req.ip}, UA: ${req.headers["user-agent"]}, ID: ${id}, totalVisitors: ${state.totalVisitors}, uniqueVisitors: ${state.uniqueVisitors.size}`);
   } else {
-    // Already visited today, do not increment
-    console.log(`[VISITOR] Repeat visit ignored for today. IP: ${req.ip}, UA: ${req.headers["user-agent"]}, ID: ${id}`);
+    // Already visited today, do not increment anything
+    console.log(`[VISITOR] Repeat visit ignored for today. ID: ${id}`);
   }
 }
 
