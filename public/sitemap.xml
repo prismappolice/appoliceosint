@@ -2,25 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://appoliceosint.com/</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://appoliceosint.com/dashboard.html</loc>
-    <lastmod>2025-10-18</lastmod>
+    <loc>https://appoliceosint.com/home.html</loc>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://appoliceosint.com/osinttools.html</loc>
-    <lastmod>2025-10-18</lastmod>
+    <loc>https://appoliceosint.com/domain-intel.html</loc>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://appoliceosint.com/domain-intel.html</loc>
-    <lastmod>2025-10-18</lastmod>
+    <loc>https://appoliceosint.com/emailintelligence.html</loc>
+    <lastmod>2026-01-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://appoliceosint.com/cyber.html</loc>
+    <lastmod>2026-01-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

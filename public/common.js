@@ -102,69 +102,10 @@ function setLoginSession(username) {
 // VISITOR COUNTER SCRIPTS
 // ============================================
 
-// Visitor Counter Script for factcheck.html compatibility
-function loadFactcheckVisitorStats() {
-  try {
-    fetch('/api/visitor-stats')
-      .then(response => response.json())
-      .then(stats => {
-        document.getElementById('total-visitors-factcheck').textContent = (typeof stats.totalVisitors === 'number' ? stats.totalVisitors : 0).toLocaleString();
-        document.getElementById('unique-visitors-factcheck').textContent = (typeof stats.uniqueVisitors === 'number' ? stats.uniqueVisitors : 0).toLocaleString();
-        document.getElementById('today-visitors-factcheck').textContent = (typeof stats.todayVisitors === 'number' ? stats.todayVisitors : 0).toLocaleString();
-        document.getElementById('today-unique-factcheck').textContent = (typeof stats.todayUniqueVisitors === 'number' ? stats.todayUniqueVisitors : 0).toLocaleString();
-      })
-      .catch(() => {
-        document.getElementById('total-visitors-factcheck').textContent = 'N/A';
-        document.getElementById('unique-visitors-factcheck').textContent = 'N/A';
-        document.getElementById('today-visitors-factcheck').textContent = 'N/A';
-        document.getElementById('today-unique-factcheck').textContent = 'N/A';
-      });
-  } catch (error) {
-    document.getElementById('total-visitors-factcheck').textContent = 'N/A';
-    document.getElementById('unique-visitors-factcheck').textContent = 'N/A';
-    document.getElementById('today-visitors-factcheck').textContent = 'N/A';
-    document.getElementById('today-unique-factcheck').textContent = 'N/A';
-  }
-}
+// Generic visitor stats loader - works for all pages
+// Usage: loadVisitorStats('factcheck'), loadVisitorStats('breach'), loadVisitorStats('home'), etc.
+// The pagePrefix is used to find elements like: total-visitors-{pagePrefix}, unique-visitors-{pagePrefix}, etc.
 
-// Optionally, to auto-refresh for factcheck.html
-function autoRefreshVisitorStats(pagePrefix) {
-  if (pagePrefix === 'factcheck') {
-    loadFactcheckVisitorStats();
-    setInterval(loadFactcheckVisitorStats, 30000);
-  } else {
-    loadVisitorStats(pagePrefix);
-    setInterval(() => loadVisitorStats(pagePrefix), 30000);
-  }
-}
-// Visitor Counter Script for breach-data.html compatibility
-function loadBreachVisitorStats() {
-  try {
-    fetch('/api/visitor-stats')
-      .then(response => response.json())
-      .then(stats => {
-        document.getElementById('total-visitors-breach').textContent = (typeof stats.totalVisitors === 'number' ? stats.totalVisitors : 0).toLocaleString();
-        document.getElementById('unique-visitors-breach').textContent = (typeof stats.uniqueVisitors === 'number' ? stats.uniqueVisitors : 0).toLocaleString();
-        document.getElementById('today-visitors-breach').textContent = (typeof stats.todayVisitors === 'number' ? stats.todayVisitors : 0).toLocaleString();
-        document.getElementById('today-unique-breach').textContent = (typeof stats.todayUniqueVisitors === 'number' ? stats.todayUniqueVisitors : 0).toLocaleString();
-      })
-      .catch(() => {
-        document.getElementById('total-visitors-breach').textContent = 'N/A';
-        document.getElementById('unique-visitors-breach').textContent = 'N/A';
-        document.getElementById('today-visitors-breach').textContent = 'N/A';
-        document.getElementById('today-unique-breach').textContent = 'N/A';
-      });
-  } catch (error) {
-    document.getElementById('total-visitors-breach').textContent = 'N/A';
-    document.getElementById('unique-visitors-breach').textContent = 'N/A';
-    document.getElementById('today-visitors-breach').textContent = 'N/A';
-    document.getElementById('today-unique-breach').textContent = 'N/A';
-  }
-}
-
-// Optionally, to auto-refresh:
-// loadBreachVisitorStats();
-// setInterval(loadBreachVisitorStats, 30000);
 // common.js
 // Shared JavaScript for navigation, visitor stats, and UI logic
 
@@ -440,17 +381,17 @@ window.addEventListener('DOMContentLoaded', function () {
   }
   // Dynamic search system - builds comprehensive tool database from all pages
   const allPages = [
-    'osinttools.html', 'social-media.html', 'domain-intel.html', 'breach-data.html', 
+    'social-media.html', 'domain-intel.html', 'breach-data.html', 
     'darkweb-tools.html', 'blockchain-tools.html', 'phone-intel.html', 'factcheck.html', 
     'aitools.html', 'learning.html', 'osint-books.html', 'contact.html', 'github.html', 'home.html',
-    'index.html', 'financialfraudosint.html', 'mobile-test.html', 'cyber.html'
+    'index.html', 'emailintelligence.html', 'mobile-test.html', 'cyber.html'
   ];
 
   // Comprehensive tool mapping including all tools from your screenshot
   const toolPages = {
     // Main categories and pages
     'home': {page: 'home.html', heading: 'WELCOME TO OSINT WEBSITE'},
-    'osint tools': {page: 'osinttools.html', heading: 'OPEN SOURCE INTELLIGENCE (OSINT) TOOLS'},
+    'osint tools': {page: 'domain-intel.html', heading: 'DOMAIN INTELLIGENCE TOOLS'},
     'ai tools': {page: 'aitools.html', heading: 'AI TOOLS'},
     'fact check tools': {page: 'factcheck.html', heading: 'FACT CHECK TOOLS'},
     'dark web tools': {page: 'darkweb-tools.html', heading: 'DARK WEB TOOLS'},
@@ -460,6 +401,8 @@ window.addEventListener('DOMContentLoaded', function () {
     'domain intel tools': {page: 'domain-intel.html', heading: 'DOMAIN INTEL TOOLS'},
     'breach data tools': {page: 'breach-data.html', heading: 'BREACH DATA TOOLS'},
     'phone intel tools': {page: 'phone-intel.html', heading: 'PHONE INTEL TOOLS'},
+    'email intelligence': {page: 'emailintelligence.html', heading: 'EMAIL INTELLIGENCE TOOLS'},
+    'email intel': {page: 'emailintelligence.html', heading: 'EMAIL INTELLIGENCE TOOLS'},
     'learning': {page: 'learning.html', heading: 'LEARNING RESOURCES'},
     'cyber security': {page: 'cyber.html', heading: 'CYBER SECURITY RESOURCES'},
     'cybersecurity': {page: 'cyber.html', heading: 'CYBER SECURITY RESOURCES'},
@@ -467,37 +410,33 @@ window.addEventListener('DOMContentLoaded', function () {
     'contact': {page: 'contact.html', heading: 'CONTACT US'},
     'github': {page: 'github.html', heading: 'GITHUB'},
 
-    // OSINT Tools - Bucket Search
-    'osint.sh': {page: 'osinttools.html', heading: 'Osint.Sh'},
-    'bucket search': {page: 'osinttools.html', heading: '1. BUCKET SEARCH'},
+    // Domain Intel / General OSINT Tools (moved from osinttools.html)
+    'osint.sh': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'bucket search': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'web.check.xyz': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'web-check': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'scrapegraphai': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'gitsearch.ai': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'cyber.url.scanner': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'website.informer': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'osint.portal': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'deepfind.me': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'talkwalker': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'maltego.com': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'shodan.io': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'securitytrails': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'web osint': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'crawling-scraping': {page: 'domain-intel.html', heading: 'DOMAIN INTELLIGENCE TOOLS'},
+    'crawling scraping': {page: 'domain-intel.html', heading: 'DOMAIN INTELLIGENCE TOOLS'},
 
-    // OSINT Tools - Web OSINT
-    'web.check.xyz': {page: 'osinttools.html', heading: 'Web.Check.Xyz'},
-    'scrapegraphai': {page: 'osinttools.html', heading: 'Scrapegraphai'},
-    'tracefind.info': {page: 'osinttools.html', heading: 'Tracefind.Info'},
-    'gitsearch.ai': {page: 'osinttools.html', heading: 'Gitsearch.ai'},
-    'cyber.url.scanner': {page: 'osinttools.html', heading: 'Cyber.Url.Scanner'},
-    'website.informer': {page: 'osinttools.html', heading: 'Website.Informer'},
-    'osint.portal': {page: 'osinttools.html', heading: 'Osint.Portal'},
-    'deepfind.me': {page: 'osinttools.html', heading: 'Deepfind.Me'},
-    'talkwalker': {page: 'osinttools.html', heading: 'Talkwalker'},
-    'maltego.com': {page: 'osinttools.html', heading: 'Maltego.Com'},
-    'shodan.io': {page: 'osinttools.html', heading: 'Shodan.Io'},
-    'securitytrails': {page: 'osinttools.html', heading: 'Securitytrails'},
-    'web osint': {page: 'osinttools.html', heading: '2. WEB OSINT'},
+    // Email Intelligence Tools (moved from osinttools.html)
+    'tracefind.info': {page: 'emailintelligence.html', heading: '1. EMAIL LOOKUP & INTELLIGENCE'},
+    'epieos': {page: 'emailintelligence.html', heading: '1. EMAIL LOOKUP & INTELLIGENCE'},
+    'hunter.io': {page: 'emailintelligence.html', heading: '1. EMAIL LOOKUP & INTELLIGENCE'},
 
-    // OSINT Tools - Crawling & Scraping  
-    'crawling-scraping': {page: 'osinttools.html', heading: '3. CRAWLING-SCRAPING'},
-    'crawling scraping': {page: 'osinttools.html', heading: '3. CRAWLING-SCRAPING'},
-
-    // OSINT Tools - Email Intelligence
-    'email intelligence': {page: 'osinttools.html', heading: '4. EMAIL INTELLIGENCE'},
-
-    // OSINT Tools - General OSINT
-    'general osint': {page: 'osinttools.html', heading: '5. GENERAL OSINT'},
-
-    // OSINT Tools - Best OSINT Tools
-    'best osint tools': {page: 'osinttools.html', heading: '6. BEST OSINT TOOLS'},
+    // General OSINT shortcuts
+    'general osint': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'best osint tools': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
 
     // AI Tools
     'chatgpt': {page: 'aitools.html', heading: 'ChatGPT'},
@@ -577,16 +516,17 @@ window.addEventListener('DOMContentLoaded', function () {
     'osint books': {page: 'osint-books.html', heading: 'OSINT BOOKS COLLECTION'},
 
     // Popular tools and shortcuts
-    'shodan': {page: 'osinttools.html', heading: 'Shodan.Io'},
-    'maltego': {page: 'osinttools.html', heading: 'Maltego.Com'},
+    'shodan': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
+    'maltego': {page: 'domain-intel.html', heading: '6. GENERAL & BEST OSINT TOOLS'},
     'virustotal': {page: 'breach-data.html', heading: 'Virustotal'},
     'blockchain': {page: 'blockchain-tools.html', heading: 'BLOCKCHAIN TOOLS'},
-    'osint': {page: 'osinttools.html', heading: 'OPEN SOURCE INTELLIGENCE (OSINT) TOOLS'},
+    'osint': {page: 'domain-intel.html', heading: 'DOMAIN INTELLIGENCE TOOLS'},
     'leak': {page: 'breach-data.html', heading: 'Osintleak.Com'},
     'darkweb': {page: 'darkweb-tools.html', heading: 'DARK WEB TOOLS'},
     'social': {page: 'social-media.html', heading: 'SOCIAL MEDIA TOOLS'},
     'domain': {page: 'domain-intel.html', heading: 'DOMAIN INTEL TOOLS'},
     'phone': {page: 'phone-intel.html', heading: 'PHONE INTEL TOOLS'},
+    'email': {page: 'emailintelligence.html', heading: 'EMAIL INTELLIGENCE TOOLS'},
     'ai': {page: 'aitools.html', heading: 'AI TOOLS'},
     'fact': {page: 'factcheck.html', heading: 'FACT CHECK TOOLS'},
     'breach': {page: 'breach-data.html', heading: 'BREACH DATA TOOLS'},
